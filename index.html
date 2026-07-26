@@ -197,7 +197,7 @@
    CONFIG
    SUBMIT_EMAIL: where "Post a mat" submissions get sent.
    ========================================================= */
-const SUBMIT_EMAIL = "CHANGE-ME@example.com";
+const SUBMIT_EMAIL = "supergoodwav@gmail.com";
 const SITE_URL = "https://likewaterh20.github.io/openmat";
 
 /* =========================================================
@@ -399,10 +399,11 @@ document.getElementById("sendPost").onclick=()=>{
   const v=id=>document.getElementById(id).value.trim();
   const gym=v("f-gym"),town=v("f-town");
   if(!gym||!town){toast("Gym name and town are required.");return;}
-  const body=["NEW OPEN MAT SUBMISSION","","Gym: "+gym,"Town: "+town,"Day: "+v("f-day"),"Time: "+v("f-time"),"Format: "+v("f-format"),"Cost: "+v("f-cost"),"Contact: "+v("f-contact")].join("%0D%0A");
-  window.location.href="mailto:"+SUBMIT_EMAIL+"?subject="+encodeURIComponent("OPENMAT submission: "+gym+", "+town)+"&body="+body;
+  const lines=["NEW OPEN MAT SUBMISSION","","Gym: "+gym,"Town: "+town,"Day: "+v("f-day"),"Time: "+v("f-time"),"Format: "+v("f-format"),"Cost: "+v("f-cost"),"Contact: "+v("f-contact")];
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(lines.join("\n")).catch(()=>{});}
+  window.location.href="mailto:"+SUBMIT_EMAIL+"?subject="+encodeURIComponent("OPENMAT submission: "+gym+", "+town)+"&body="+lines.join("%0D%0A");
   overlay.classList.remove("open");
-  toast("Opening your email to send it.");
+  toast("Opening your email app · details copied too");
 };
 
 /* render */
@@ -418,38 +419,60 @@ function render(){
   const show=active.concat(anytime);
   document.getElementById("count").innerHTML="<b>"+active.length+"</b> open mat"+(active.length===1?"":"s")+" · "+DAYS[activeDay]+(anytime.length?" &nbsp;·&nbsp; +"+anytime.length+" on gym schedule":"")+(userLoc?" &nbsp;·&nbsp; nearest first":"");
 
-  const wrap=document.getElementById("cards");wrap.innerHTML="";
-  if(show.length===0){wrap.innerHTML='<div class="empty"><div class="big">No mats listed</div>Nothing matches for '+DAYS[activeDay]+'. Try clearing filters, or post a mat we\'re missing.</div>';}
+  const wrap=document.getElementById("cards");wrap.replaceChildren();
+  const addEl=(parent,tag,cls,text)=>{const el=document.createElement(tag);if(cls)el.className=cls;if(text!==undefined&&text!==null)el.textContent=text;parent.appendChild(el);return el;};
 
-  show.forEach(m=>{
-    const st=(activeDay===todayIdx)?matStatus(m):null;
+  if(show.length===0){
+    const e=addEl(wrap,"div","empty");
+    addEl(e,"div","big","No mats listed");
+    e.appendChild(document.createTextNode(userLoc
+      ?"Nothing on "+DAYS[activeDay]+" near you. Check the rest of the week below, or post a mat we're missing."
+      :"Nothing matches for "+DAYS[activeDay]+". Try clearing filters, or post a mat we're missing."));
+  }
+
+  function makeCard(m, dayLabel){
+    const st=(!dayLabel && activeDay===todayIdx)?matStatus(m):null;
     const c=document.createElement("div");
-    c.className="card"+(st?" "+ (st.cls==="done"?"done":st.cls==="live"?"live":""):"");
-    c.innerHTML=`
-      ${st?'<span class="status '+st.cls+'">'+st.label+'</span>':''}
-      <div class="card-top">
-        <div>
-          <div class="gym">${m.gym}</div>
-          <div class="town">${m.town} · ${m.county} County ${m._d!==undefined?'· <span class="dist">'+m._d.toFixed(1)+' mi</span>':''}</div>
-        </div>
-        <div class="time">${m.start}${m.end?'<small>TO '+m.end+'</small>':''}</div>
-      </div>
-      <div class="tags">
-        <span class="tag ${m.cost==="Free"?"free":""}">${m.cost}</span>
-        <span class="tag">${m.format}</span>
-      </div>
-      <div class="card-foot">
-        <span class="verify ${m.verified==="confirmed"?"ok":"warn"}" title="Last checked ${m.verifiedDate}">${m.verified==="confirmed"?"✓":"◌"}</span>
-        <span class="foot-actions">
-          <a class="golink" href="${m.site}" target="_blank" rel="noopener">Site</a>
-          <a class="golink" href="${m.ig}" target="_blank" rel="noopener">IG</a>
-          <button class="sharelink" data-share>Share</button>
-        </span>
-      </div>`;
-    c.querySelector("[data-share]").onclick=(e)=>{e.stopPropagation();shareMat(m);};
+    c.className="card"+(st&&st.cls==="done"?" done":st&&st.cls==="live"?" live":"");
+    if(st) addEl(c,"span","status "+st.cls,st.label);
+    if(dayLabel) addEl(c,"span","status soon",dayLabel);
+    const top=addEl(c,"div","card-top");
+    const left=addEl(top,"div");
+    addEl(left,"div","gym",m.gym);
+    const town=addEl(left,"div","town",m.town+" · "+m.county+" County"+(m._d!==undefined?" · ":""));
+    if(m._d!==undefined) addEl(town,"span","dist",m._d.toFixed(1)+" mi");
+    const time=addEl(top,"div","time",m.start);
+    if(m.end) addEl(time,"small",null,"TO "+m.end);
+    const tags=addEl(c,"div","tags");
+    addEl(tags,"span","tag"+(m.cost==="Free"?" free":""),m.cost);
+    addEl(tags,"span","tag",m.format);
+    const foot=addEl(c,"div","card-foot");
+    const ver=addEl(foot,"span","verify "+(m.verified==="confirmed"?"ok":"warn"),m.verified==="confirmed"?"✓":"◌");
+    ver.title="Last checked "+m.verifiedDate;
+    const actions=addEl(foot,"span","foot-actions");
+    const siteA=addEl(actions,"a","golink","Site");siteA.href=m.site;siteA.target="_blank";siteA.rel="noopener";
+    const igA=addEl(actions,"a","golink","IG");igA.href=m.ig;igA.target="_blank";igA.rel="noopener";
+    const shareB=addEl(actions,"button","sharelink","Share");shareB.dataset.share="";
+    shareB.onclick=(e)=>{e.stopPropagation();shareMat(m);};
     c.onclick=(e)=>{if(e.target.tagName!=="A"&&!e.target.dataset.hasOwnProperty("share")){map.flyTo([m.lat,m.lng],12,{duration:.6});}};
-    wrap.appendChild(c);
-  });
+    return c;
+  }
+
+  show.forEach(m=>wrap.appendChild(makeCard(m,null)));
+
+  /* when searching near a location, always show the rest of the week nearby
+     so a zip search never dead-ends on an empty day */
+  if(userLoc){
+    const others=MATS.filter(m=>m.day!==null && m.day!==activeDay && passes(m))
+      .map(x=>({...x,_d:milesBetween(userLoc,x)}))
+      .sort((a,b)=>a._d-b._d)
+      .slice(0,6);
+    if(others.length){
+      const h=addEl(wrap,"div","count","More near you this week");
+      h.style.marginTop="22px";
+      others.forEach(m=>wrap.appendChild(makeCard(m,DAYS[m.day])));
+    }
+  }
 
   markers.forEach(x=>map.removeLayer(x));markers=[];
   const groups = {};
