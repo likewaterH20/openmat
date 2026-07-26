@@ -384,7 +384,7 @@ function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t
 function shareMat(m){
   const text="Open mat @ "+m.gym+", "+m.town+" · "+(m.day!==null?DAYS[m.day]+" ":"")+m.start+(m.end?" to "+m.end:"")+(m.cost==="Free"?" · FREE":"")+" · found on OPENMAT "+SITE_URL;
   if(navigator.share){navigator.share({text}).catch(()=>{});}
-  else{navigator.clipboard.writeText(text).then(()=>toast("Copied. Send it to the group chat."));}
+  else{navigator.clipboard.writeText(text).then(()=>toast("Copied. Send it to the group chat.")).catch(()=>toast("Could not copy · screenshot it instead"));}
 }
 
 /* post a mat */
