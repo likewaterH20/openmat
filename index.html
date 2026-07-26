@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OPENMAT · NJ</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAFAF8; --ink:#0B0B0A; --mat:#1E3FE0;
+    --mist:#8A8A84; --line:#E4E4DF; --ok:#0F7B4D; --warn:#B26A00; --live:#D0021B;
+    --card:#FFFFFF; --accent-soft:#9DB0FF;
+  }
+  html[data-theme="dark"]{
+    --paper:#0C0C0B; --ink:#F2F2EE; --mat:#5C77FF;
+    --mist:#7C7C76; --line:#262623; --ok:#3DC98B; --warn:#E0A030; --live:#FF4D5E;
+    --card:#151514; --accent-soft:#5C77FF;
+  }
+  html{color-scheme:light}
+  html[data-theme="dark"]{color-scheme:dark}
+  body,header,.card,.chip,.searchbar input,.field input,.field select,.modal{transition:background-color .25s,color .25s,border-color .25s}
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{height:100%}
+  body{background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,sans-serif;font-size:15px;line-height:1.45}
+  a{color:inherit}
+
+  header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px 10px;border-bottom:1px solid var(--line)}
+  .brand{font-family:'Anton',sans-serif;font-size:28px;letter-spacing:.02em;line-height:1;text-transform:uppercase}
+  .brand span{color:var(--mat)}
+  .postbtn{
+    appearance:none;cursor:pointer;border:2px solid var(--ink);background:none;color:var(--ink);
+    font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.12em;
+    text-transform:uppercase;padding:8px 12px;transition:all .15s;
+  }
+  .postbtn:hover{background:var(--ink);color:var(--paper)}
+  .postbtn:focus-visible{outline:2px solid var(--mat);outline-offset:2px}
+  .modeswitch{display:flex;border:2px solid var(--ink);cursor:pointer;user-select:none}
+  .modeswitch:focus-visible{outline:2px solid var(--mat);outline-offset:2px}
+  .mode-opt{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:8px 10px;color:var(--mist);transition:all .15s;white-space:nowrap}
+  .mode-opt.on{background:var(--ink);color:var(--paper)}
+
+  .searchbar{display:flex;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--paper)}
+  .searchbar input{flex:1;border:1px solid var(--line);background:var(--card);padding:12px 14px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;color:var(--ink)}
+  .searchbar input::placeholder{color:var(--mist);text-transform:uppercase;letter-spacing:.06em;font-size:11px}
+  .searchbar input:focus{outline:2px solid var(--mat);outline-offset:-1px}
+  .btn{appearance:none;border:0;cursor:pointer;background:var(--ink);color:var(--paper);font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:0 16px}
+  .btn.alt{background:var(--mat)}
+  .btn:focus-visible{outline:2px solid var(--mat);outline-offset:2px}
+  .locstatus{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mat);padding:8px 16px 0;display:none}
+  .locstatus button{appearance:none;border:0;background:none;cursor:pointer;color:var(--mist);font:inherit;text-decoration:underline;margin-left:8px}
+
+  .daystrip{display:grid;grid-template-columns:repeat(7,1fr);border-bottom:1px solid var(--line);background:var(--paper);position:sticky;top:0;z-index:600}
+  .day{appearance:none;border:0;background:none;cursor:pointer;font-family:'Anton',sans-serif;font-size:clamp(15px,4.2vw,24px);letter-spacing:.03em;text-transform:uppercase;padding:14px 0 10px;color:var(--mist);border-right:1px solid var(--line);position:relative;transition:color .15s}
+  .day:last-child{border-right:0}
+  .day:hover{color:var(--ink)}
+  .day:focus-visible{outline:2px solid var(--mat);outline-offset:-2px}
+  .day.active{color:var(--ink)}
+  .day.active::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--mat)}
+  .day .today-dot{display:block;font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.2em;color:var(--mat);height:10px;margin-top:2px}
+
+  .filters{display:flex;gap:8px;padding:12px 16px 0;flex-wrap:wrap}
+  .chip{appearance:none;cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--ink);font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:7px 12px;transition:all .12s}
+  .chip:hover{border-color:var(--ink)}
+  .chip.on{background:var(--mat);border-color:var(--mat);color:#fff}
+  .chip:focus-visible{outline:2px solid var(--mat);outline-offset:2px}
+
+  .wrap{display:flex;flex-direction:column;height:calc(100dvh - 190px)}
+  #map{height:32dvh;min-height:200px;border-bottom:1px solid var(--line)}
+  .list{flex:1;overflow-y:auto;padding:6px 16px 90px}
+  .count{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mist);margin:10px 2px 12px}
+  .count b{color:var(--ink)}
+
+  .card{border:1px solid var(--line);background:var(--card);padding:16px 16px 14px;margin-bottom:12px;cursor:pointer;transition:border-color .15s,transform .1s;position:relative}
+  .card:hover{border-color:var(--ink)}
+  .card:active{transform:scale(.995)}
+  .card.done{opacity:.55}
+  .card.live{border-color:var(--live)}
+  .status{font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;margin-bottom:8px;display:inline-block;padding:3px 8px}
+  .status.live{background:var(--live);color:#fff;animation:pulse 1.6s infinite}
+  .status.soon{background:var(--ink);color:#fff}
+  .status.done{background:var(--line);color:var(--mist)}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.55}}
+  .card-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+  .gym{font-family:'Anton',sans-serif;font-size:19px;letter-spacing:.015em;text-transform:uppercase;line-height:1.15}
+  .town{font-size:13px;color:var(--mist);margin-top:2px}
+  .dist{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:var(--mat)}
+  .time{font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:600;white-space:nowrap;text-align:right;line-height:1.3}
+  .time small{display:block;font-size:10px;letter-spacing:.12em;color:var(--mist);font-weight:600}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+  .tag{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--line);padding:4px 8px;color:var(--ink)}
+  .tag.free{border-color:var(--mat);color:var(--mat)}
+  .card-foot{display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding-top:10px;border-top:1px dashed var(--line);gap:10px}
+  .verify{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+  .verify.ok{color:var(--ok)}
+  .verify.warn{color:var(--warn)}
+  .foot-actions{display:flex;gap:14px;align-items:center}
+  .golink,.sharelink{font-size:12px;font-weight:600;text-decoration:none;border-bottom:2px solid var(--mat);padding-bottom:1px;background:none;border-top:0;border-left:0;border-right:0;cursor:pointer;font-family:'Inter',sans-serif;color:var(--ink)}
+
+  .empty{text-align:center;padding:52px 20px;color:var(--mist)}
+  .empty .big{font-family:'Anton',sans-serif;font-size:26px;color:var(--ink);text-transform:uppercase;margin-bottom:6px}
+
+  .note{position:fixed;bottom:0;left:0;right:0;background:var(--ink);color:var(--paper);font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:10px 16px;text-align:center;z-index:700}
+  .note span{color:var(--accent-soft)}
+  .note button{appearance:none;border:0;background:none;color:var(--accent-soft);font:inherit;cursor:pointer;text-decoration:underline}
+
+  /* modal */
+  .overlay{position:fixed;inset:0;background:rgba(11,11,10,.6);z-index:900;display:none;align-items:flex-end;justify-content:center}
+  .overlay.open{display:flex}
+  .modal{background:var(--paper);width:100%;max-width:520px;max-height:88dvh;overflow-y:auto;padding:24px 20px 28px;border-top:4px solid var(--mat)}
+  .modal h2{font-family:'Anton',sans-serif;font-size:24px;text-transform:uppercase;letter-spacing:.02em;margin-bottom:4px}
+  .modal p{font-size:13px;color:var(--mist);margin-bottom:18px}
+  .field{margin-bottom:14px}
+  .field label{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--mist);margin-bottom:6px}
+  .field input,.field select{width:100%;border:1px solid var(--line);background:var(--card);padding:12px 14px;font-family:'Inter',sans-serif;font-size:14px;color:var(--ink)}
+  .field input:focus,.field select:focus{outline:2px solid var(--mat);outline-offset:-1px}
+  .modal .actions{display:flex;gap:10px;margin-top:20px}
+  .modal .btn{padding:14px 20px;flex:1}
+  .modal .btn.ghost{background:none;color:var(--ink);border:1px solid var(--line)}
+  .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:56px;background:var(--ink);color:var(--paper);font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:12px 18px;z-index:950;display:none}
+
+  @media(min-width:900px){
+    .wrap{flex-direction:row-reverse}
+    #map{height:auto;flex:1.1;border-bottom:0;border-left:1px solid var(--line)}
+    .list{flex:1;max-width:560px;padding:6px 24px 90px}
+    .brand{font-size:34px}
+    .overlay{align-items:center}
+    .modal{border:1px solid var(--line);border-top:4px solid var(--mat)}
+  }
+  @media(prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">OPEN<span>MAT</span></div>
+  <div style="display:flex;gap:8px;align-items:center">
+    <div class="modeswitch" id="themeBtn" role="button" tabindex="0" aria-label="Switch between day and night mode">
+      <span class="mode-opt" data-mode="light">☀ Day</span><span class="mode-opt" data-mode="dark">☾ Night</span>
+    </div>
+    <button class="postbtn" id="openPost">+ Post a mat</button>
+  </div>
+</header>
+
+<div class="searchbar">
+  <input id="q" type="text" inputmode="search" placeholder="Zip · City · Town" aria-label="Search by zip code, city, or town">
+  <button class="btn" id="goBtn">Go</button>
+  <button class="btn alt" id="nearBtn" title="Use my location">Near me</button>
+</div>
+<div class="locstatus" id="locstatus"></div>
+
+<div class="daystrip" id="daystrip" role="tablist" aria-label="Day of week"></div>
+<div class="filters" id="filters">
+  <button class="chip" data-f="free">Free only</button>
+  <button class="chip" data-f="gi">Gi</button>
+  <button class="chip" data-f="nogi">No-Gi</button>
+</div>
+
+<div class="wrap">
+  <div id="map" aria-label="Map of open mats"></div>
+  <div class="list">
+    <div class="count" id="count"></div>
+    <div id="cards"></div>
+  </div>
+</div>
+
+<div class="note">Data checked by hand · <span id="lastupdate"></span> · <button id="openPost2">Know a mat we're missing?</button></div>
+
+<!-- post a mat modal -->
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="pm-title">
+  <div class="modal">
+    <h2 id="pm-title">Post a mat</h2>
+    <p>We check every submission, then it goes live.</p>
+    <div class="field"><label for="f-gym">Gym name</label><input id="f-gym" type="text" placeholder="e.g. Revel Jiu Jitsu"></div>
+    <div class="field"><label for="f-town">Town</label><input id="f-town" type="text" placeholder="e.g. East Brunswick"></div>
+    <div class="field"><label for="f-day">Day</label>
+      <select id="f-day"><option>Sunday</option><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option></select>
+    </div>
+    <div class="field"><label for="f-time">Time</label><input id="f-time" type="text" placeholder="e.g. 10:00 AM to 12:00 PM"></div>
+    <div class="field"><label for="f-format">Format</label>
+      <select id="f-format"><option>Gi + No-Gi</option><option>Gi</option><option>No-Gi</option></select>
+    </div>
+    <div class="field"><label for="f-cost">Cost</label><input id="f-cost" type="text" placeholder="e.g. Free / $20 drop-in"></div>
+    <div class="field"><label for="f-contact">Your email or IG (so we can confirm)</label><input id="f-contact" type="text" placeholder="you@email.com or @handle"></div>
+    <div class="actions">
+      <button class="btn ghost" id="closePost">Cancel</button>
+      <button class="btn alt" id="sendPost">Send it</button>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+/* =========================================================
+   CONFIG
+   SUBMIT_EMAIL: where "Post a mat" submissions get sent.
+   ========================================================= */
+const SUBMIT_EMAIL = "CHANGE-ME@example.com";
+const SITE_URL = "https://likewaterh20.github.io/openmat";
+
+/* =========================================================
+   DATA — the daily update rewrites only this array.
+   times use 24h numbers for startH/endH so the app can
+   compute LIVE NOW / STARTS SOON / ENDED states.
+   ========================================================= */
+const LAST_UPDATE = "2026-07-26";
+
+const MATS = [
+  /* MERCER (Trenton area) */
+  { gym:"Princeton BJJ", town:"Princeton", county:"Mercer", lat:40.3573, lng:-74.6672,
+    day:1, start:"8:30 PM", end:"9:30 PM", startH:20.5, endH:21.5, format:"Gi + No-Gi", cost:"Ask gym",
+    verified:"reported", verifiedDate:"2026-07-26", site:"https://www.princetonbjj.com", ig:"https://www.instagram.com/princetonbjj" },
+  { gym:"Princeton BJJ", town:"Princeton", county:"Mercer", lat:40.3573, lng:-74.6672,
+    day:3, start:"8:30 PM", end:"9:30 PM", startH:20.5, endH:21.5, format:"Gi + No-Gi", cost:"Ask gym",
+    verified:"reported", verifiedDate:"2026-07-26", site:"https://www.princetonbjj.com", ig:"https://www.instagram.com/princetonbjj" },
+  { gym:"Princeton BJJ", town:"Princeton", county:"Mercer", lat:40.3573, lng:-74.6672,
+    day:6, start:"12:00 PM", end:"1:00 PM", startH:12.0, endH:13.0, format:"Gi + No-Gi", cost:"Ask gym",
+    verified:"reported", verifiedDate:"2026-07-26", site:"https://www.princetonbjj.com", ig:"https://www.instagram.com/princetonbjj" },
+  { gym:"Princeton BJJ", town:"Princeton", county:"Mercer", lat:40.3573, lng:-74.6672,
+    day:0, start:"9:00 AM", end:"10:00 AM", startH:9.0, endH:10.0, format:"Gi + No-Gi", cost:"Ask gym",
+    verified:"reported", verifiedDate:"2026-07-26", site:"https://www.princetonbjj.com", ig:"https://www.instagram.com/princetonbjj" },
+  { gym:"Gracie Barra North Princeton", town:"Princeton", county:"Mercer", lat:40.3894, lng:-74.6520,
+    day:5, start:"7:00 PM", end:"8:30 PM", startH:19.0, endH:20.5, format:"Gi + No-Gi", cost:"Ask gym",
+    verified:"reported", verifiedDate:"2026-07-26", site:"https://www.openmatlocator.com/open-mats/new-jersey/princeton", ig:"https://www.instagram.com/graciebarranorthprinceton" },
+  { gym:"Gracie Barra Princeton", town:"Lawrence Township", county:"Mercer", lat:40.2775, lng:-74.7294,
+    day:2, start:"6:00 AM", end:"7:30 AM", startH:6.0, endH:7.5, format:"Check gym", cost:"Ask gym",
+    verified:"reported", verifiedDate:"2026-07-26", site:"https://www.openmatlocator.com/open-mats/new-jersey/lawrence-township", ig:"https://www.instagram.com/gbprinceton" },
+
+  /* MIDDLESEX */
+  { gym:"Revel Jiu Jitsu", town:"East Brunswick", county:"Middlesex", lat:40.4276, lng:-74.4160,
+    day:0, start:"10:00 AM", end:"12:00 PM", startH:10.0, endH:12.0, format:"Gi + No-Gi", cost:"Free",
+    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://reveljiujitsu.com", ig:"https://www.instagram.com/reveljiujitsu" },
+
+  /* MONMOUTH */
+  { gym:"Garden State BJJ Academy", town:"Red Bank", county:"Monmouth", lat:40.3471, lng:-74.0643,
+    day:2, start:"7:00 AM", end:"8:30 AM", startH:7.0, endH:8.5, format:"Check gym", cost:"Ask gym",
+    verified:"reported", verifiedDate:"2026-07-26", site:"https://www.openmatlocator.com/open-mats/new-jersey/red-bank", ig:"https://www.instagram.com/gardenstatebjj" },
+
+  /* BERGEN */
+  { gym:"Trasso Jiu Jitsu & Wrestling", town:"Glen Rock", county:"Bergen", lat:40.9629, lng:-74.1329,
+    day:6, start:"10:00 AM", end:"11:00 AM", startH:10.0, endH:11.0, format:"Gi + No-Gi", cost:"First class free",
+    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://www.trassojjw.com", ig:"https://www.instagram.com/trassojjw" },
+
+  /* HUDSON */
+  { gym:"Cohab City BJJ", town:"Guttenberg", county:"Hudson", lat:40.7920, lng:-74.0046,
+    day:6, start:"10:00 AM", end:"12:00 PM", startH:10.0, endH:12.0, format:"Gi + No-Gi", cost:"Free",
+    verified:"reported", verifiedDate:"2026-07-26", site:"https://www.openmatlocator.com/open-mats/new-jersey/guttenberg", ig:"https://www.instagram.com/cohabcity_usa" },
+  { gym:"High Impact Martial Arts", town:"West New York", county:"Hudson", lat:40.7879, lng:-74.0143,
+    day:6, start:"9:00 AM", end:"10:00 AM", startH:9.0, endH:10.0, format:"Check gym", cost:"Ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://www.highimpactma.com", ig:"https://www.instagram.com/highimpactmartialarts" },
+
+  /* UNION */
+  { gym:"Sheridan BJJ", town:"Vauxhall", county:"Union", lat:40.7018, lng:-74.2407,
+    day:0, start:"9:00 AM", end:"10:00 AM", startH:9.0, endH:10.0, format:"Gi + No-Gi", cost:"Ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://www.sheridanbjj.com", ig:"https://www.instagram.com/sheridanbjj" }
+];
+
+/* ========================================================= */
+const DAYS = ["SUN","MON","TUE","WED","THU","FRI","SAT"];
+const now = new Date();
+const todayIdx = now.getDay();
+let activeDay = todayIdx;
+let userLoc = null;
+let filters = {free:false, gi:false, nogi:false};
+let markers = [], youMarker = null;
+
+document.getElementById("lastupdate").textContent = "Updated " + LAST_UPDATE;
+
+/* theme */
+const TILE_LIGHT="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png";
+const TILE_DARK="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png";
+let tileLayer=null;
+function applyTheme(t){
+  document.documentElement.setAttribute("data-theme",t);
+  try{localStorage.setItem("openmat-theme",t);}catch(e){}
+  if(tileLayer){tileLayer.setUrl(t==="dark"?TILE_DARK:TILE_LIGHT);}
+}
+const savedTheme=(()=>{try{return localStorage.getItem("openmat-theme");}catch(e){return null;}})();
+const startTheme=savedTheme||(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");
+document.documentElement.setAttribute("data-theme",startTheme);
+function paintSwitch(){
+  const cur=document.documentElement.getAttribute("data-theme");
+  document.querySelectorAll(".mode-opt").forEach(o=>o.classList.toggle("on",o.dataset.mode===cur));
+}
+const themeBtn=document.getElementById("themeBtn");
+themeBtn.onclick=(e)=>{
+  const picked=e.target.dataset&&e.target.dataset.mode;
+  const cur=document.documentElement.getAttribute("data-theme");
+  applyTheme(picked||(cur==="dark"?"light":"dark"));
+  paintSwitch();
+};
+themeBtn.onkeydown=(e)=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();themeBtn.onclick({target:themeBtn});}};
+paintSwitch();
+
+/* status per mat */
+function matStatus(m){
+  if(m.day!==todayIdx || m.startH===null) return null;
+  const nowH = new Date().getHours() + new Date().getMinutes()/60;
+  if(nowH >= m.startH && nowH < m.endH) return {cls:"live", label:"ON THE MATS NOW"};
+  if(nowH < m.startH){
+    const dh = m.startH - nowH;
+    if(dh <= 3){
+      const hrs = Math.floor(dh), mins = Math.round((dh-hrs)*60);
+      const parts = [];
+      if(hrs>0) parts.push(hrs+"H");
+      if(mins>0) parts.push(mins+"M");
+      return {cls:"soon", label: parts.length? "STARTS IN "+parts.join(" ") : "STARTING NOW"};
+    }
+    return null;
+  }
+  return {cls:"done", label:"ENDED TODAY"};
+}
+
+/* filter match */
+function passes(m){
+  if(filters.free && m.cost!=="Free") return false;
+  const hasGi = m.format==="Gi" || m.format==="Gi + No-Gi";
+  const hasNoGi = m.format==="No-Gi" || m.format==="Gi + No-Gi";
+  if(filters.gi && !hasGi) return false;
+  if(filters.nogi && !hasNoGi) return false;
+  return true;
+}
+
+/* day strip */
+const strip = document.getElementById("daystrip");
+DAYS.forEach((d,i)=>{
+  const b=document.createElement("button");
+  b.className="day"+(i===activeDay?" active":"");
+  b.setAttribute("role","tab");
+  b.innerHTML = d + '<span class="today-dot">'+(i===todayIdx?"TODAY":"")+'</span>';
+  b.onclick=()=>{activeDay=i;render();};
+  strip.appendChild(b);
+});
+
+/* filter chips */
+document.querySelectorAll(".chip").forEach(ch=>{
+  ch.onclick=()=>{
+    const f=ch.dataset.f;
+    filters[f]=!filters[f];
+    ch.classList.toggle("on",filters[f]);
+    render();
+  };
+});
+
+/* map */
+const map = L.map("map",{scrollWheelZoom:true}).setView([40.22,-74.55],8);
+tileLayer=L.tileLayer(startTheme==="dark"?TILE_DARK:TILE_LIGHT,{attribution:'&copy; OpenStreetMap &copy; CARTO',maxZoom:19}).addTo(map);
+function pinIcon(m,isActive){return L.divIcon({className:"",html:'<div class="mat-pin'+(isActive?"":" dim")+'" style="background:'+(isActive?'var(--mat)':'var(--mist)')+';color:#fff;font-family:Anton;font-size:12px;width:26px;height:26px;display:flex;align-items:center;justify-content:center;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.35);border-radius:50%">'+m.gym[0]+'</div>',iconSize:[26,26],iconAnchor:[13,13]});}
+
+function milesBetween(a,b){const R=3958.8,toR=x=>x*Math.PI/180;const dLat=toR(b.lat-a.lat),dLng=toR(b.lng-a.lng);const h=Math.sin(dLat/2)**2+Math.cos(toR(a.lat))*Math.cos(toR(b.lat))*Math.sin(dLng/2)**2;return R*2*Math.atan2(Math.sqrt(h),Math.sqrt(1-h));}
+
+/* location */
+const statusEl=document.getElementById("locstatus");
+function setLoc(lat,lng,label){
+  userLoc={lat,lng,label};
+  statusEl.style.display="block";
+  statusEl.innerHTML="Showing mats near <b>"+label+"</b><button id='clearLoc'>clear</button>";
+  document.getElementById("clearLoc").onclick=()=>{userLoc=null;statusEl.style.display="none";map.setView([40.22,-74.55],8);render();};
+  map.flyTo([lat,lng],10,{duration:.7});
+  render();
+}
+async function geocode(query){
+  statusEl.style.display="block";statusEl.textContent="Searching…";
+  try{
+    const url="https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=us&q="+encodeURIComponent(query+", New Jersey");
+    const r=await fetch(url,{headers:{"Accept":"application/json"}});
+    const d=await r.json();
+    if(d&&d[0]){const label=(d[0].display_name||query).split(",").slice(0,2).join(",");setLoc(parseFloat(d[0].lat),parseFloat(d[0].lon),label);}
+    else{statusEl.textContent="Location not found. Try a NJ zip or town name.";}
+  }catch(e){statusEl.textContent="Search unavailable right now. Try Near Me instead.";}
+}
+document.getElementById("goBtn").onclick=()=>{const q=document.getElementById("q").value.trim();if(q)geocode(q);};
+document.getElementById("q").addEventListener("keydown",e=>{if(e.key==="Enter"){const q=e.target.value.trim();if(q)geocode(q);}});
+document.getElementById("nearBtn").onclick=()=>{
+  if(!navigator.geolocation){statusEl.style.display="block";statusEl.textContent="Location not supported on this device.";return;}
+  statusEl.style.display="block";statusEl.textContent="Finding you…";
+  navigator.geolocation.getCurrentPosition(p=>setLoc(p.coords.latitude,p.coords.longitude,"your location"),()=>{statusEl.textContent="Could not get location. Type your zip or town instead.";});
+};
+
+/* share */
+function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.style.display="block";setTimeout(()=>t.style.display="none",2200);}
+function shareMat(m){
+  const text="Open mat @ "+m.gym+", "+m.town+" · "+(m.day!==null?DAYS[m.day]+" ":"")+m.start+(m.end?" to "+m.end:"")+(m.cost==="Free"?" · FREE":"")+" · found on OPENMAT "+SITE_URL;
+  if(navigator.share){navigator.share({text}).catch(()=>{});}
+  else{navigator.clipboard.writeText(text).then(()=>toast("Copied. Send it to the group chat."));}
+}
+
+/* post a mat */
+const overlay=document.getElementById("overlay");
+const openModal=()=>{overlay.classList.add("open");document.getElementById("f-gym").focus();};
+document.getElementById("openPost").onclick=openModal;
+document.getElementById("openPost2").onclick=openModal;
+document.getElementById("closePost").onclick=()=>overlay.classList.remove("open");
+overlay.addEventListener("click",e=>{if(e.target===overlay)overlay.classList.remove("open");});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")overlay.classList.remove("open");});
+document.getElementById("sendPost").onclick=()=>{
+  const v=id=>document.getElementById(id).value.trim();
+  const gym=v("f-gym"),town=v("f-town");
+  if(!gym||!town){toast("Gym name and town are required.");return;}
+  const body=["NEW OPEN MAT SUBMISSION","","Gym: "+gym,"Town: "+town,"Day: "+v("f-day"),"Time: "+v("f-time"),"Format: "+v("f-format"),"Cost: "+v("f-cost"),"Contact: "+v("f-contact")].join("%0D%0A");
+  window.location.href="mailto:"+SUBMIT_EMAIL+"?subject="+encodeURIComponent("OPENMAT submission: "+gym+", "+town)+"&body="+body;
+  overlay.classList.remove("open");
+  toast("Opening your email to send it.");
+};
+
+/* render */
+function render(){
+  document.querySelectorAll(".day").forEach((el,i)=>el.classList.toggle("active",i===activeDay));
+  let active = MATS.filter(m=>m.day===activeDay && passes(m));
+  let anytime = MATS.filter(m=>m.day===null && passes(m));
+  if(userLoc){
+    const withD=x=>({...x,_d:milesBetween(userLoc,x)});
+    active=active.map(withD).sort((a,b)=>a._d-b._d);
+    anytime=anytime.map(withD).sort((a,b)=>a._d-b._d);
+  }
+  const show=active.concat(anytime);
+  document.getElementById("count").innerHTML="<b>"+active.length+"</b> open mat"+(active.length===1?"":"s")+" · "+DAYS[activeDay]+(anytime.length?" &nbsp;·&nbsp; +"+anytime.length+" on gym schedule":"")+(userLoc?" &nbsp;·&nbsp; nearest first":"");
+
+  const wrap=document.getElementById("cards");wrap.innerHTML="";
+  if(show.length===0){wrap.innerHTML='<div class="empty"><div class="big">No mats listed</div>Nothing matches for '+DAYS[activeDay]+'. Try clearing filters, or post a mat we\'re missing.</div>';}
+
+  show.forEach(m=>{
+    const st=(activeDay===todayIdx)?matStatus(m):null;
+    const c=document.createElement("div");
+    c.className="card"+(st?" "+ (st.cls==="done"?"done":st.cls==="live"?"live":""):"");
+    c.innerHTML=`
+      ${st?'<span class="status '+st.cls+'">'+st.label+'</span>':''}
+      <div class="card-top">
+        <div>
+          <div class="gym">${m.gym}</div>
+          <div class="town">${m.town} · ${m.county} County ${m._d!==undefined?'· <span class="dist">'+m._d.toFixed(1)+' mi</span>':''}</div>
+        </div>
+        <div class="time">${m.start}${m.end?'<small>TO '+m.end+'</small>':''}</div>
+      </div>
+      <div class="tags">
+        <span class="tag ${m.cost==="Free"?"free":""}">${m.cost}</span>
+        <span class="tag">${m.format}</span>
+      </div>
+      <div class="card-foot">
+        <span class="verify ${m.verified==="confirmed"?"ok":"warn"}" title="Last checked ${m.verifiedDate}">${m.verified==="confirmed"?"✓":"◌"}</span>
+        <span class="foot-actions">
+          <a class="golink" href="${m.site}" target="_blank" rel="noopener">Site</a>
+          <a class="golink" href="${m.ig}" target="_blank" rel="noopener">IG</a>
+          <button class="sharelink" data-share>Share</button>
+        </span>
+      </div>`;
+    c.querySelector("[data-share]").onclick=(e)=>{e.stopPropagation();shareMat(m);};
+    c.onclick=(e)=>{if(e.target.tagName!=="A"&&!e.target.dataset.hasOwnProperty("share")){map.flyTo([m.lat,m.lng],12,{duration:.6});}};
+    wrap.appendChild(c);
+  });
+
+  markers.forEach(x=>map.removeLayer(x));markers=[];
+  const groups = {};
+  MATS.forEach(m=>{
+    const key = m.gym+"|"+m.lat+"|"+m.lng;
+    (groups[key] = groups[key] || []).push(m);
+  });
+  Object.values(groups).forEach(list=>{
+    const m = list[0];
+    const isActive = list.some(x=>(x.day===activeDay||x.day===null)&&passes(x));
+    const sessions = list.map(x=>(x.day!==null?DAYS[x.day]+" ":"")+x.start+(x.end?"–"+x.end:"")).join("<br>");
+    const mk=L.marker([m.lat,m.lng],{icon:pinIcon(m,isActive),opacity:isActive?1:.5}).addTo(map);
+    mk.bindPopup("<b>"+m.gym+"</b><br>"+m.town+"<br>"+sessions);
+    markers.push(mk);
+  });
+  if(youMarker){map.removeLayer(youMarker);youMarker=null;}
+  if(userLoc){youMarker=L.marker([userLoc.lat,userLoc.lng],{icon:L.divIcon({className:"",html:'<div style="background:var(--ink);width:14px;height:14px;border:3px solid #fff;border-radius:50%;box-shadow:0 0 0 2px var(--ink)"></div>',iconSize:[14,14],iconAnchor:[7,7]})}).addTo(map);}
+}
+render();
+setInterval(render, 60000); /* refresh statuses every minute */
+</script>
+</body>
+</html>
