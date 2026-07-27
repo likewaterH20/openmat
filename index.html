@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OPENMAT · NJ</title>
+<meta name="description" content="Find every BJJ open mat in New Jersey. Search your zip, see what's rolling today, free mats flagged. Checked by hand.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231E3FE0'/%3E%3Ctext x='50' y='72' font-size='62' font-family='Arial Black,sans-serif' font-weight='900' fill='%23fff' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+<meta property="og:title" content="OPENMAT · NJ BJJ Open Mat Finder">
+<meta property="og:description" content="Search your zip, see every open mat near you this week. Free mats flagged. Checked by hand.">
+<meta property="og:url" content="https://likewaterh20.github.io/openmat/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://likewaterh20.github.io/openmat/og.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -171,8 +179,9 @@
 <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="pm-title">
   <div class="modal">
     <h2 id="pm-title">Post a mat</h2>
-    <p>We check every submission, then it goes live.</p>
+    <p>It lands on your map right away. We verify it, then it goes live for everyone.</p>
     <div class="field"><label for="f-gym">Gym name</label><input id="f-gym" type="text" placeholder="e.g. Revel Jiu Jitsu"></div>
+    <div class="field"><label for="f-address">Address</label><input id="f-address" type="text" placeholder="e.g. 8 Edgeboro Rd, East Brunswick NJ"></div>
     <div class="field"><label for="f-town">Town</label><input id="f-town" type="text" placeholder="e.g. East Brunswick"></div>
     <div class="field"><label for="f-day">Day</label>
       <select id="f-day"><option>Sunday</option><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option></select>
@@ -198,6 +207,7 @@
    SUBMIT_EMAIL: where "Post a mat" submissions get sent.
    ========================================================= */
 const SUBMIT_EMAIL = "supergoodwav@gmail.com";
+const FORM_ENDPOINT = "https://formsubmit.co/ajax/" + SUBMIT_EMAIL; /* first submission emails an activation link — click it once */
 const SITE_URL = "https://likewaterh20.github.io/openmat";
 
 /* =========================================================
@@ -254,11 +264,56 @@ const MATS = [
   /* UNION */
   { gym:"Sheridan BJJ", town:"Vauxhall", county:"Union", lat:40.7018, lng:-74.2407,
     day:0, start:"9:00 AM", end:"10:00 AM", startH:9.0, endH:10.0, format:"Gi + No-Gi", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://www.sheridanbjj.com", ig:"https://www.instagram.com/sheridanbjj" }
+    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://www.sheridanbjj.com", ig:"https://www.instagram.com/sheridanbjj" },
+
+  /* PASSAIC — Camal and Cruz: 30-min open mats confirmed on their own booking site */
+  { gym:"Camal and Cruz Judo & BJJ", town:"Totowa", county:"Passaic", lat:40.9056, lng:-74.2093,
+    day:1, start:"5:30 PM", end:"6:00 PM", startH:17.5, endH:18.0, format:"Check gym", cost:"Ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://camalandcruz.gymdesk.com/schedule", ig:"" },
+  { gym:"Camal and Cruz Judo & BJJ", town:"Totowa", county:"Passaic", lat:40.9056, lng:-74.2093,
+    day:5, start:"5:30 PM", end:"6:00 PM", startH:17.5, endH:18.0, format:"Check gym", cost:"Ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://camalandcruz.gymdesk.com/schedule", ig:"" },
+  { gym:"Camal and Cruz Judo & BJJ", town:"Totowa", county:"Passaic", lat:40.9056, lng:-74.2093,
+    day:6, start:"11:30 AM", end:"12:00 PM", startH:11.5, endH:12.0, format:"Check gym", cost:"Ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://camalandcruz.gymdesk.com/schedule", ig:"" },
+
+  /* BERGEN — Performance Jiu-Jitsu Fair Lawn: no-gi open mats confirmed on armlock.com/schedule */
+  { gym:"Performance Jiu-Jitsu", town:"Fair Lawn", county:"Bergen", lat:40.9265, lng:-74.0972,
+    day:1, start:"7:00 PM", end:"8:00 PM", startH:19.0, endH:20.0, format:"No-Gi", cost:"Ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://armlock.com/schedule", ig:"" },
+  { gym:"Performance Jiu-Jitsu", town:"Fair Lawn", county:"Bergen", lat:40.9265, lng:-74.0972,
+    day:5, start:"11:00 AM", end:"12:15 PM", startH:11.0, endH:12.25, format:"No-Gi", cost:"Ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://armlock.com/schedule", ig:"" },
+  { gym:"Performance Jiu-Jitsu", town:"Fair Lawn", county:"Bergen", lat:40.9265, lng:-74.0972,
+    day:6, start:"12:00 PM", end:"2:00 PM", startH:12.0, endH:14.0, format:"No-Gi", cost:"Ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://armlock.com/schedule", ig:"" },
+  { gym:"Performance Jiu-Jitsu", town:"Fair Lawn", county:"Bergen", lat:40.9265, lng:-74.0972,
+    day:0, start:"10:30 AM", end:"11:45 AM", startH:10.5, endH:11.75, format:"No-Gi", cost:"Ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://armlock.com/schedule", ig:"" },
+
+  /* OCEAN — The Academy of Jiu-Jitsu (Tom DeBlass), Toms River: open mats confirmed on theacademyjj.com/schedule; end times per directory */
+  { gym:"The Academy of Jiu-Jitsu", town:"Toms River", county:"Ocean", lat:39.9774, lng:-74.1389,
+    day:1, start:"12:00 PM", end:"1:30 PM", startH:12.0, endH:13.5, format:"No-Gi", cost:"Ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://theacademyjj.com/schedule", ig:"" },
+  { gym:"The Academy of Jiu-Jitsu", town:"Toms River", county:"Ocean", lat:39.9774, lng:-74.1389,
+    day:3, start:"12:00 PM", end:"1:30 PM", startH:12.0, endH:13.5, format:"Gi", cost:"Ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://theacademyjj.com/schedule", ig:"" },
+  { gym:"The Academy of Jiu-Jitsu", town:"Toms River", county:"Ocean", lat:39.9774, lng:-74.1389,
+    day:5, start:"12:00 PM", end:"1:30 PM", startH:12.0, endH:13.5, format:"No-Gi", cost:"Ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://theacademyjj.com/schedule", ig:"" },
+  { gym:"The Academy of Jiu-Jitsu", town:"Toms River", county:"Ocean", lat:39.9774, lng:-74.1389,
+    day:0, start:"8:30 AM", end:"10:00 AM", startH:8.5, endH:10.0, format:"No-Gi", cost:"Ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://theacademyjj.com/schedule", ig:"" }
 ];
 
 /* ========================================================= */
 const DAYS = ["SUN","MON","TUE","WED","THU","FRI","SAT"];
+const DAY_NAMES = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+
+/* pending mats: posted from this device, shown locally until we verify them */
+let PENDING = (()=>{try{return JSON.parse(localStorage.getItem("openmat-pending"))||[];}catch(e){return [];}})();
+function savePending(){try{localStorage.setItem("openmat-pending",JSON.stringify(PENDING));}catch(e){}}
+function allMats(){return MATS.concat(PENDING);}
 const now = new Date();
 const todayIdx = now.getDay();
 let activeDay = todayIdx;
@@ -355,19 +410,24 @@ function milesBetween(a,b){const R=3958.8,toR=x=>x*Math.PI/180;const dLat=toR(b.
 const statusEl=document.getElementById("locstatus");
 function setLoc(lat,lng,label){
   userLoc={lat,lng,label};
+  try{localStorage.setItem("openmat-lastloc",JSON.stringify(userLoc));}catch(e){}
   statusEl.style.display="block";
   statusEl.innerHTML="Showing mats near <b>"+label+"</b><button id='clearLoc'>clear</button>";
-  document.getElementById("clearLoc").onclick=()=>{userLoc=null;statusEl.style.display="none";map.setView([40.22,-74.55],8);render();};
+  document.getElementById("clearLoc").onclick=()=>{userLoc=null;try{localStorage.removeItem("openmat-lastloc");}catch(e){}statusEl.style.display="none";map.setView([40.22,-74.55],8);render();};
   map.flyTo([lat,lng],10,{duration:.7});
   render();
+}
+async function nominatimLookup(query){
+  const url="https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=us&q="+encodeURIComponent(query+", New Jersey");
+  const r=await fetch(url,{headers:{"Accept":"application/json"}});
+  const d=await r.json();
+  return (d&&d[0])?d[0]:null;
 }
 async function geocode(query){
   statusEl.style.display="block";statusEl.textContent="Searching…";
   try{
-    const url="https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=us&q="+encodeURIComponent(query+", New Jersey");
-    const r=await fetch(url,{headers:{"Accept":"application/json"}});
-    const d=await r.json();
-    if(d&&d[0]){const label=(d[0].display_name||query).split(",").slice(0,2).join(",");setLoc(parseFloat(d[0].lat),parseFloat(d[0].lon),label);}
+    const hit=await nominatimLookup(query);
+    if(hit){const label=(hit.display_name||query).split(",").slice(0,2).join(",");setLoc(parseFloat(hit.lat),parseFloat(hit.lon),label);}
     else{statusEl.textContent="Location not found. Try a NJ zip or town name.";}
   }catch(e){statusEl.textContent="Search unavailable right now. Try Near Me instead.";}
 }
@@ -395,22 +455,60 @@ document.getElementById("openPost2").onclick=openModal;
 document.getElementById("closePost").onclick=()=>overlay.classList.remove("open");
 overlay.addEventListener("click",e=>{if(e.target===overlay)overlay.classList.remove("open");});
 document.addEventListener("keydown",e=>{if(e.key==="Escape")overlay.classList.remove("open");});
-document.getElementById("sendPost").onclick=()=>{
+function parseTimes(str){
+  const m=(str||"").match(/(\d{1,2}(?::\d{2})?\s*(?:AM|PM))/gi)||[];
+  const to24=s=>{const p=s.match(/(\d{1,2})(?::(\d{2}))?\s*(AM|PM)/i);if(!p)return null;let h=(+p[1])%12+(p[3].toUpperCase()==="PM"?12:0);return h+(+(p[2]||0))/60;};
+  const norm=s=>s.replace(/\s+/g," ").toUpperCase().replace(/(AM|PM)/," $1").replace(/\s+/g," ").trim();
+  return {start:m[0]?norm(m[0]):(str||"Check gym"), end:m[1]?norm(m[1]):"", startH:m[0]?to24(m[0]):null, endH:m[1]?to24(m[1]):null};
+}
+document.getElementById("sendPost").onclick=async()=>{
   const v=id=>document.getElementById(id).value.trim();
-  const gym=v("f-gym"),town=v("f-town");
+  const gym=v("f-gym"),town=v("f-town"),address=v("f-address");
   if(!gym||!town){toast("Gym name and town are required.");return;}
-  const lines=["NEW OPEN MAT SUBMISSION","","Gym: "+gym,"Town: "+town,"Day: "+v("f-day"),"Time: "+v("f-time"),"Format: "+v("f-format"),"Cost: "+v("f-cost"),"Contact: "+v("f-contact")];
-  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(lines.join("\n")).catch(()=>{});}
-  window.location.href="mailto:"+SUBMIT_EMAIL+"?subject="+encodeURIComponent("OPENMAT submission: "+gym+", "+town)+"&body="+lines.join("%0D%0A");
+  const btn=document.getElementById("sendPost");btn.disabled=true;btn.textContent="Posting…";
+  const t=parseTimes(v("f-time"));
+  const day=DAY_NAMES.indexOf(v("f-day"));
+  /* 1. put it on THIS device's map right away */
+  let entry={gym,town,county:"",lat:null,lng:null,day:day<0?null:day,
+    start:t.start,end:t.end,startH:t.startH,endH:t.endH,
+    format:v("f-format"),cost:v("f-cost")||"Ask gym",
+    verified:"pending",verifiedDate:new Date().toISOString().slice(0,10),site:"",ig:""};
+  try{
+    const hit=await nominatimLookup(address||town);
+    if(hit){
+      entry.lat=parseFloat(hit.lat);entry.lng=parseFloat(hit.lon);
+      const county=(hit.display_name||"").split(",").map(s=>s.trim()).find(s=>/County$/.test(s));
+      entry.county=county?county.replace(/\s*County$/,""):"";
+    }
+  }catch(e){}
+  if(entry.lat!==null){
+    PENDING.push(entry);savePending();
+    if(entry.day!==null){activeDay=entry.day;}
+    render();
+    map.flyTo([entry.lat,entry.lng],13,{duration:.7});
+  }
+  /* 2. send it to us for verification (no email app needed) */
+  const payload={_subject:"OPENMAT submission: "+gym+", "+town,Gym:gym,Address:address,Town:town,Day:v("f-day"),Time:v("f-time"),Format:v("f-format"),Cost:v("f-cost"),Contact:v("f-contact"),Pin:entry.lat!==null?entry.lat+", "+entry.lng:"geocode failed"};
+  let sent=false;
+  try{
+    const r=await fetch(FORM_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(payload)});
+    sent=r.ok;
+  }catch(e){}
+  if(!sent){
+    const lines=["NEW OPEN MAT SUBMISSION","","Gym: "+gym,"Address: "+address,"Town: "+town,"Day: "+v("f-day"),"Time: "+v("f-time"),"Format: "+v("f-format"),"Cost: "+v("f-cost"),"Contact: "+v("f-contact")];
+    window.location.href="mailto:"+SUBMIT_EMAIL+"?subject="+encodeURIComponent("OPENMAT submission: "+gym+", "+town)+"&body="+lines.join("%0D%0A");
+  }
+  btn.disabled=false;btn.textContent="Send it";
   overlay.classList.remove("open");
-  toast("Opening your email app · details copied too");
+  ["f-gym","f-address","f-town","f-time","f-cost","f-contact"].forEach(id=>document.getElementById(id).value="");
+  toast(entry.lat!==null?"On your map · sent for verification":"Sent for verification");
 };
 
 /* render */
 function render(){
   document.querySelectorAll(".day").forEach((el,i)=>el.classList.toggle("active",i===activeDay));
-  let active = MATS.filter(m=>m.day===activeDay && passes(m));
-  let anytime = MATS.filter(m=>m.day===null && passes(m));
+  let active = allMats().filter(m=>m.day===activeDay && passes(m));
+  let anytime = allMats().filter(m=>m.day===null && passes(m));
   if(userLoc){
     const withD=x=>({...x,_d:milesBetween(userLoc,x)});
     active=active.map(withD).sort((a,b)=>a._d-b._d);
@@ -447,11 +545,12 @@ function render(){
     addEl(tags,"span","tag"+(m.cost==="Free"?" free":""),m.cost);
     addEl(tags,"span","tag",m.format);
     const foot=addEl(c,"div","card-foot");
-    const ver=addEl(foot,"span","verify "+(m.verified==="confirmed"?"ok":"warn"),m.verified==="confirmed"?"✓":"◌");
-    ver.title="Last checked "+m.verifiedDate;
+    const ver=addEl(foot,"span","verify "+(m.verified==="confirmed"?"ok":"warn"),
+      m.verified==="confirmed"?"✓":m.verified==="pending"?"◌ pending review":"◌");
+    ver.title=m.verified==="pending"?"Posted from this device · being verified":"Last checked "+m.verifiedDate;
     const actions=addEl(foot,"span","foot-actions");
-    const siteA=addEl(actions,"a","golink","Site");siteA.href=m.site;siteA.target="_blank";siteA.rel="noopener";
-    const igA=addEl(actions,"a","golink","IG");igA.href=m.ig;igA.target="_blank";igA.rel="noopener";
+    if(m.site){const siteA=addEl(actions,"a","golink","Site");siteA.href=m.site;siteA.target="_blank";siteA.rel="noopener";}
+    if(m.ig){const igA=addEl(actions,"a","golink","IG");igA.href=m.ig;igA.target="_blank";igA.rel="noopener";}
     const shareB=addEl(actions,"button","sharelink","Share");shareB.dataset.share="";
     shareB.onclick=(e)=>{e.stopPropagation();shareMat(m);};
     c.onclick=(e)=>{if(e.target.tagName!=="A"&&!e.target.dataset.hasOwnProperty("share")){map.flyTo([m.lat,m.lng],12,{duration:.6});}};
@@ -463,7 +562,7 @@ function render(){
   /* when searching near a location, always show the rest of the week nearby
      so a zip search never dead-ends on an empty day */
   if(userLoc){
-    const others=MATS.filter(m=>m.day!==null && m.day!==activeDay && passes(m))
+    const others=allMats().filter(m=>m.day!==null && m.day!==activeDay && passes(m))
       .map(x=>({...x,_d:milesBetween(userLoc,x)}))
       .sort((a,b)=>a._d-b._d)
       .slice(0,6);
@@ -476,7 +575,7 @@ function render(){
 
   markers.forEach(x=>map.removeLayer(x));markers=[];
   const groups = {};
-  MATS.forEach(m=>{
+  allMats().filter(m=>m.lat!==null).forEach(m=>{
     const key = m.gym+"|"+m.lat+"|"+m.lng;
     (groups[key] = groups[key] || []).push(m);
   });
@@ -491,7 +590,8 @@ function render(){
   if(youMarker){map.removeLayer(youMarker);youMarker=null;}
   if(userLoc){youMarker=L.marker([userLoc.lat,userLoc.lng],{icon:L.divIcon({className:"",html:'<div style="background:var(--ink);width:14px;height:14px;border:3px solid #fff;border-radius:50%;box-shadow:0 0 0 2px var(--ink)"></div>',iconSize:[14,14],iconAnchor:[7,7]})}).addTo(map);}
 }
-render();
+/* pick up where they left off: restore last search */
+(()=>{try{const s=JSON.parse(localStorage.getItem("openmat-lastloc"));if(s&&typeof s.lat==="number"){setLoc(s.lat,s.lng,s.label);return;}}catch(e){}render();})();
 setInterval(render, 60000); /* refresh statuses every minute */
 </script>
 </body>
