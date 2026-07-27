@@ -492,7 +492,8 @@ document.getElementById("sendPost").onclick=async()=>{
   let sent=false;
   try{
     const r=await fetch(FORM_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(payload)});
-    sent=r.ok;
+    const j=await r.json().catch(()=>({}));
+    sent=r.ok && String(j.success).toLowerCase()==="true"; /* FormSubmit returns 200 even pre-activation */
   }catch(e){}
   if(!sent){
     const lines=["NEW OPEN MAT SUBMISSION","","Gym: "+gym,"Address: "+address,"Town: "+town,"Day: "+v("f-day"),"Time: "+v("f-time"),"Format: "+v("f-format"),"Cost: "+v("f-cost"),"Contact: "+v("f-contact")];
