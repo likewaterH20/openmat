@@ -794,7 +794,7 @@ document.querySelectorAll(".chip").forEach(ch=>{
 /* map */
 const map = L.map("map",{scrollWheelZoom:true}).setView([40.22,-74.55],8);
 tileLayer=L.tileLayer(startTheme==="dark"?TILE_DARK:TILE_LIGHT,{attribution:'&copy; OpenStreetMap &copy; CARTO',maxZoom:19}).addTo(map);
-function pinIcon(m,isActive){return L.divIcon({className:"",html:'<div class="mat-pin'+(isActive?"":" dim")+'" style="background:'+(isActive?'var(--mat)':'var(--mist)')+';color:#fff;font-family:Anton;font-size:12px;width:26px;height:26px;display:flex;align-items:center;justify-content:center;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.35);border-radius:50%">'+m.gym[0]+'</div>',iconSize:[26,26],iconAnchor:[13,13]});}
+function pinIcon(m,isActive){return L.divIcon({className:"",html:'<div class="mat-pin'+(isActive?"":" dim")+'" style="background:'+(isActive?'var(--mat)':'var(--mist)')+';color:#fff;font-family:Anton;font-size:12px;width:26px;height:26px;display:flex;align-items:center;justify-content:center;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.35);border-radius:50%">'+(m.gym[0]||"?").replace(/[^A-Za-z0-9]/,"?")+'</div>',iconSize:[26,26],iconAnchor:[13,13]});}
 
 function milesBetween(a,b){const R=3958.8,toR=x=>x*Math.PI/180;const dLat=toR(b.lat-a.lat),dLng=toR(b.lng-a.lng);const h=Math.sin(dLat/2)**2+Math.cos(toR(a.lat))*Math.cos(toR(b.lat))*Math.sin(dLng/2)**2;return R*2*Math.atan2(Math.sqrt(h),Math.sqrt(1-h));}
 
@@ -991,9 +991,10 @@ function render(){
   Object.values(groups).forEach(list=>{
     const m = list[0];
     const isActive = list.some(x=>(x.day===activeDay||x.day===null)&&passes(x));
-    const sessions = list.map(x=>(x.day!==null?DAYS[x.day]+" ":"")+x.start+(x.end?"–"+x.end:"")).join("<br>");
+    const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+    const sessions = list.map(x=>(x.day!==null?DAYS[x.day]+" ":"")+esc(x.start)+(x.end?"–"+esc(x.end):"")).join("<br>");
     const mk=L.marker([m.lat,m.lng],{icon:pinIcon(m,isActive),opacity:isActive?1:.5}).addTo(map);
-    mk.bindPopup("<b>"+m.gym+"</b><br>"+m.town+"<br>"+sessions);
+    mk.bindPopup("<b>"+esc(m.gym)+"</b><br>"+esc(m.town)+"<br>"+sessions);
     markers.push(mk);
   });
   if(youMarker){map.removeLayer(youMarker);youMarker=null;}
