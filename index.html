@@ -243,10 +243,16 @@ const MATS = [
     day:6, start:"11:00 AM", end:"1:00 PM", startH:11.0, endH:13.0, format:"Gi + No-Gi", cost:"Free",
     verified:"confirmed", verifiedDate:"2026-07-27", site:"https://reveljiujitsu.com", ig:"https://www.instagram.com/reveljiujitsu" },
 
-  /* MONMOUTH */
+  /* MONMOUTH — Garden State BJJ: times corrected per gardenstatebjj.com/schedule (gym site overrides directory) */
   { gym:"Garden State BJJ Academy", town:"Red Bank", county:"Monmouth", lat:40.3471, lng:-74.0643,
-    day:2, start:"7:00 AM", end:"8:30 AM", startH:7.0, endH:8.5, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-26", site:"https://www.openmatlocator.com/open-mats/new-jersey/red-bank", ig:"https://www.instagram.com/gardenstatebjj" },
+    day:2, start:"7:00 AM", end:"7:30 AM", startH:7.0, endH:7.5, format:"Check gym", cost:"Ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://gardenstatebjj.com/schedule/", ig:"https://www.instagram.com/gardenstatebjj" },
+  { gym:"Garden State BJJ Academy", town:"Red Bank", county:"Monmouth", lat:40.3471, lng:-74.0643,
+    day:3, start:"7:15 PM", end:"8:30 PM", startH:19.25, endH:20.5, format:"No-Gi", cost:"Ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://gardenstatebjj.com/schedule/", ig:"https://www.instagram.com/gardenstatebjj" },
+  { gym:"Garden State BJJ Academy", town:"Red Bank", county:"Monmouth", lat:40.3471, lng:-74.0643,
+    day:4, start:"7:00 AM", end:"7:30 AM", startH:7.0, endH:7.5, format:"Check gym", cost:"Ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://gardenstatebjj.com/schedule/", ig:"https://www.instagram.com/gardenstatebjj" },
 
   /* BERGEN */
   { gym:"Trasso Jiu Jitsu & Wrestling", town:"Glen Rock", county:"Bergen", lat:40.9629, lng:-74.1329,
@@ -303,7 +309,120 @@ const MATS = [
     verified:"confirmed", verifiedDate:"2026-07-26", site:"https://theacademyjj.com/schedule", ig:"" },
   { gym:"The Academy of Jiu-Jitsu", town:"Toms River", county:"Ocean", lat:39.9774, lng:-74.1389,
     day:0, start:"8:30 AM", end:"10:00 AM", startH:8.5, endH:10.0, format:"No-Gi", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://theacademyjj.com/schedule", ig:"" }
+    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://theacademyjj.com/schedule", ig:"" },
+
+  /* CAMDEN */
+  { gym:"Strive BJJ Academy", town:"Cherry Hill", county:"Camden", lat:39.9050, lng:-74.9741,
+    day:0, start:"10:00 AM", end:"12:00 PM", startH:10.0, endH:12.0, format:"Check gym", cost:"Ask gym",
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.openmatlocator.com/open-mats/new-jersey/cherry-hill-township", ig:"https://www.instagram.com/strivebjj/" },
+
+  /* GLOUCESTER */
+  { gym:"Close Quarters BJJ & Fitness", town:"Mantua", county:"Gloucester", lat:39.7951, lng:-75.1722,
+    day:0, start:"8:00 AM", end:"10:00 AM", startH:8.0, endH:10.0, format:"Check gym", cost:"Ask gym",
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.openmatlocator.com/open-mats/new-jersey/mantua", ig:"https://www.instagram.com/cqbjjfit_/" },
+
+  /* HUNTERDON */
+  { gym:"Loftus Jiu Jitsu Academy", town:"Flemington", county:"Hunterdon", lat:40.5217, lng:-74.8561,
+    day:5, start:"5:30 PM", end:"6:30 PM", startH:17.5, endH:18.5, format:"Check gym", cost:"Ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://loftusjiujitsu.com/classes/", ig:"https://www.instagram.com/loftusjiujitsu/" },
+  { gym:"Loftus Jiu Jitsu Academy", town:"Flemington", county:"Hunterdon", lat:40.5217, lng:-74.8561,
+    day:6, start:"1:00 PM", end:"2:00 PM", startH:13.0, endH:14.0, format:"Check gym", cost:"Ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://loftusjiujitsu.com/classes/", ig:"https://www.instagram.com/loftusjiujitsu/" },
+
+  /* ESSEX */
+  { gym:"Rare Breed MMA", town:"Bloomfield", county:"Essex", lat:40.7935, lng:-74.1989,
+    day:5, start:"8:00 PM", end:"9:00 PM", startH:20.0, endH:21.0, format:"Check gym", cost:"Ask gym",
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.openmatlocator.com/open-mats/new-jersey/bloomfield", ig:"https://www.instagram.com/rarebreedmma/" },
+  { gym:"Rare Breed MMA", town:"Bloomfield", county:"Essex", lat:40.7935, lng:-74.1989,
+    day:6, start:"12:00 PM", end:"1:00 PM", startH:12.0, endH:13.0, format:"Check gym", cost:"Ask gym",
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.openmatlocator.com/open-mats/new-jersey/bloomfield", ig:"https://www.instagram.com/rarebreedmma/" },
+
+  /* PASSAIC (Clifton) */
+  { gym:"Bones Jiu Jitsu Academy", town:"Clifton", county:"Passaic", lat:40.8919, lng:-74.1413,
+    day:5, start:"8:00 PM", end:"9:30 PM", startH:20.0, endH:21.5, format:"Check gym", cost:"Ask gym",
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.openmatlocator.com/open-mats/new-jersey/clifton", ig:"https://www.instagram.com/bonesbjjacademy/" },
+  { gym:"Immortals Jiu Jitsu", town:"Clifton", county:"Passaic", lat:40.8517, lng:-74.1531,
+    day:0, start:"2:00 PM", end:"4:00 PM", startH:14.0, endH:16.0, format:"No-Gi", cost:"Ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://immortalsjiujitsu.com/Home/Schedule", ig:"https://www.instagram.com/immortalsjiujitsu/" },
+
+  /* HUDSON (more) */
+  { gym:"Chokelab BJJ Academy", town:"Harrison", county:"Hudson", lat:40.7480, lng:-74.1482,
+    day:5, start:"7:30 PM", end:"9:30 PM", startH:19.5, endH:21.5, format:"Check gym", cost:"Ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://chokelabacademy.com/bjj-class-schedule-harrison-nj/", ig:"https://www.instagram.com/chokelab_hq/" },
+  { gym:"Chokelab BJJ Academy", town:"Harrison", county:"Hudson", lat:40.7480, lng:-74.1482,
+    day:6, start:"10:30 AM", end:"12:30 PM", startH:10.5, endH:12.5, format:"Check gym", cost:"Ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://chokelabacademy.com/bjj-class-schedule-harrison-nj/", ig:"https://www.instagram.com/chokelab_hq/" },
+  { gym:"Senshi Tori MMA", town:"Bayonne", county:"Hudson", lat:40.6741, lng:-74.1098,
+    day:5, start:"5:30 PM", end:"7:00 PM", startH:17.5, endH:19.0, format:"Check gym", cost:"Ask gym",
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.openmatlocator.com/open-mats/new-jersey/bayonne", ig:"" },
+  { gym:"Studio 1908 (Miyao Bros)", town:"Jersey City", county:"Hudson", lat:40.7173, lng:-74.0548,
+    day:2, start:"8:00 PM", end:"9:00 PM", startH:20.0, endH:21.0, format:"Check gym", cost:"Ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://studio1908jj.com/schedule/", ig:"https://www.instagram.com/studio.1908/" },
+  { gym:"Studio 1908 (Miyao Bros)", town:"Jersey City", county:"Hudson", lat:40.7173, lng:-74.0548,
+    day:4, start:"8:00 PM", end:"9:00 PM", startH:20.0, endH:21.0, format:"Check gym", cost:"Ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://studio1908jj.com/schedule/", ig:"https://www.instagram.com/studio.1908/" },
+  { gym:"Studio 1908 (Miyao Bros)", town:"Jersey City", county:"Hudson", lat:40.7173, lng:-74.0548,
+    day:6, start:"12:00 PM", end:"1:00 PM", startH:12.0, endH:13.0, format:"Check gym", cost:"Ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://studio1908jj.com/schedule/", ig:"https://www.instagram.com/studio.1908/" },
+  { gym:"Studio 1908 (Miyao Bros)", town:"Jersey City", county:"Hudson", lat:40.7173, lng:-74.0548,
+    day:0, start:"11:00 AM", end:"1:00 PM", startH:11.0, endH:13.0, format:"Check gym", cost:"Ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://studio1908jj.com/schedule/", ig:"https://www.instagram.com/studio.1908/" },
+
+  /* BERGEN (more) — Silver Fox Saddle Brook: open to Silver Fox/Renzo affiliated schools only */
+  { gym:"Silver Fox BJJ", town:"Saddle Brook", county:"Bergen", lat:40.8967, lng:-74.0973,
+    day:0, start:"10:00 AM", end:"12:00 PM", startH:10.0, endH:12.0, format:"Check gym", cost:"Affiliates only",
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://silverfoxbjj.com/saddle-brook-schedule/", ig:"" },
+
+  /* MORRIS — Silver Fox East Hanover: listed as advanced-program open mat */
+  { gym:"Silver Fox BJJ East Hanover", town:"East Hanover", county:"Morris", lat:40.8135, lng:-74.3883,
+    day:6, start:"12:30 PM", end:"2:00 PM", startH:12.5, endH:14.0, format:"Check gym", cost:"Advanced · ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://www.silverfoxbjjeh.com/schedule", ig:"https://www.instagram.com/silverfoxbjjeh" },
+
+  /* UNION (more) — Rolling Bear: free for visitors with training experience */
+  { gym:"Rolling Bear BJJ", town:"Kenilworth", county:"Union", lat:40.6793, lng:-74.2834,
+    day:5, start:"5:30 PM", end:"7:00 PM", startH:17.5, endH:19.0, format:"Check gym", cost:"Free",
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://rollingbearbjj.com/#Schedule", ig:"https://www.instagram.com/rollingbearbjj" },
+  { gym:"Rolling Bear BJJ", town:"Kenilworth", county:"Union", lat:40.6793, lng:-74.2834,
+    day:0, start:"10:30 AM", end:"12:00 PM", startH:10.5, endH:12.0, format:"Check gym", cost:"Free",
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://rollingbearbjj.com/#Schedule", ig:"https://www.instagram.com/rollingbearbjj" },
+  { gym:"Vitor Shaolin BJJ", town:"Scotch Plains", county:"Union", lat:40.6567, lng:-74.4005,
+    day:0, start:"10:45 AM", end:"12:15 PM", startH:10.75, endH:12.25, format:"Check gym", cost:"Paid · ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://www.shaolinbjj.com/schedule.shtml", ig:"https://www.instagram.com/vshaolin" },
+
+  /* MIDDLESEX (more) */
+  { gym:"ASCEND Jiu-Jitsu", town:"Edison", county:"Middlesex", lat:40.5022, lng:-74.3890,
+    day:3, start:"12:00 PM", end:"1:00 PM", startH:12.0, endH:13.0, format:"Gi + No-Gi", cost:"Ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://www.ascendjiujitsu.com/schedule", ig:"https://www.instagram.com/ascend.bjj" },
+  { gym:"ASCEND Jiu-Jitsu", town:"Edison", county:"Middlesex", lat:40.5022, lng:-74.3890,
+    day:5, start:"6:00 AM", end:"7:00 AM", startH:6.0, endH:7.0, format:"Gi + No-Gi", cost:"Ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://www.ascendjiujitsu.com/schedule", ig:"https://www.instagram.com/ascend.bjj" },
+  { gym:"ASCEND Jiu-Jitsu", town:"Edison", county:"Middlesex", lat:40.5022, lng:-74.3890,
+    day:5, start:"6:00 PM", end:"7:00 PM", startH:18.0, endH:19.0, format:"Gi + No-Gi", cost:"Ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://www.ascendjiujitsu.com/schedule", ig:"https://www.instagram.com/ascend.bjj" },
+  { gym:"ASCEND Jiu-Jitsu", town:"Edison", county:"Middlesex", lat:40.5022, lng:-74.3890,
+    day:6, start:"12:00 PM", end:"1:00 PM", startH:12.0, endH:13.0, format:"Gi + No-Gi", cost:"Ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://www.ascendjiujitsu.com/schedule", ig:"https://www.instagram.com/ascend.bjj" },
+  { gym:"ASCEND Jiu-Jitsu", town:"Edison", county:"Middlesex", lat:40.5022, lng:-74.3890,
+    day:0, start:"11:00 AM", end:"12:00 PM", startH:11.0, endH:12.0, format:"Gi + No-Gi", cost:"Ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://www.ascendjiujitsu.com/schedule", ig:"https://www.instagram.com/ascend.bjj" },
+  { gym:"Method Jiu Jitsu", town:"South Plainfield", county:"Middlesex", lat:40.5868, lng:-74.4185,
+    day:5, start:"7:00 PM", end:"9:00 PM", startH:19.0, endH:21.0, format:"Check gym", cost:"Ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://www.methodjj.com/", ig:"https://www.instagram.com/method_jiu_jitsu" },
+  { gym:"Advanced Martial Arts", town:"North Brunswick", county:"Middlesex", lat:40.4755, lng:-74.4265,
+    day:1, start:"9:00 AM", end:"", startH:9.0, endH:null, format:"Check gym", cost:"Ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://advancedbjjnj.com/schedule/", ig:"" },
+  { gym:"Advanced Martial Arts", town:"North Brunswick", county:"Middlesex", lat:40.4755, lng:-74.4265,
+    day:3, start:"9:00 AM", end:"10:30 AM", startH:9.0, endH:10.5, format:"Check gym", cost:"Ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://advancedbjjnj.com/schedule/", ig:"" },
+  { gym:"Advanced Martial Arts", town:"North Brunswick", county:"Middlesex", lat:40.4755, lng:-74.4265,
+    day:5, start:"9:00 AM", end:"10:30 AM", startH:9.0, endH:10.5, format:"Check gym", cost:"Ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://advancedbjjnj.com/schedule/", ig:"" },
+  { gym:"Garry Tonon Jiu Jitsu", town:"East Brunswick", county:"Middlesex", lat:40.4489, lng:-74.4088,
+    day:2, start:"6:30 PM", end:"7:30 PM", startH:18.5, endH:19.5, format:"Gi", cost:"Ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://www.garrytononjiujitsu.com/class-schedule", ig:"" },
+  { gym:"Garry Tonon Jiu Jitsu", town:"East Brunswick", county:"Middlesex", lat:40.4489, lng:-74.4088,
+    day:4, start:"6:30 PM", end:"7:30 PM", startH:18.5, endH:19.5, format:"Gi", cost:"Ask gym",
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://www.garrytononjiujitsu.com/class-schedule", ig:"" }
 ];
 
 /* ========================================================= */
@@ -353,7 +472,8 @@ paintSwitch();
 function matStatus(m){
   if(m.day!==todayIdx || m.startH===null) return null;
   const nowH = new Date().getHours() + new Date().getMinutes()/60;
-  if(nowH >= m.startH && nowH < m.endH) return {cls:"live", label:"ON THE MATS NOW"};
+  if(m.endH===null || m.endH===undefined){ if(nowH >= m.startH) return null; } /* unknown end: never claim live/ended */
+  else if(nowH >= m.startH && nowH < m.endH) return {cls:"live", label:"ON THE MATS NOW"};
   if(nowH < m.startH){
     const dh = m.startH - nowH;
     if(dh <= 3){
