@@ -934,10 +934,11 @@ function render(){
     addEl(tags,"span","tag",m.format);
     const foot=addEl(c,"div","card-foot");
     const ver=addEl(foot,"span","verify "+(m.verified==="confirmed"?"ok":"warn"),
-      m.verified==="confirmed"?"✓":m.verified==="pending"?"◌ pending review":"◌");
+      m.verified==="confirmed"?"✓ verified":m.verified==="pending"?"◌ pending review":"◌ unverified · call ahead");
     ver.title=m.verified==="pending"?"Posted from this device · being verified":"Last checked "+m.verifiedDate;
     const actions=addEl(foot,"span","foot-actions");
-    if(m.site){const siteA=addEl(actions,"a","golink","Site");siteA.href=m.site;siteA.target="_blank";siteA.rel="noopener";}
+    const gymSite=m.site&&!/openmatlocator\.com|jitsopenmats\.com/.test(m.site)?m.site:"";
+    if(gymSite){const siteA=addEl(actions,"a","golink","Site");siteA.href=gymSite;siteA.target="_blank";siteA.rel="noopener";}
     if(m.ig){const igA=addEl(actions,"a","golink","IG");igA.href=m.ig;igA.target="_blank";igA.rel="noopener";}
     const shareB=addEl(actions,"button","sharelink","Share");shareB.dataset.share="";
     shareB.onclick=(e)=>{e.stopPropagation();shareMat(m);};
