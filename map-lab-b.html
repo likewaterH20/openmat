@@ -44,6 +44,13 @@
   }
   .postbtn:hover{background:var(--ink);color:var(--paper)}
   .postbtn:focus-visible{outline:2px solid var(--mat);outline-offset:2px}
+  .beltdot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px;background:var(--line);border:1px solid var(--mist)}
+  .beltdot.white{background:#F5F5F0;border-color:#B9B9B2}
+  .beltdot.blue{background:#2456D6;border-color:#2456D6}
+  .beltdot.purple{background:#7A3FD1;border-color:#7A3FD1}
+  .beltdot.brown{background:#7A4A21;border-color:#7A4A21}
+  .beltdot.black{background:#111;border-color:#555}
+  @media(max-width:520px){#profileLabel{display:none}.beltdot{margin-right:0}}
   .modeswitch{display:flex;border:2px solid var(--ink);cursor:pointer;user-select:none}
   .modeswitch:focus-visible{outline:2px solid var(--mat);outline-offset:2px}
   .mode-opt{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:8px 10px;color:var(--mist);transition:all .15s;white-space:nowrap}
@@ -177,6 +184,7 @@
     <div class="modeswitch" id="themeBtn" role="button" tabindex="0" aria-label="Switch between day and night mode">
       <span class="mode-opt" data-mode="light">☀ Day</span><span class="mode-opt" data-mode="dark">☾ Night</span>
     </div>
+    <button class="postbtn" id="profileBtn" aria-label="Your fighter profile"><span class="beltdot" id="beltDot"></span><span id="profileLabel">Profile</span></button>
     <button class="postbtn" id="openPost">+ Post a mat</button>
   </div>
 </header>
@@ -190,6 +198,7 @@
 
 <div class="daystrip" id="daystrip" role="tablist" aria-label="Day of week"></div>
 <div class="filters" id="filters">
+  <button class="chip" data-f="fit" id="fitChip" style="display:none">For me</button>
   <button class="chip" data-f="free">Free only</button>
   <button class="chip" data-f="gi">Gi</button>
   <button class="chip" data-f="nogi">No-Gi</button>
@@ -227,6 +236,28 @@
     <div class="actions">
       <button class="btn ghost" id="closePost">Cancel</button>
       <button class="btn alt" id="sendPost">Send it</button>
+    </div>
+  </div>
+</div>
+<!-- fighter profile modal -->
+<div class="overlay" id="profOverlay" role="dialog" aria-modal="true" aria-labelledby="fp-title">
+  <div class="modal">
+    <h2 id="fp-title">Fighter profile</h2>
+    <p>Tunes the map to how you train. Lives on your phone for now · unlocks waivers and check-ins later.</p>
+    <div class="field"><label for="p-name">Name or nickname (optional)</label><input id="p-name" type="text" placeholder="e.g. Rafa"></div>
+    <div class="field"><label for="p-belt">Belt</label>
+      <select id="p-belt"><option>White</option><option>Blue</option><option>Purple</option><option>Brown</option><option>Black</option></select>
+    </div>
+    <div class="field"><label for="p-trains">You train</label>
+      <select id="p-trains"><option>Gi + No-Gi</option><option>Gi</option><option>No-Gi</option></select>
+    </div>
+    <div class="field"><label for="p-zip">Home zip</label><input id="p-zip" type="text" inputmode="numeric" placeholder="e.g. 08816"></div>
+    <div class="field"><label for="p-radius">How far you'll travel</label>
+      <select id="p-radius"><option value="10">10 miles</option><option value="25" selected>25 miles</option><option value="50">50 miles</option><option value="">Anywhere in NJ</option></select>
+    </div>
+    <div class="actions">
+      <button class="btn ghost" id="closeProf">Cancel</button>
+      <button class="btn alt" id="saveProf">Save profile</button>
     </div>
   </div>
 </div>
@@ -717,11 +748,15 @@ const DAY_NAMES = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","
 let PENDING = (()=>{try{const p=JSON.parse(localStorage.getItem("openmat-pending"));return Array.isArray(p)?p.filter(x=>x&&typeof x.lat==="number"&&typeof x.lng==="number"):[];}catch(e){return [];}})();
 function savePending(){try{localStorage.setItem("openmat-pending",JSON.stringify(PENDING));}catch(e){}}
 function allMats(){return MATS.concat(PENDING);}
+
+/* fighter profile: device-local for now, becomes the account in V2 */
+let PROFILE=(()=>{try{const p=JSON.parse(localStorage.getItem("openmat-profile"));return p&&typeof p==="object"&&!Array.isArray(p)?p:null;}catch(e){return null;}})();
+function saveProfileStore(){try{localStorage.setItem("openmat-profile",JSON.stringify(PROFILE));}catch(e){}}
 const now = new Date();
 const todayIdx = now.getDay();
 let activeDay = todayIdx;
 let userLoc = null;
-let filters = {free:false, gi:false, nogi:false};
+let filters = {free:false, gi:false, nogi:false, fit:false};
 let markers = [], youMarker = null;
 
 document.getElementById("lastupdate").textContent = "Updated " + LAST_UPDATE;
@@ -779,8 +814,14 @@ function passes(m){
   const hasNoGi = m.format==="No-Gi" || m.format==="Gi + No-Gi";
   if(filters.gi && !hasGi) return false;
   if(filters.nogi && !hasNoGi) return false;
+  if(filters.fit && PROFILE){
+    /* "Check gym" formats stay visible: unknown is not a mismatch */
+    if(PROFILE.trains==="Gi" && m.format==="No-Gi") return false;
+    if(PROFILE.trains==="No-Gi" && m.format==="Gi") return false;
+  }
   return true;
 }
+function fitRadius(x){return !(filters.fit && PROFILE && PROFILE.radius && x._d!==undefined && x._d>PROFILE.radius);}
 
 /* day strip */
 const strip = document.getElementById("daystrip");
@@ -867,6 +908,37 @@ function shareMat(m){
   else{navigator.clipboard.writeText(text).then(()=>toast("Copied. Send it to the group chat.")).catch(()=>toast("Could not copy · screenshot it instead"));}
 }
 
+/* fighter profile */
+const profOverlay=document.getElementById("profOverlay");
+function paintProfile(){
+  const dot=document.getElementById("beltDot"),lbl=document.getElementById("profileLabel"),chip=document.getElementById("fitChip");
+  dot.className="beltdot"+(PROFILE?" "+PROFILE.belt.toLowerCase():"");
+  lbl.textContent=PROFILE?(PROFILE.name||PROFILE.belt+" belt"):"Profile";
+  chip.style.display=PROFILE?"":"none";
+  if(!PROFILE){filters.fit=false;chip.classList.remove("on");}
+}
+document.getElementById("profileBtn").onclick=()=>{
+  if(PROFILE){
+    document.getElementById("p-name").value=PROFILE.name||"";
+    document.getElementById("p-belt").value=PROFILE.belt;
+    document.getElementById("p-trains").value=PROFILE.trains;
+    document.getElementById("p-zip").value=PROFILE.zip||"";
+    document.getElementById("p-radius").value=PROFILE.radius||"";
+  }
+  profOverlay.classList.add("open");document.getElementById("p-name").focus();
+};
+document.getElementById("closeProf").onclick=()=>profOverlay.classList.remove("open");
+profOverlay.addEventListener("click",e=>{if(e.target===profOverlay)profOverlay.classList.remove("open");});
+document.getElementById("saveProf").onclick=async()=>{
+  const v=id=>document.getElementById(id).value.trim();
+  PROFILE={name:v("p-name"),belt:v("p-belt"),trains:v("p-trains"),zip:v("p-zip"),radius:v("p-radius")?+v("p-radius"):null};
+  saveProfileStore();paintProfile();
+  profOverlay.classList.remove("open");
+  filters.fit=true;document.getElementById("fitChip").classList.add("on");
+  if(PROFILE.zip&&!userLoc){geocode(PROFILE.zip);}else{render();}
+  toast("Profile saved · map tuned to you");
+};
+
 /* post a mat */
 const overlay=document.getElementById("overlay");
 const openModal=()=>{overlay.classList.add("open");document.getElementById("f-gym").focus();};
@@ -874,7 +946,7 @@ document.getElementById("openPost").onclick=openModal;
 document.getElementById("openPost2").onclick=openModal;
 document.getElementById("closePost").onclick=()=>overlay.classList.remove("open");
 overlay.addEventListener("click",e=>{if(e.target===overlay)overlay.classList.remove("open");});
-document.addEventListener("keydown",e=>{if(e.key==="Escape")overlay.classList.remove("open");});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){overlay.classList.remove("open");profOverlay.classList.remove("open");}});
 function parseTimes(str){
   const m=(str||"").match(/(\d{1,2}(?::\d{2})?\s*(?:AM|PM))/gi)||[];
   const to24=s=>{const p=s.match(/(\d{1,2})(?::(\d{2}))?\s*(AM|PM)/i);if(!p)return null;let h=(+p[1])%12+(p[3].toUpperCase()==="PM"?12:0);return h+(+(p[2]||0))/60;};
@@ -932,8 +1004,8 @@ function render(){
   let anytime = allMats().filter(m=>m.day===null && passes(m));
   if(userLoc){
     const withD=x=>({...x,_d:milesBetween(userLoc,x)});
-    active=active.map(withD).sort((a,b)=>a._d-b._d);
-    anytime=anytime.map(withD).sort((a,b)=>a._d-b._d);
+    active=active.map(withD).filter(fitRadius).sort((a,b)=>a._d-b._d);
+    anytime=anytime.map(withD).filter(fitRadius).sort((a,b)=>a._d-b._d);
   }
   const show=active.concat(anytime);
   document.getElementById("count").innerHTML="<b>"+active.length+"</b> open mat"+(active.length===1?"":"s")+" · "+DAYS[activeDay]+(anytime.length?" &nbsp;·&nbsp; +"+anytime.length+" on gym schedule":"")+(userLoc?" &nbsp;·&nbsp; nearest first":"");
@@ -986,6 +1058,7 @@ function render(){
   if(userLoc){
     const others=allMats().filter(m=>m.day!==null && m.day!==activeDay && passes(m))
       .map(x=>({...x,_d:milesBetween(userLoc,x)}))
+      .filter(fitRadius)
       .sort((a,b)=>a._d-b._d)
       .slice(0,6);
     if(others.length){
@@ -1076,8 +1149,12 @@ gymsChip.onclick=()=>{
   if(on)renderGyms();
 };
 
-/* pick up where they left off: restore last search */
-(()=>{try{const s=JSON.parse(localStorage.getItem("openmat-lastloc"));if(s&&typeof s.lat==="number"){setLoc(s.lat,s.lng,s.label);return;}}catch(e){}render();})();
+/* pick up where they left off: restore last search, else home turf from profile */
+paintProfile();
+if(PROFILE){filters.fit=true;document.getElementById("fitChip").classList.add("on");}
+(()=>{try{const s=JSON.parse(localStorage.getItem("openmat-lastloc"));if(s&&typeof s.lat==="number"){setLoc(s.lat,s.lng,s.label);return;}}catch(e){}
+  if(PROFILE&&PROFILE.zip){geocode(PROFILE.zip);return;}
+  render();})();
 setInterval(render, 60000); /* refresh statuses every minute */
 </script>
 </body>
