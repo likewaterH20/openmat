@@ -143,6 +143,65 @@
     .overlay{align-items:center}
     .modal{border:1px solid var(--line);border-top:4px solid var(--mat)}
   }
+
+  /* ---- LAB: gym directory rows ---- */
+  .gymrow{border:1px solid var(--line);background:var(--card);padding:14px 16px;margin-bottom:10px;cursor:pointer;display:flex;justify-content:space-between;gap:10px;align-items:center;transition:border-color .15s}
+  .gymrow:hover{border-color:var(--ink)}
+  .gymrow .gname{font-family:'Anton',sans-serif;font-size:16px;text-transform:uppercase;letter-spacing:.02em;line-height:1.15}
+  .gymrow .gsub{font-size:12px;color:var(--mist);margin-top:2px}
+  .gymrow .gnext{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-align:right;color:var(--mat);white-space:nowrap}
+  .gymrow .gcount{display:block;color:var(--mist);margin-top:3px}
+  /* ---- LAB: bottom sheet ---- */
+  .sheetwrap{position:fixed;inset:0;z-index:1100;pointer-events:none}
+  .sheetwrap.open{pointer-events:auto}
+  .sheetback{position:absolute;inset:0;background:rgba(11,11,10,.45);opacity:0;transition:opacity .2s}
+  .sheetwrap.open .sheetback{opacity:1}
+  .sheet{position:absolute;left:0;right:0;bottom:0;background:var(--paper);border-top:4px solid var(--mat);max-height:72dvh;overflow-y:auto;padding:20px 18px 24px;transform:translateY(102%);transition:transform .25s}
+  .sheetwrap.open .sheet{transform:none}
+  .sheet h3{font-family:'Anton',sans-serif;font-size:24px;text-transform:uppercase;letter-spacing:.02em;line-height:1.1;padding-right:30px}
+  .sheet .sub{font-size:13px;color:var(--mist);margin:4px 0 14px}
+  .sessrow{display:flex;justify-content:space-between;align-items:center;gap:10px;border:1px solid var(--line);background:var(--card);padding:10px 12px;margin-bottom:8px}
+  .sessrow .sday{font-family:'Anton',sans-serif;font-size:15px;text-transform:uppercase;width:44px;flex:none}
+  .sessrow .stime{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600}
+  .sessrow .stags{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--mist);text-align:right}
+  .sheet .actions2{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+  .sheet .actions2 a,.sheet .actions2 button{flex:1;min-width:96px;text-align:center;appearance:none;cursor:pointer;border:2px solid var(--ink);background:none;color:var(--ink);font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:12px 8px;text-decoration:none}
+  .sheet .actions2 a.primary{background:var(--mat);border-color:var(--mat);color:#fff}
+  .sheet .closer{position:absolute;top:10px;right:14px;appearance:none;border:0;background:none;font-size:24px;line-height:1;cursor:pointer;color:var(--mist)}
+  @media(min-width:900px){.sheet{left:auto;right:24px;bottom:24px;width:430px;border:1px solid var(--line);border-top:4px solid var(--mat)}}
+
+  /* ---- LAB C: full-bleed map + floating left panel ---- */
+  .mat-pin{transition:transform .15s}
+  .pin-hot{z-index:9999!important}
+  .pin-hot .mat-pin{transform:scale(1.45)}
+  body.labc #map{position:fixed;inset:0;height:100dvh;min-height:100dvh;z-index:0;border:0}
+  body.labc .wrap{display:block;height:auto}
+  body.labc header{position:fixed;top:0;left:0;right:0;z-index:650;background:var(--paper);border-bottom:1px solid var(--line)}
+  #panel{position:fixed;top:78px;left:16px;bottom:16px;width:400px;max-width:calc(100vw - 32px);z-index:620;display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);box-shadow:0 10px 34px rgba(11,11,10,.16)}
+  #panel .searchbar{border-bottom:1px solid var(--line);padding:10px 12px}
+  #panel .locstatus{padding:8px 12px 0}
+  #paneltabs{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
+  #paneltabs button{appearance:none;border:0;background:none;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:13px 0;color:var(--mist);position:relative}
+  #paneltabs button.on{color:var(--ink)}
+  #paneltabs button.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:3px;background:var(--mat)}
+  #panel .daystrip{position:static;z-index:auto}
+  #panel .day{font-size:15px;padding:10px 0 8px}
+  #panel .filters{padding:10px 12px 0}
+  #panel .list{flex:1;overflow-y:auto;padding:6px 12px 16px;max-width:none}
+  #panel .note{position:static;font-size:9px;padding:9px 12px}
+  body.labc.gyms-on #cards,body.labc.gyms-on .count{display:none}
+  body.labc:not(.gyms-on) #gymlist{display:none}
+  body.labc .card{margin-bottom:10px}
+  #gymdetail{display:none;flex:1;overflow-y:auto;padding:14px 14px 20px}
+  body.labc.detail-on #gymdetail{display:block}
+  body.labc.detail-on #paneltabs,body.labc.detail-on .daystrip,body.labc.detail-on .filters,body.labc.detail-on .list{display:none}
+  #gymdetail .backbtn{appearance:none;border:0;background:none;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--mat);padding:0 0 12px;display:block}
+  #gymdetail h3{font-family:'Anton',sans-serif;font-size:26px;text-transform:uppercase;letter-spacing:.02em;line-height:1.05}
+  #gymdetail .sub{font-size:13px;color:var(--mist);margin:6px 0 16px}
+  @media(max-width:899px){
+    #panel{top:auto;left:0;right:0;bottom:0;width:100%;max-width:none;height:52dvh;border-left:0;border-right:0;border-bottom:0;box-shadow:0 -8px 30px rgba(11,11,10,.18)}
+    body.labc #map{height:100dvh}
+  }
   @media(prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important}}
 </style>
 </head>
@@ -179,6 +238,7 @@
   <div class="list">
     <div class="count" id="count"></div>
     <div id="cards"></div>
+    <div id="gymlist"></div>
   </div>
 </div>
 
@@ -229,6 +289,7 @@
     </div>
   </div>
 </div>
+<div class="sheetwrap" id="sheetwrap"><div class="sheetback" id="sheetback"></div><div class="sheet" id="sheet" role="dialog" aria-label="Gym details"></div></div>
 <div class="toast" id="toast"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
@@ -1015,6 +1076,8 @@ function render(){
     const shareB=addEl(actions,"button","sharelink","Share");shareB.dataset.share="";
     shareB.onclick=(e)=>{e.stopPropagation();shareMat(m);};
     c.onclick=(e)=>{if(e.target.tagName!=="A"&&!e.target.dataset.hasOwnProperty("share")){map.flyTo([m.lat,m.lng],12,{duration:.6});}};
+    c.onmouseenter=()=>{const mk=(window.MARKER_BY_KEY||{})[m.gym+"|"+m.lat+"|"+m.lng];if(mk&&mk.getElement())mk.getElement().classList.add("pin-hot");};
+    c.onmouseleave=()=>{const mk=(window.MARKER_BY_KEY||{})[m.gym+"|"+m.lat+"|"+m.lng];if(mk&&mk.getElement())mk.getElement().classList.remove("pin-hot");};
     return c;
   }
 
@@ -1047,12 +1110,116 @@ function render(){
     const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
     const sessions = list.map(x=>(x.day!==null?DAYS[x.day]+" ":"")+esc(x.start)+(x.end?"–"+esc(x.end):"")).join("<br>");
     const mk=L.marker([m.lat,m.lng],{icon:pinIcon(m,isActive),opacity:isActive?1:.5}).addTo(map);
-    mk.bindPopup("<b>"+esc(m.gym)+"</b><br>"+esc(m.town)+"<br>"+sessions);
+    (window.MARKER_BY_KEY=window.MARKER_BY_KEY||{})[m.gym+"|"+m.lat+"|"+m.lng]=mk; mk.on("click",()=>openGymSheet(list)); /* LAB: sheet replaces popup */
     markers.push(mk);
   });
   if(youMarker){map.removeLayer(youMarker);youMarker=null;}
   if(userLoc){youMarker=L.marker([userLoc.lat,userLoc.lng],{icon:L.divIcon({className:"",html:'<div style="background:var(--ink);width:14px;height:14px;border:3px solid #fff;border-radius:50%;box-shadow:0 0 0 2px var(--ink)"></div>',iconSize:[14,14],iconAnchor:[7,7]})}).addTo(map);}
 }
+
+/* ===== LAB: gym sheet + directory ===== */
+const sheetwrap=document.getElementById("sheetwrap"),sheetEl=document.getElementById("sheet");
+document.getElementById("sheetback").onclick=closeSheet;
+function closeSheet(){sheetwrap.classList.remove("open");}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeSheet();});
+function gymGroups(){const groups={};allMats().filter(m=>m.lat!==null).forEach(m=>{const k=m.gym+"|"+m.lat+"|"+m.lng;(groups[k]=groups[k]||[]).push(m);});return Object.values(groups);}
+function nextSession(list){const now=new Date();const nowH=now.getHours()+now.getMinutes()/60;let best=null,bestScore=1e9;list.forEach(m=>{if(m.day===null||m.startH===null)return;let d=(m.day-now.getDay()+7)%7;let score=d*24+m.startH;if(d===0&&m.startH<nowH)score=7*24+m.startH;if(score<bestScore){bestScore=score;best=m;}});return best;}
+function openGymSheet(list){
+  const m=list[0];sheetEl.replaceChildren();
+  const x=document.createElement("button");x.className="closer";x.setAttribute("aria-label","Close");x.textContent="×";x.onclick=closeSheet;sheetEl.appendChild(x);
+  const h=document.createElement("h3");h.textContent=m.gym;sheetEl.appendChild(h);
+  const sub=document.createElement("div");sub.className="sub";
+  const ver=m.verified==="confirmed"?"✓ verified on gym site":m.verified==="pending"?"◌ pending review":"◌ reported · check with gym";
+  sub.textContent=m.town+" · "+m.county+" County"+(userLoc?" · "+milesBetween(userLoc,m).toFixed(1)+" mi":"")+" · "+ver;
+  sheetEl.appendChild(sub);
+  [...list].sort((a,b)=>((a.day===null?8:a.day)-(b.day===null?8:b.day))||((a.startH||0)-(b.startH||0))).forEach(s=>{
+    const rw=document.createElement("div");rw.className="sessrow";
+    const d=document.createElement("span");d.className="sday";d.textContent=s.day!==null?DAYS[s.day]:"—";rw.appendChild(d);
+    const t=document.createElement("span");t.className="stime";t.textContent=s.start+(s.end?" – "+s.end:"");rw.appendChild(t);
+    const g=document.createElement("span");g.className="stags";g.textContent=s.format+" · "+s.cost;rw.appendChild(g);
+    sheetEl.appendChild(rw);
+  });
+  const acts=document.createElement("div");acts.className="actions2";
+  const dir=document.createElement("a");dir.className="primary";dir.textContent="Directions";dir.target="_blank";dir.rel="noopener";dir.href="https://www.google.com/maps/dir/?api=1&destination="+m.lat+","+m.lng;acts.appendChild(dir);
+  const gs=m.site&&!/openmatlocator\.com|jitsopenmats\.com/.test(m.site)?m.site:"";if(gs){const a=document.createElement("a");a.textContent="Site";a.href=gs;a.target="_blank";a.rel="noopener";acts.appendChild(a);}
+  if(m.ig){const a=document.createElement("a");a.textContent="IG";a.href=m.ig;a.target="_blank";a.rel="noopener";acts.appendChild(a);}
+  const sh=document.createElement("button");sh.textContent="Share";sh.onclick=()=>shareMat(m);acts.appendChild(sh);
+  sheetEl.appendChild(acts);
+  sheetwrap.classList.add("open");
+  map.flyTo([m.lat,m.lng],13,{duration:.5});
+}
+function renderGyms(){
+  const el=document.getElementById("gymlist");if(!el)return;el.replaceChildren();
+  let gs=gymGroups();
+  if(userLoc){gs.forEach(g=>g._d=milesBetween(userLoc,g[0]));gs.sort((a,b)=>a._d-b._d);}
+  else{gs.sort((a,b)=>a[0].gym.localeCompare(b[0].gym));}
+  const hdr=document.createElement("div");hdr.className="count";
+  const b=document.createElement("b");b.textContent=gs.length;hdr.appendChild(b);
+  hdr.appendChild(document.createTextNode(" gyms "+(userLoc?"· nearest first":"· A to Z")));
+  el.appendChild(hdr);
+  gs.forEach(g=>{
+    const m=g[0];const row=document.createElement("div");row.className="gymrow";
+    const L=document.createElement("div");
+    const n=document.createElement("div");n.className="gname";n.textContent=m.gym;L.appendChild(n);
+    const s=document.createElement("div");s.className="gsub";s.textContent=m.town+" · "+m.county+" County"+(g._d!==undefined?" · "+g._d.toFixed(1)+" mi":"");L.appendChild(s);
+    const R=document.createElement("div");R.className="gnext";
+    const nx=nextSession(g);R.textContent=nx?("Next "+DAYS[nx.day]+" "+nx.start):"See gym";
+    const cnt=document.createElement("span");cnt.className="gcount";cnt.textContent=g.length+" mat"+(g.length===1?"":"s")+"/wk";R.appendChild(cnt);
+    row.appendChild(L);row.appendChild(R);
+    row.onclick=()=>openGymSheet(g);
+    el.appendChild(row);
+  });
+}
+
+/* ===== LAB C: floating panel over full map ===== */
+document.body.classList.add("labc");
+(function(){
+  const panel=document.createElement("div");panel.id="panel";
+  const tabs=document.createElement("div");tabs.id="paneltabs";
+  const bm=document.createElement("button");bm.textContent="Mats";bm.className="on";
+  const bg=document.createElement("button");bg.textContent="Gyms";
+  bm.onclick=()=>{document.body.classList.remove("gyms-on");bm.classList.add("on");bg.classList.remove("on");};
+  bg.onclick=()=>{document.body.classList.add("gyms-on");bg.classList.add("on");bm.classList.remove("on");renderGyms();};
+  tabs.appendChild(bm);tabs.appendChild(bg);
+  document.body.appendChild(panel);
+  panel.appendChild(document.querySelector(".searchbar"));
+  const ls=document.getElementById("locstatus");ls.classList.add("locstatus");panel.appendChild(ls);
+  panel.appendChild(tabs);
+  panel.appendChild(document.getElementById("daystrip"));
+  panel.appendChild(document.getElementById("filters"));
+  panel.appendChild(document.querySelector(".list"));
+  const det=document.createElement("div");det.id="gymdetail";panel.appendChild(det);
+  panel.appendChild(document.querySelector(".note"));
+  setTimeout(()=>map.invalidateSize(),120);
+})();
+/* pin/gym click opens the gym INSIDE the left panel */
+function closeGymPanel(){document.body.classList.remove("detail-on");}
+openGymSheet=function(list){
+  const m=list[0];const det=document.getElementById("gymdetail");det.replaceChildren();
+  const back=document.createElement("button");back.className="backbtn";back.textContent="\u2190 Back to list";back.onclick=closeGymPanel;det.appendChild(back);
+  const h=document.createElement("h3");h.textContent=m.gym;det.appendChild(h);
+  const sub=document.createElement("div");sub.className="sub";
+  const ver=m.verified==="confirmed"?"\u2713 verified on gym site":m.verified==="pending"?"\u25cc pending review":"\u25cc reported \u00b7 check with gym";
+  sub.textContent=m.town+" \u00b7 "+m.county+" County"+(userLoc?" \u00b7 "+milesBetween(userLoc,m).toFixed(1)+" mi":"")+" \u00b7 "+ver;
+  det.appendChild(sub);
+  [...list].sort((a,b)=>((a.day===null?8:a.day)-(b.day===null?8:b.day))||((a.startH||0)-(b.startH||0))).forEach(sx=>{
+    const rw=document.createElement("div");rw.className="sessrow";
+    const d=document.createElement("span");d.className="sday";d.textContent=sx.day!==null?DAYS[sx.day]:"\u2014";rw.appendChild(d);
+    const t=document.createElement("span");t.className="stime";t.textContent=sx.start+(sx.end?" \u2013 "+sx.end:"");rw.appendChild(t);
+    const g=document.createElement("span");g.className="stags";g.textContent=sx.format+" \u00b7 "+sx.cost;rw.appendChild(g);
+    det.appendChild(rw);
+  });
+  const acts=document.createElement("div");acts.className="actions2";
+  const dir=document.createElement("a");dir.className="primary";dir.textContent="Directions";dir.target="_blank";dir.rel="noopener";dir.href="https://www.google.com/maps/dir/?api=1&destination="+m.lat+","+m.lng;acts.appendChild(dir);
+  const gs=m.site&&!/openmatlocator\.com|jitsopenmats\.com/.test(m.site)?m.site:"";if(gs){const a=document.createElement("a");a.textContent="Site";a.href=gs;a.target="_blank";a.rel="noopener";acts.appendChild(a);}
+  if(m.ig){const a=document.createElement("a");a.textContent="IG";a.href=m.ig;a.target="_blank";a.rel="noopener";acts.appendChild(a);}
+  const sh=document.createElement("button");sh.textContent="Share";sh.onclick=()=>shareMat(m);acts.appendChild(sh);
+  det.appendChild(acts);
+  document.body.classList.add("detail-on");
+  map.flyTo([m.lat,m.lng],13,{duration:.5});
+};
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeGymPanel();});
+
 /* pick up where they left off: restore last search, else home turf from profile */
 paintProfile();
 if(PROFILE){filters.fit=true;document.getElementById("fitChip").classList.add("on");}
