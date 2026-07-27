@@ -418,10 +418,26 @@ function setLoc(lat,lng,label){
   render();
 }
 async function nominatimLookup(query){
-  const url="https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=us&q="+encodeURIComponent(query+", New Jersey");
-  const r=await fetch(url,{headers:{"Accept":"application/json"}});
-  const d=await r.json();
-  return (d&&d[0])?d[0]:null;
+  /* primary: Nominatim */
+  try{
+    const url="https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=us&q="+encodeURIComponent(query+", New Jersey");
+    const r=await fetch(url,{headers:{"Accept":"application/json"}});
+    if(r.ok){const d=await r.json();if(d&&d[0])return d[0];}
+  }catch(e){}
+  /* fallback: Photon (also OSM data) so search survives rate limits */
+  try{
+    const r2=await fetch("https://photon.komoot.io/api/?limit=1&lang=en&q="+encodeURIComponent(query+", New Jersey, USA"));
+    if(r2.ok){
+      const d2=await r2.json();
+      const f=d2&&d2.features&&d2.features[0];
+      if(f){
+        const p=f.properties||{};
+        const parts=[p.name||p.postcode||query, p.city||p.county||"", p.state||""].filter(Boolean);
+        return {lat:String(f.geometry.coordinates[1]), lon:String(f.geometry.coordinates[0]), display_name:parts.join(", ")};
+      }
+    }
+  }catch(e){}
+  return null;
 }
 async function geocode(query){
   statusEl.style.display="block";statusEl.textContent="Searching…";
