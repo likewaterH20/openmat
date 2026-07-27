@@ -702,7 +702,7 @@ const DAYS = ["SUN","MON","TUE","WED","THU","FRI","SAT"];
 const DAY_NAMES = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 
 /* pending mats: posted from this device, shown locally until we verify them */
-let PENDING = (()=>{try{return JSON.parse(localStorage.getItem("openmat-pending"))||[];}catch(e){return [];}})();
+let PENDING = (()=>{try{const p=JSON.parse(localStorage.getItem("openmat-pending"));return Array.isArray(p)?p.filter(x=>x&&typeof x.lat==="number"&&typeof x.lng==="number"):[];}catch(e){return [];}})();
 function savePending(){try{localStorage.setItem("openmat-pending",JSON.stringify(PENDING));}catch(e){}}
 function allMats(){return MATS.concat(PENDING);}
 const now = new Date();
