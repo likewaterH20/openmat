@@ -51,6 +51,9 @@
   .beltdot.brown{background:#7A4A21;border-color:#7A4A21}
   .beltdot.black{background:#111;border-color:#555}
   @media(max-width:520px){#profileLabel{display:none}.beltdot{margin-right:0}}
+  .chipgrid{display:flex;flex-wrap:wrap;gap:6px}
+  .chipgrid .chip .beltdot{margin-right:5px}
+  .labelhint{text-transform:none;letter-spacing:0;color:var(--mist);font-weight:400}
   .modeswitch{display:flex;border:2px solid var(--ink);cursor:pointer;user-select:none}
   .modeswitch:focus-visible{outline:2px solid var(--mat);outline-offset:2px}
   .mode-opt{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:8px 10px;color:var(--mist);transition:all .15s;white-space:nowrap}
@@ -271,13 +274,19 @@
 <div class="overlay" id="profOverlay" role="dialog" aria-modal="true" aria-labelledby="fp-title">
   <div class="modal">
     <h2 id="fp-title">Fighter profile</h2>
-    <p>Tunes the map to how you train. Lives on your phone for now · unlocks waivers and check-ins later.</p>
+    <p>Build your fighter card. The map tunes itself to how you train · unlocks waivers and check-ins later.</p>
     <div class="field"><label for="p-name">Name or nickname (optional)</label><input id="p-name" type="text" placeholder="e.g. Rafa"></div>
-    <div class="field"><label for="p-belt">Belt</label>
-      <select id="p-belt"><option>White</option><option>Blue</option><option>Purple</option><option>Brown</option><option>Black</option></select>
+    <div class="field"><label>Belt</label>
+      <div class="chipgrid" id="p-belt-grid"></div>
     </div>
-    <div class="field"><label for="p-trains">You train</label>
-      <select id="p-trains"><option>Gi + No-Gi</option><option>Gi</option><option>No-Gi</option></select>
+    <div class="field"><label>You train</label>
+      <div class="chipgrid" id="p-trains-grid"></div>
+    </div>
+    <div class="field"><label>Days you can roll <span class="labelhint">· tap all that apply</span></label>
+      <div class="chipgrid" id="p-days-grid"></div>
+    </div>
+    <div class="field"><label>Time of day <span class="labelhint">· tap all that apply</span></label>
+      <div class="chipgrid" id="p-times-grid"></div>
     </div>
     <div class="field"><label for="p-zip">Home zip</label><input id="p-zip" type="text" inputmode="numeric" placeholder="e.g. 08816"></div>
     <div class="field"><label for="p-radius">How far you'll travel</label>
@@ -307,7 +316,7 @@ const SITE_URL = "https://likewaterh20.github.io/openmat";
    times use 24h numbers for startH/endH so the app can
    compute LIVE NOW / STARTS SOON / ENDED states.
    ========================================================= */
-const LAST_UPDATE = "2026-07-28";
+const LAST_UPDATE = "2026-07-30";
 
 const MATS = [
   /* MERCER (Trenton area) */
@@ -449,16 +458,16 @@ const MATS = [
     verified:"reported", verifiedDate:"2026-07-27", site:"https://www.openmatlocator.com/open-mats/new-jersey/bayonne", ig:"" },
   { gym:"Studio 1908 (Miyao Bros)", town:"Jersey City", county:"Hudson", lat:40.7173, lng:-74.0548,
     day:2, start:"8:00 PM", end:"9:00 PM", startH:20.0, endH:21.0, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-28", site:"https://studio1908jj.com/schedule/", ig:"https://www.instagram.com/studio.1908/" },
+    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://studio1908jj.com/schedule/", ig:"https://www.instagram.com/studio.1908/" },
   { gym:"Studio 1908 (Miyao Bros)", town:"Jersey City", county:"Hudson", lat:40.7173, lng:-74.0548,
     day:4, start:"8:00 PM", end:"9:00 PM", startH:20.0, endH:21.0, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-28", site:"https://studio1908jj.com/schedule/", ig:"https://www.instagram.com/studio.1908/" },
+    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://studio1908jj.com/schedule/", ig:"https://www.instagram.com/studio.1908/" },
   { gym:"Studio 1908 (Miyao Bros)", town:"Jersey City", county:"Hudson", lat:40.7173, lng:-74.0548,
     day:6, start:"12:00 PM", end:"1:00 PM", startH:12.0, endH:13.0, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-28", site:"https://studio1908jj.com/schedule/", ig:"https://www.instagram.com/studio.1908/" },
+    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://studio1908jj.com/schedule/", ig:"https://www.instagram.com/studio.1908/" },
   { gym:"Studio 1908 (Miyao Bros)", town:"Jersey City", county:"Hudson", lat:40.7173, lng:-74.0548,
     day:0, start:"11:00 AM", end:"1:00 PM", startH:11.0, endH:13.0, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-28", site:"https://studio1908jj.com/schedule/", ig:"https://www.instagram.com/studio.1908/" },
+    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://studio1908jj.com/schedule/", ig:"https://www.instagram.com/studio.1908/" },
 
   /* BERGEN (more) — Silver Fox Saddle Brook: open to Silver Fox/Renzo affiliated schools only */
   { gym:"Silver Fox BJJ", town:"Saddle Brook", county:"Bergen", lat:40.8967, lng:-74.0973,
@@ -846,6 +855,13 @@ function passes(m){
     /* "Check gym" formats stay visible: unknown is not a mismatch */
     if(PROFILE.trains==="Gi" && m.format==="No-Gi") return false;
     if(PROFILE.trains==="No-Gi" && m.format==="Gi") return false;
+    /* time of day: unknown start stays visible */
+    if(Array.isArray(PROFILE.times)&&PROFILE.times.length&&m.startH!==null){
+      const hit=PROFILE.times.some(t=>{const w=TIME_WINDOWS[t];return w&&m.startH>=w.lo&&m.startH<w.hi;});
+      if(!hit) return false;
+    }
+    /* advanced-program mats are not for white belts */
+    if(PROFILE.belt==="White" && /advanced/i.test(m.cost)) return false;
   }
   return true;
 }
@@ -936,8 +952,28 @@ function shareMat(m){
   else{navigator.clipboard.writeText(text).then(()=>toast("Copied. Send it to the group chat.")).catch(()=>toast("Could not copy · screenshot it instead"));}
 }
 
-/* fighter profile */
+/* fighter profile builder */
 const profOverlay=document.getElementById("profOverlay");
+const BELTS=["White","Blue","Purple","Brown","Black"];
+const TRAINS=["Gi + No-Gi","Gi","No-Gi"];
+const TIME_WINDOWS={am:{label:"Morning",lo:0,hi:12},mid:{label:"Midday",lo:11,hi:16},pm:{label:"Evening",lo:16,hi:24}};
+let draft={belt:"White",trains:"Gi + No-Gi",days:[],times:[]};
+function buildChipGrid(el,items,isOn,onTap){
+  el.replaceChildren();
+  items.forEach(it=>{
+    const b=document.createElement("button");b.type="button";b.className="chip"+(isOn(it.key)?" on":"");
+    if(it.dot){const d=document.createElement("span");d.className="beltdot "+it.key.toLowerCase();b.appendChild(d);}
+    b.appendChild(document.createTextNode(it.label));
+    b.onclick=()=>{onTap(it.key);paintBuilder();};
+    el.appendChild(b);
+  });
+}
+function paintBuilder(){
+  buildChipGrid(document.getElementById("p-belt-grid"),BELTS.map(b=>({key:b,label:b,dot:true})),k=>draft.belt===k,k=>{draft.belt=k;});
+  buildChipGrid(document.getElementById("p-trains-grid"),TRAINS.map(t=>({key:t,label:t})),k=>draft.trains===k,k=>{draft.trains=k;});
+  buildChipGrid(document.getElementById("p-days-grid"),DAYS.map((d,i)=>({key:String(i),label:d})),k=>draft.days.includes(+k),k=>{const i=+k;draft.days=draft.days.includes(i)?draft.days.filter(x=>x!==i):[...draft.days,i];});
+  buildChipGrid(document.getElementById("p-times-grid"),Object.keys(TIME_WINDOWS).map(t=>({key:t,label:TIME_WINDOWS[t].label})),k=>draft.times.includes(k),k=>{draft.times=draft.times.includes(k)?draft.times.filter(x=>x!==k):[...draft.times,k];});
+}
 function paintProfile(){
   const dot=document.getElementById("beltDot"),lbl=document.getElementById("profileLabel"),chip=document.getElementById("fitChip");
   dot.className="beltdot"+(PROFILE?" "+PROFILE.belt.toLowerCase():"");
@@ -946,25 +982,26 @@ function paintProfile(){
   if(!PROFILE){filters.fit=false;chip.classList.remove("on");}
 }
 document.getElementById("profileBtn").onclick=()=>{
-  if(PROFILE){
-    document.getElementById("p-name").value=PROFILE.name||"";
-    document.getElementById("p-belt").value=PROFILE.belt;
-    document.getElementById("p-trains").value=PROFILE.trains;
-    document.getElementById("p-zip").value=PROFILE.zip||"";
-    document.getElementById("p-radius").value=PROFILE.radius||"";
-  }
+  draft={belt:PROFILE?PROFILE.belt:"White",trains:PROFILE?PROFILE.trains:"Gi + No-Gi",
+    days:PROFILE&&Array.isArray(PROFILE.days)?[...PROFILE.days]:[],
+    times:PROFILE&&Array.isArray(PROFILE.times)?[...PROFILE.times]:[]};
+  document.getElementById("p-name").value=PROFILE?(PROFILE.name||""):"";
+  document.getElementById("p-zip").value=PROFILE?(PROFILE.zip||""):"";
+  document.getElementById("p-radius").value=PROFILE&&PROFILE.radius?PROFILE.radius:"25";
+  paintBuilder();
   profOverlay.classList.add("open");document.getElementById("p-name").focus();
 };
 document.getElementById("closeProf").onclick=()=>profOverlay.classList.remove("open");
 profOverlay.addEventListener("click",e=>{if(e.target===profOverlay)profOverlay.classList.remove("open");});
 document.getElementById("saveProf").onclick=async()=>{
   const v=id=>document.getElementById(id).value.trim();
-  PROFILE={name:v("p-name"),belt:v("p-belt"),trains:v("p-trains"),zip:v("p-zip"),radius:v("p-radius")?+v("p-radius"):null};
+  PROFILE={name:v("p-name"),belt:draft.belt,trains:draft.trains,zip:v("p-zip"),
+    radius:v("p-radius")?+v("p-radius"):null,days:[...draft.days],times:[...draft.times]};
   saveProfileStore();paintProfile();
   profOverlay.classList.remove("open");
   filters.fit=true;document.getElementById("fitChip").classList.add("on");
   if(PROFILE.zip&&!userLoc){geocode(PROFILE.zip);}else{render();}
-  toast("Profile saved · map tuned to you");
+  toast("Fighter card saved · map tuned to you");
 };
 
 /* post a mat */
@@ -1036,7 +1073,7 @@ function render(){
     anytime=anytime.map(withD).filter(fitRadius).sort((a,b)=>a._d-b._d);
   }
   const show=active.concat(anytime);
-  document.getElementById("count").innerHTML="<b>"+active.length+"</b> open mat"+(active.length===1?"":"s")+" · "+DAYS[activeDay]+(anytime.length?" &nbsp;·&nbsp; +"+anytime.length+" on gym schedule":"")+(userLoc?" &nbsp;·&nbsp; nearest first":"");
+  document.getElementById("count").innerHTML="<b>"+active.length+"</b> open mat"+(active.length===1?"":"s")+" · "+DAYS[activeDay]+(anytime.length?" &nbsp;·&nbsp; +"+anytime.length+" on gym schedule":"")+(userLoc?" &nbsp;·&nbsp; nearest first":"")+(filters.fit&&PROFILE?" &nbsp;·&nbsp; tuned to you":"");
 
   const wrap=document.getElementById("cards");wrap.replaceChildren();
   const addEl=(parent,tag,cls,text)=>{const el=document.createElement(tag);if(cls)el.className=cls;if(text!==undefined&&text!==null)el.textContent=text;parent.appendChild(el);return el;};
@@ -1086,7 +1123,8 @@ function render(){
   /* when searching near a location, always show the rest of the week nearby
      so a zip search never dead-ends on an empty day */
   if(userLoc){
-    const others=allMats().filter(m=>m.day!==null && m.day!==activeDay && passes(m))
+    const myDays=(filters.fit&&PROFILE&&Array.isArray(PROFILE.days)&&PROFILE.days.length)?PROFILE.days:null;
+    const others=allMats().filter(m=>m.day!==null && m.day!==activeDay && passes(m) && (!myDays||myDays.includes(m.day)))
       .map(x=>({...x,_d:milesBetween(userLoc,x)}))
       .filter(fitRadius)
       .sort((a,b)=>a._d-b._d)
