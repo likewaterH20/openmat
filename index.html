@@ -50,7 +50,10 @@
   .beltdot.purple{background:#7A3FD1;border-color:#7A3FD1}
   .beltdot.brown{background:#7A4A21;border-color:#7A4A21}
   .beltdot.black{background:#111;border-color:#555}
-  @media(max-width:520px){#profileLabel{display:none}.beltdot{margin-right:0}}
+  .profilebtn{background:var(--mat);border-color:var(--mat);color:#fff}
+  .profilebtn:hover{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+  .profilebtn .beltdot{border-color:#fff}
+  @media(max-width:520px){.postbtn{padding:8px 9px;font-size:9px}.beltdot{margin-right:4px}}
   .chipgrid{display:flex;flex-wrap:wrap;gap:6px}
   .chipgrid .chip .beltdot{margin-right:5px}
   .labelhint{text-transform:none;letter-spacing:0;color:var(--mist);font-weight:400}
@@ -216,7 +219,7 @@
     <div class="modeswitch" id="themeBtn" role="button" tabindex="0" aria-label="Switch between day and night mode">
       <span class="mode-opt" data-mode="light">☀ Day</span><span class="mode-opt" data-mode="dark">☾ Night</span>
     </div>
-    <button class="postbtn" id="profileBtn" aria-label="Your fighter profile"><span class="beltdot" id="beltDot"></span><span id="profileLabel">Profile</span></button>
+    <button class="postbtn profilebtn" id="profileBtn" aria-label="Your fighter profile"><span class="beltdot" id="beltDot"></span><span id="profileLabel">Profile</span></button>
     <button class="postbtn" id="openPost">+ Post a mat</button>
   </div>
 </header>
@@ -846,6 +849,7 @@ function matStatus(m){
 
 /* filter match */
 function passes(m){
+  if(m.verified==="pending") return true; /* your own post is always visible to you */
   if(filters.free && m.cost!=="Free") return false;
   const hasGi = m.format==="Gi" || m.format==="Gi + No-Gi";
   const hasNoGi = m.format==="No-Gi" || m.format==="Gi + No-Gi";
@@ -865,7 +869,7 @@ function passes(m){
   }
   return true;
 }
-function fitRadius(x){return !(filters.fit && PROFILE && PROFILE.radius && x._d!==undefined && x._d>PROFILE.radius);}
+function fitRadius(x){if(x.verified==="pending")return true;return !(filters.fit && PROFILE && PROFILE.radius && x._d!==undefined && x._d>PROFILE.radius);}
 
 /* day strip */
 const strip = document.getElementById("daystrip");
@@ -900,6 +904,7 @@ const statusEl=document.getElementById("locstatus");
 function setLoc(lat,lng,label){
   userLoc={lat,lng,label};
   try{localStorage.setItem("openmat-lastloc",JSON.stringify(userLoc));}catch(e){}
+  if(typeof closeGymPanel==="function")closeGymPanel(); /* a search should always show its results */
   statusEl.style.display="block";
   statusEl.innerHTML="Showing mats near <b>"+label+"</b><button id='clearLoc'>clear</button>";
   document.getElementById("clearLoc").onclick=()=>{userLoc=null;try{localStorage.removeItem("openmat-lastloc");}catch(e){}statusEl.style.display="none";map.setView([40.22,-74.55],8);render();};
@@ -1000,7 +1005,8 @@ document.getElementById("saveProf").onclick=async()=>{
   saveProfileStore();paintProfile();
   profOverlay.classList.remove("open");
   filters.fit=true;document.getElementById("fitChip").classList.add("on");
-  if(PROFILE.zip&&!userLoc){geocode(PROFILE.zip);}else{render();}
+  render(); /* tune the view now; geocode may re-render with distances after */
+  if(PROFILE.zip&&!userLoc){geocode(PROFILE.zip);}
   toast("Fighter card saved · map tuned to you");
 };
 
