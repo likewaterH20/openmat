@@ -175,9 +175,12 @@
   .sessrow .sday{font-family:'Anton',sans-serif;font-size:15px;text-transform:uppercase;width:44px;flex:none}
   .sessrow .stime{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600}
   .sessrow .stags{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--mist);text-align:right}
-  .sheet .actions2{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
-  .sheet .actions2 a,.sheet .actions2 button{flex:1;min-width:96px;text-align:center;appearance:none;cursor:pointer;border:2px solid var(--ink);background:none;color:var(--ink);font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:12px 8px;text-decoration:none}
-  .sheet .actions2 a.primary{background:var(--mat);border-color:var(--mat);color:#fff}
+  .actions2{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+  .actions2 a,.actions2 button{flex:1;min-width:96px;text-align:center;appearance:none;cursor:pointer;border:2px solid var(--ink);background:none;color:var(--ink);font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:13px 8px;text-decoration:none;transition:background .15s,color .15s}
+  .actions2 a:hover,.actions2 button:hover{background:var(--ink);color:var(--paper)}
+  .actions2 a.primary{background:var(--mat);border-color:var(--mat);color:#fff}
+  .actions2 a.primary:hover{background:var(--ink);border-color:var(--ink)}
+  .actions2 .callrow{flex-basis:100%;font-size:12px;letter-spacing:.08em}
   .sheet .closer{position:absolute;top:10px;right:14px;appearance:none;border:0;background:none;font-size:24px;line-height:1;cursor:pointer;color:var(--mist)}
   @media(min-width:900px){.sheet{left:auto;right:24px;bottom:24px;width:430px;border:1px solid var(--line);border-top:4px solid var(--mat)}}
 
@@ -1298,12 +1301,13 @@ openGymSheet=function(list){
   });
   const acts=document.createElement("div");acts.className="actions2";
   if(m.phone){
-    const call=document.createElement("a");call.className="primary";call.textContent="Call "+m.phone;
+    const call=document.createElement("a");call.className="primary callrow";call.textContent="✆  "+m.phone;
+    call.setAttribute("aria-label","Call "+m.gym);
     call.href="tel:+1"+String(m.phone).replace(/\D/g,"").replace(/^1/,"");
     acts.appendChild(call);
   }
-  const dir=document.createElement("a");dir.className=m.phone?"":"primary";dir.textContent="Directions";dir.target="_blank";dir.rel="noopener";dir.href="https://www.google.com/maps/dir/?api=1&destination="+m.lat+","+m.lng;acts.appendChild(dir);
-  const gs=m.site&&!/openmatlocator\.com|jitsopenmats\.com/.test(m.site)?m.site:"";if(gs){const a=document.createElement("a");a.textContent="Site";a.href=gs;a.target="_blank";a.rel="noopener";acts.appendChild(a);}
+  const gs=m.site&&!/openmatlocator\.com|jitsopenmats\.com/.test(m.site)?m.site:"";if(gs){const a=document.createElement("a");a.textContent="Website";a.href=gs;a.target="_blank";a.rel="noopener";acts.appendChild(a);}
+  const dir=document.createElement("a");dir.textContent="Address";dir.target="_blank";dir.rel="noopener";dir.href="https://www.google.com/maps/dir/?api=1&destination="+m.lat+","+m.lng;acts.appendChild(dir);
   if(m.ig){const a=document.createElement("a");a.textContent="IG";a.href=m.ig;a.target="_blank";a.rel="noopener";acts.appendChild(a);}
   const sh=document.createElement("button");sh.textContent="Share";sh.onclick=()=>shareMat(m);acts.appendChild(sh);
   det.appendChild(acts);
