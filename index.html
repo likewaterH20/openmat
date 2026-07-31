@@ -204,9 +204,26 @@
   #gymdetail .backbtn{appearance:none;border:0;background:none;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--mat);padding:0 0 12px;display:block}
   #gymdetail h3{font-family:'Anton',sans-serif;font-size:26px;text-transform:uppercase;letter-spacing:.02em;line-height:1.05}
   #gymdetail .sub{font-size:13px;color:var(--mist);margin:6px 0 16px}
+  #panelHandle{display:none}
   @media(max-width:899px){
-    #panel{top:auto;left:0;right:0;bottom:0;width:100%;max-width:none;height:52dvh;border-left:0;border-right:0;border-bottom:0;box-shadow:0 -8px 30px rgba(11,11,10,.18)}
+    #panel{top:auto;left:0;right:0;bottom:0;width:100%;max-width:none;height:52dvh;border-left:0;border-right:0;border-bottom:0;box-shadow:0 -8px 30px rgba(11,11,10,.18);transition:height .25s}
     body.labc #map{height:100dvh}
+    /* declutter: one obvious thing per row */
+    #panelHandle{display:block;appearance:none;border:0;background:none;padding:10px 0 6px;cursor:pointer;width:100%;flex:none}
+    #panelHandle::before{content:"";display:block;width:44px;height:5px;border-radius:3px;background:var(--mist);opacity:.5;margin:0 auto}
+    body.panel-peek #panel{height:30dvh}
+    body.panel-peek .daystrip,body.panel-peek .filters,body.panel-peek #paneltabs{display:none}
+    #goBtn{display:none}
+    .postxt{display:none}
+    .mode-opt:not(.on){display:none}
+    .filters{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+    .filters::-webkit-scrollbar{display:none}
+    .chip{white-space:nowrap;flex:none}
+    #panel .note{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .day .today-dot{font-size:7px;height:8px}
+    #panel .day{font-size:14px;padding:8px 0 6px}
+    #paneltabs button{padding:11px 0}
+    .leaflet-control-zoom{display:none} /* pinch zoom; control just clutters under the header */
   }
   @media(prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important}}
 </style>
@@ -220,12 +237,12 @@
       <span class="mode-opt" data-mode="light">☀ Day</span><span class="mode-opt" data-mode="dark">☾ Night</span>
     </div>
     <button class="postbtn profilebtn" id="profileBtn" aria-label="Your fighter profile"><span class="beltdot" id="beltDot"></span><span id="profileLabel">Profile</span></button>
-    <button class="postbtn" id="openPost">+ Post a mat</button>
+    <button class="postbtn" id="openPost">+ Post<span class="postxt"> a mat</span></button>
   </div>
 </header>
 
 <div class="searchbar">
-  <input id="q" type="text" inputmode="search" placeholder="Zip · City · Town" aria-label="Search by zip code, city, or town">
+  <input id="q" type="text" inputmode="search" enterkeyhint="search" placeholder="Zip · City · Town" aria-label="Search by zip code, city, or town">
   <button class="btn" id="goBtn">Go</button>
   <button class="btn alt" id="nearBtn" title="Use my location">Near me</button>
 </div>
@@ -821,7 +838,8 @@ const themeBtn=document.getElementById("themeBtn");
 themeBtn.onclick=(e)=>{
   const picked=e.target.dataset&&e.target.dataset.mode;
   const cur=document.documentElement.getAttribute("data-theme");
-  applyTheme(picked||(cur==="dark"?"light":"dark"));
+  /* tapping the visible (current) option toggles too, so the compact mobile switch works */
+  applyTheme(picked&&picked!==cur?picked:(cur==="dark"?"light":"dark"));
   paintSwitch();
 };
 themeBtn.onkeydown=(e)=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();themeBtn.onclick({target:themeBtn});}};
@@ -1219,6 +1237,9 @@ function renderGyms(){
 document.body.classList.add("labc");
 (function(){
   const panel=document.createElement("div");panel.id="panel";
+  const hd=document.createElement("button");hd.id="panelHandle";hd.setAttribute("aria-label","Show more map or more list");
+  hd.onclick=()=>{document.body.classList.toggle("panel-peek");setTimeout(()=>map.invalidateSize(),280);};
+  panel.appendChild(hd);
   const tabs=document.createElement("div");tabs.id="paneltabs";
   const bm=document.createElement("button");bm.textContent="Mats";bm.className="on";
   const bg=document.createElement("button");bg.textContent="Gyms";
