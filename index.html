@@ -12,8 +12,12 @@
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://likewaterh20.github.io/openmat/og.png">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="preconnect" href="https://a.basemaps.cartocdn.com" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#FAFAF8">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0C0C0B">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -53,6 +57,7 @@
   .profilebtn{background:var(--mat);border-color:var(--mat);color:#fff}
   .profilebtn:hover{background:var(--ink);border-color:var(--ink);color:var(--paper)}
   .profilebtn .beltdot{border-color:#fff}
+  #profileLabel{max-width:110px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block;vertical-align:middle}
   @media(max-width:520px){.postbtn{padding:8px 9px;font-size:9px}.beltdot{margin-right:4px}}
   .chipgrid{display:flex;flex-wrap:wrap;gap:6px}
   .chipgrid .chip .beltdot{margin-right:5px}
@@ -196,6 +201,7 @@
   #panel .list{flex:1;overflow-y:auto;padding:6px 12px 16px;max-width:none}
   #panel .note{position:static;font-size:9px;padding:9px 12px}
   body.labc.gyms-on #cards,body.labc.gyms-on .count{display:none}
+  body.labc.gyms-on .filters{display:none} /* filters act on mats, not the gym directory */
   body.labc:not(.gyms-on) #gymlist{display:none}
   body.labc .card{margin-bottom:10px}
   #gymdetail{display:none;flex:1;overflow-y:auto;padding:14px 14px 20px}
@@ -896,7 +902,12 @@ DAYS.forEach((d,i)=>{
   b.className="day"+(i===activeDay?" active":"");
   b.setAttribute("role","tab");
   b.innerHTML = d + '<span class="today-dot">'+(i===todayIdx?"TODAY":"")+'</span>';
-  b.onclick=()=>{activeDay=i;render();};
+  b.onclick=()=>{
+    activeDay=i;
+    /* picking a day while browsing gyms means "show me that day" — jump back to Mats */
+    if(document.body.classList.contains("gyms-on")){const bm=document.querySelector("#paneltabs button");if(bm)bm.click();}
+    render();
+  };
   strip.appendChild(b);
 });
 
@@ -1096,6 +1107,11 @@ function render(){
     active=active.map(withD).filter(fitRadius).sort((a,b)=>a._d-b._d);
     anytime=anytime.map(withD).filter(fitRadius).sort((a,b)=>a._d-b._d);
   }
+  /* today: rolling now first, then upcoming, ended sinks to the bottom */
+  if(activeDay===todayIdx){
+    const rank=m=>{const st=matStatus(m);return st?({live:0,soon:1,done:3})[st.cls]:2;};
+    active.sort((a,b)=>rank(a)-rank(b)||((a._d!==undefined&&b._d!==undefined)?a._d-b._d:0));
+  }
   const show=active.concat(anytime);
   document.getElementById("count").innerHTML="<b>"+active.length+"</b> open mat"+(active.length===1?"":"s")+" · "+DAYS[activeDay]+(anytime.length?" &nbsp;·&nbsp; +"+anytime.length+" on gym schedule":"")+(userLoc?" &nbsp;·&nbsp; nearest first":"")+(filters.fit&&PROFILE?" &nbsp;·&nbsp; tuned to you":"");
 
@@ -1160,6 +1176,12 @@ function render(){
     }
   }
 
+  /* rebuild pins only when something pin-relevant changed (day, filters, data, profile) —
+     the 60s status tick and card-only rerenders skip this whole block */
+  const markerSig=activeDay+"|"+[filters.fit,filters.free,filters.gi,filters.nogi].join(",")+"|"+allMats().length
+    +"|"+(PROFILE?PROFILE.trains+PROFILE.belt+(PROFILE.times||[]).join(","):"");
+  if(markerSig===render._lastMarkerSig){renderYouMarker();return;}
+  render._lastMarkerSig=markerSig;
   markers.forEach(x=>map.removeLayer(x));markers=[];
   const groups = {};
   allMats().filter(m=>m.lat!==null).forEach(m=>{
@@ -1175,6 +1197,9 @@ function render(){
     (window.MARKER_BY_KEY=window.MARKER_BY_KEY||{})[m.gym+"|"+m.lat+"|"+m.lng]=mk; mk.on("click",()=>openGymSheet(list)); /* LAB: sheet replaces popup */
     markers.push(mk);
   });
+  renderYouMarker();
+}
+function renderYouMarker(){
   if(youMarker){map.removeLayer(youMarker);youMarker=null;}
   if(userLoc){youMarker=L.marker([userLoc.lat,userLoc.lng],{icon:L.divIcon({className:"",html:'<div style="background:var(--ink);width:14px;height:14px;border:3px solid #fff;border-radius:50%;box-shadow:0 0 0 2px var(--ink)"></div>',iconSize:[14,14],iconAnchor:[7,7]})}).addTo(map);}
 }
@@ -1281,6 +1306,7 @@ openGymSheet=function(list){
   const sh=document.createElement("button");sh.textContent="Share";sh.onclick=()=>shareMat(m);acts.appendChild(sh);
   det.appendChild(acts);
   document.body.classList.add("detail-on");
+  document.body.classList.remove("panel-peek"); /* a school page deserves the full panel */
   map.flyTo([m.lat,m.lng],13,{duration:.5});
 };
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeGymPanel();});
