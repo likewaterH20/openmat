@@ -20,9 +20,22 @@
   "Advanced Martial Arts": {
    "checked": "2026-08-02",
    "fails": 0,
-   "lines": [],
+   "lines": [
+    "11:30- no gi",
+    "5:30- kids class(w/gi)",
+    "6:30- beginner bjj",
+    "6:30- bjj",
+    "6:30-bjj",
+    "7:30- no gi",
+    "friday \u2013 9:00am open mat",
+    "monday \u2013 9:00am open mat",
+    "saturday \u2013 10:30 drill class",
+    "thursday \u2013 5:30 kids class(no gi)",
+    "tuesday \u2013 6:30 beginner bjj(w/gi)",
+    "wednesday \u2013 9:00am open mat"
+   ],
    "site": "https://advancedbjjnj.com/schedule/",
-   "text": 0,
+   "text": 12,
    "watched": "https://advancedbjjnj.com/schedule/"
   },
   "Ahlert Jiu Jitsu": {
@@ -233,9 +246,25 @@
   "Chokelab BJJ Academy": {
    "checked": "2026-08-02",
    "fails": 0,
-   "lines": [],
+   "lines": [
+    "10:00 am - 12:00 pm adult all level no-gi",
+    "10:00 am - 12:00 pm adult all levels bjj (blue kimono)",
+    "10:30 am - 12:30 pm open mat - all levels jiu-jitsu",
+    "5:30 pm - 6:30 pm tiny scientists mma",
+    "5:30 pm - 6:30 pm tiny scientists self defense bjj",
+    "5:30 pm - 7:30 pm all level kids competition bjj",
+    "5:30 pm - 8:30 pm all levels sparring (gi & no gi)",
+    "5:30 pm - 8:30 pm all levels sparring (white kimono)",
+    "5:30 pm- 7:30 pm all level kids competition bjj",
+    "6:30 pm - 7:30 pm jr. scientists mma",
+    "6:30 pm - 7:30 pm jr. scientists self defense bjj",
+    "7:30 pm - 8:45 pm adult all level bjj (white kimono)",
+    "7:30 pm - 9:30 pm adult all level bjj (white kimono)",
+    "7:30 pm - 9:30 pm all levels bjj (open mat)",
+    "9:30 am - 11:30 am adult all levels bjj (black kimono)"
+   ],
    "site": "https://chokelabacademy.com/bjj-class-schedule-harrison-nj/",
-   "text": 0,
+   "text": 15,
    "watched": "https://chokelabacademy.com/bjj-class-schedule-harrison-nj/"
   },
   "Close Quarters BJJ & Fitness": {
@@ -528,6 +557,7 @@
    ],
    "site": "https://www.hillsboroughbjj.com",
    "text": 1,
+   "thinAt": "2026-08-02",
    "watched": "https://www.hillsboroughbjj.com/schedule"
   },
   "House of Salt Jiu-Jitsu": {
@@ -667,9 +697,21 @@
   "NJ Ronin Jiu Jitsu": {
    "checked": "2026-08-02",
    "fails": 0,
-   "lines": [],
+   "lines": [
+    "friday bjj gi 4:45pm-5:30pm",
+    "friday jiu jitsu (gi) 6:30pm",
+    "friday jiu jitsu 5:30pm-6:15pm saturday striking/boxing 10am-10:45am",
+    "monday jiu jitsu 5:30pm-6:15pm | wednesday jiu jitsu 5:30pm-6:15pm",
+    "monday jiu jitsu 6:30pm",
+    "monday striking/boxing 4:45pm-5:30pm | wednesday jiu jitsu 4:45pm-5:30pm",
+    "saturday striking 11am open mat12pm",
+    "thursday judo 6:30pm",
+    "tuesday striking 7pm jiu jitsu (gi) 8pm",
+    "wednesday striking 6:30pm jiu jitsu 7:15pm",
+    "image: new-schedule-819x1024.png"
+   ],
    "site": "https://njronin.com/schedule/",
-   "text": 0,
+   "text": 10,
    "watched": "https://njronin.com/schedule/"
   },
   "New Journey MMA": {
@@ -1035,7 +1077,7 @@
    "lines": [],
    "site": "https://www.silverfoxbjjbutler.com",
    "text": 0,
-   "watched": "https://www.silverfoxbjjbutler.com"
+   "watched": "https://silverfoxbjjbutler.com/"
   },
   "Silver Fox BJJ East Hanover": {
    "checked": "2026-08-02",
@@ -1209,7 +1251,9 @@
   },
   "Viper's Den Jiu-Jitsu": {
    "checked": "2026-08-02",
-   "fails": 0,
+   "error": "URLError: <urlopen error [SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol versio",
+   "fails": 1,
+   "lastFail": "2026-08-02",
    "lines": [
     "10:00-12:00 pm open mat",
     "11:30-12:30 pm fundamentals bjj",

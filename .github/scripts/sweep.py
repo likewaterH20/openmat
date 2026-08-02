@@ -240,25 +240,34 @@ def main():
                   + (" (%d lines)" % len(r["lines"]) if not r["error"] else " " + r["error"]),
                   file=sys.stderr)
 
-    changed, unreachable, persistent, blind = [], [], [], []
+    changed, unreachable, persistent, blind, thin = [], [], [], [], []
     snap = {}
     for r in results:
         old = prev.get(r["gym"], {})
+        old_lines = old.get("lines") or []
         if r["error"]:
             fails = old.get("fails", 0) + 1
             snap[r["gym"]] = dict(old, error=r["error"], fails=fails, lastFail=today)
-            snap[r["gym"]].setdefault("lines", old.get("lines", []))
             unreachable.append((r["gym"], r["error"], fails))
             if fails >= FAIL_STREAK_ALERT:
                 persistent.append((r["gym"], r["site"], fails))
+            continue
+
+        # A page that used to read fine and now reads as nothing is a blocked or
+        # half-rendered fetch, not a gym that deleted its schedule. Keep what we
+        # had and say so, rather than screaming about a change that didn't happen.
+        if old_lines and len(r["lines"]) < len(old_lines) * 0.4:
+            snap[r["gym"]] = dict(old, checked=today, fails=0, thinAt=today)
+            thin.append((r["gym"], r["watched"], len(old_lines), len(r["lines"])))
             continue
 
         snap[r["gym"]] = {"site": r["site"], "watched": r["watched"], "lines": r["lines"],
                           "text": r["text"], "checked": today, "fails": 0}
         if not r["lines"]:
             blind.append((r["gym"], r["watched"]))
-        if old.get("lines") is not None and not first_run:
-            added, removed = diff_lines(old.get("lines", []), r["lines"])
+        # Nothing to diff against on a gym we've never successfully read before.
+        elif old_lines and not first_run:
+            added, removed = diff_lines(old_lines, r["lines"])
             if added or removed:
                 changed.append((r["gym"], r["watched"], added, removed))
 
@@ -286,19 +295,28 @@ def main():
         for gym, url, fails in persistent:
             lines.append("- **%s** — %s (%d days)" % (gym, url, fails))
         lines.append("")
-    if blind and monday:
-        lines.append("## Hand-check this week (%d)\n" % len(blind))
-        lines.append("_Schedule is a picture or a JS widget, so the robot can't read it. "
-                     "These only get verified when a person looks._\n")
-        for gym, url in blind:
+    if thin:
+        lines.append("## Came back thin — probably a blocked fetch, not a change\n")
+        for gym, url, was, now in thin:
+            lines.append("- **%s** — %s (%d schedule lines yesterday, %d today; "
+                         "kept yesterday's copy)" % (gym, url, was, now))
+        lines.append("")
+    handcheck = blind + [(g, u) for g, u, _, _ in thin]
+    if handcheck and monday:
+        lines.append("## Hand-check this week (%d)\n" % len(handcheck))
+        lines.append("_The robot can't read these — the schedule is a picture, a JS widget, "
+                     "or the site blocks it. They only get verified when a person looks._\n")
+        for gym, url in handcheck:
             lines.append("- [ ] **%s** — %s" % (gym, url))
         lines.append("")
     lines.append("---")
-    lines.append("_%s · %d gyms checked · %d reachable · %d changed · %d unreachable · %d unreadable_"
-                 % (today, len(results), ok, len(changed), len(unreachable), len(blind)))
+    lines.append("_%s · %d gyms checked · %d reachable · %d changed · %d unreachable · "
+                 "%d unreadable · %d thin_"
+                 % (today, len(results), ok, len(changed), len(unreachable), len(blind), len(thin)))
     report = "\n".join(lines)
 
-    quiet = not changed and not persistent and not (blind and monday) and not first_run
+    # A thin read is noise, not news: it never opens an issue on its own.
+    quiet = not changed and not persistent and not (handcheck and monday) and not first_run
     healthy = ok >= max(1, int(len(results) * 0.8))
 
     if not args.dry_run:
