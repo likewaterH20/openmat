@@ -325,7 +325,7 @@
   <div class="modal">
     <h2 id="mg-title">Message the school</h2>
     <p id="mg-sub">Sent from your own email or texts · replies come straight to you.</p>
-    <div class="field"><label for="mg-text">Your question</label><textarea id="mg-text" rows="4" placeholder="Is your open mat open to visitors? Any mat fee?" style="width:100%;border:1px solid var(--line);background:var(--card);padding:12px 14px;font-family:'Inter',sans-serif;font-size:14px;color:var(--ink);resize:vertical"></textarea></div>
+    <div class="field"><label for="mg-text">Your question</label><textarea id="mg-text" rows="4" maxlength="500" placeholder="Is your open mat open to visitors? Any mat fee?" style="width:100%;border:1px solid var(--line);background:var(--card);padding:12px 14px;font-family:'Inter',sans-serif;font-size:14px;color:var(--ink);resize:vertical"></textarea></div>
     <div class="field" id="mg-namewrap"><label for="mg-name">Your name</label><input id="mg-name" type="text" placeholder="So they know who's asking"></div>
     <div class="actions">
       <button class="btn ghost" id="mg-close">Cancel</button>
@@ -1041,6 +1041,7 @@ function shareMat(m){
 const msgOverlay=document.getElementById("msgOverlay");
 let MSG_GYM=null;
 function openMessage(m){
+  if(typeof hideSuggest==="function")hideSuggest();
   MSG_GYM=m;
   document.getElementById("mg-title").textContent="Message "+m.gym;
   const hasName=PROFILE&&PROFILE.name;
@@ -1105,6 +1106,7 @@ function paintProfile(){
   if(!PROFILE){filters.fit=false;chip.classList.remove("on");}
 }
 document.getElementById("profileBtn").onclick=()=>{
+  if(typeof hideSuggest==="function")hideSuggest();
   draft={belt:PROFILE?PROFILE.belt:"White",trains:PROFILE?PROFILE.trains:"Gi + No-Gi",
     days:PROFILE&&Array.isArray(PROFILE.days)?[...PROFILE.days]:[],
     times:PROFILE&&Array.isArray(PROFILE.times)?[...PROFILE.times]:[]};
@@ -1130,7 +1132,7 @@ document.getElementById("saveProf").onclick=async()=>{
 
 /* post a mat */
 const overlay=document.getElementById("overlay");
-const openModal=()=>{overlay.classList.add("open");document.getElementById("f-gym").focus();};
+const openModal=()=>{if(typeof hideSuggest==="function")hideSuggest();overlay.classList.add("open");document.getElementById("f-gym").focus();};
 document.getElementById("openPost").onclick=openModal;
 document.getElementById("openPost2").onclick=openModal;
 document.getElementById("closePost").onclick=()=>overlay.classList.remove("open");
@@ -1458,7 +1460,7 @@ openGymSheet=function(list){
   document.body.classList.remove("panel-peek"); /* a school page deserves the full panel */
   map.flyTo([m.lat,m.lng],13,{duration:.5});
 };
-document.addEventListener("keydown",e=>{if(e.key==="Escape")closeGymPanel();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!document.querySelector(".overlay.open"))closeGymPanel();},true); /* capture: decide before overlay handlers close things */
 
 /* pick up where they left off: restore last search, else home turf from profile */
 paintProfile();
