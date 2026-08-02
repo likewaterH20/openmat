@@ -19,7 +19,9 @@
   },
   "Advanced Martial Arts": {
    "checked": "2026-08-02",
-   "fails": 0,
+   "error": "URLError: <urlopen error timed out>",
+   "fails": 1,
+   "lastFail": "2026-08-02",
    "lines": [
     "11:30- no gi",
     "5:30- kids class(w/gi)",
@@ -245,7 +247,9 @@
   },
   "Chokelab BJJ Academy": {
    "checked": "2026-08-02",
-   "fails": 0,
+   "error": "URLError: <urlopen error timed out>",
+   "fails": 1,
+   "lastFail": "2026-08-02",
    "lines": [
     "10:00 am - 12:00 pm adult all level no-gi",
     "10:00 am - 12:00 pm adult all levels bjj (blue kimono)",
@@ -312,6 +316,7 @@
    ],
    "site": "https://aommma.com/schedule/",
    "text": 17,
+   "thinAt": "2026-08-02",
    "watched": "https://aommma.com/schedule/"
   },
   "Echo Alpha Gracie Jiu Jitsu": {
@@ -402,6 +407,7 @@
    ],
    "site": "https://www.gaelforcejiujitsu.com",
    "text": 2,
+   "thinAt": "2026-08-02",
    "watched": "https://www.gaelforcejiujitsu.com/schedule/"
   },
   "Garden State BJJ Academy": {
@@ -557,7 +563,6 @@
    ],
    "site": "https://www.hillsboroughbjj.com",
    "text": 1,
-   "thinAt": "2026-08-02",
    "watched": "https://www.hillsboroughbjj.com/schedule"
   },
   "House of Salt Jiu-Jitsu": {
@@ -637,6 +642,7 @@
    ],
    "site": "https://loftusjiujitsu.com/classes/",
    "text": 14,
+   "thinAt": "2026-08-02",
    "watched": "https://loftusjiujitsu.com/classes/"
   },
   "Madhouse Academy": {
@@ -647,6 +653,7 @@
    ],
    "site": "https://madhouseacademy.com",
    "text": 0,
+   "thinAt": "2026-08-02",
    "watched": "https://madhouseacademy.com"
   },
   "Mark Ramos Academy": {
@@ -696,7 +703,9 @@
   },
   "NJ Ronin Jiu Jitsu": {
    "checked": "2026-08-02",
-   "fails": 0,
+   "error": "URLError: <urlopen error timed out>",
+   "fails": 1,
+   "lastFail": "2026-08-02",
    "lines": [
     "friday bjj gi 4:45pm-5:30pm",
     "friday jiu jitsu (gi) 6:30pm",
@@ -1084,7 +1093,9 @@
   },
   "Silver Fox BJJ Butler": {
    "checked": "2026-08-02",
-   "fails": 0,
+   "error": "URLError: <urlopen error timed out>",
+   "fails": 1,
+   "lastFail": "2026-08-02",
    "lines": [],
    "site": "https://www.silverfoxbjjbutler.com",
    "text": 0,
@@ -1157,6 +1168,7 @@
    ],
    "site": "https://studio1908jj.com/schedule/",
    "text": 13,
+   "thinAt": "2026-08-02",
    "watched": "https://studio1908jj.com/schedule/"
   },
   "The Academy of Jiu-Jitsu": {
