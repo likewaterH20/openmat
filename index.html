@@ -197,6 +197,13 @@
   .sugrow .sugdot{display:flex;align-items:center;justify-content:center;background:var(--mat);color:#fff;font-family:'Anton';font-size:11px;border:0}
   .sugrow .sugtown{margin-left:auto;color:var(--mist);font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
   .sugrow.sugplace{color:var(--mat);font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+  /* GPS recenter: fly back to your location */
+  #recenter{position:fixed;right:16px;bottom:24px;z-index:610;width:46px;height:46px;border-radius:50%;background:var(--paper);border:1px solid var(--line);box-shadow:0 4px 14px rgba(11,11,10,.28);cursor:pointer;font-size:22px;line-height:1;color:var(--mat);display:flex;align-items:center;justify-content:center;appearance:none;transition:bottom .25s,transform .12s}
+  #recenter:active{transform:scale(.92)}
+  @media(max-width:899px){
+    #recenter{bottom:calc(52dvh + 14px)}
+    body.panel-peek #recenter{bottom:calc(30dvh + 14px)}
+  }
   #gymdetail .headrow{display:flex;align-items:center;gap:12px}
   #gymdetail .dlogo{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);object-fit:cover;background:#fff;flex:none}
   .gymrow .glogo{width:34px;height:34px;border-radius:50%;flex:none;object-fit:cover;background:#fff;border:1px solid var(--line);margin-right:2px}
@@ -1365,6 +1372,17 @@ document.body.classList.add("labc");
   const det=document.createElement("div");det.id="gymdetail";panel.appendChild(det);
   panel.appendChild(document.querySelector(".note"));
   setTimeout(()=>map.invalidateSize(),120);
+})();
+/* GPS-style recenter button */
+(function(){
+  const rc=document.createElement("button");
+  rc.id="recenter";rc.textContent="⌖";
+  rc.title="Back to your location";rc.setAttribute("aria-label","Back to your location");
+  rc.onclick=()=>{
+    if(userLoc){map.flyTo([userLoc.lat,userLoc.lng],11,{duration:.6});}
+    else{document.getElementById("nearBtn").click();}
+  };
+  document.body.appendChild(rc);
 })();
 /* ===== school search: type a name, get the school (Google-Maps feel) ===== */
 function gymMatches(v){
