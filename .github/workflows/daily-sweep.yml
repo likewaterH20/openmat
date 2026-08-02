@@ -1,0 +1,62 @@
+name: Daily sweep
+
+# Checks every listed gym's own website for schedule changes.
+# It never edits gym data — it only says "go look at this one".
+# Quiet day = LAST_UPDATE gets bumped. Something moved = an issue gets opened.
+#
+# No untrusted input reaches a run: block. The only interpolations are this
+# repo's own script outputs, and they are passed through env: anyway.
+
+on:
+  schedule:
+    - cron: "0 11 * * *" # 7:00 AM ET (11:00 UTC)
+  workflow_dispatch: # "Run workflow" button for an on-demand sweep
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: daily-sweep
+  cancel-in-progress: false
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check every gym site
+        id: sweep
+        run: python3 .github/scripts/sweep.py
+
+      - name: Post the report to the run summary
+        if: always()
+        run: cat .github/data/sweep-report.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit snapshot (and LAST_UPDATE on a clean day)
+        env:
+          BUMPED: ${{ steps.sweep.outputs.bumped }}
+        run: |
+          git config user.name  "openmat-sweep[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .github/data/snapshots.json .github/data/sweep-report.md index.html
+          if git diff --cached --quiet; then
+            echo "nothing changed"
+          else
+            if [ "$BUMPED" = "true" ]; then
+              git commit -m "Daily sweep: no schedule changes, data still current"
+            else
+              git commit -m "Daily sweep: snapshot updated, changes need a human"
+            fi
+            git push
+          fi
+
+      - name: Open an issue when something moved
+        if: steps.sweep.outputs.alert == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CHANGED: ${{ steps.sweep.outputs.changed }}
+        run: |
+          TITLE="Sweep $(date -u +%Y-%m-%d): $CHANGED gym page(s) changed"
+          gh issue create --title "$TITLE" --body-file .github/data/sweep-report.md

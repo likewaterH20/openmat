@@ -1,0 +1,1289 @@
+{
+ "generated": "2026-08-02",
+ "gyms": {
+  "AMA BJJ & Muay Thai": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [],
+   "site": "https://www.joinamafightclub.com",
+   "text": 0,
+   "watched": "https://www.joinamafightclub.com"
+  },
+  "ASCEND Jiu-Jitsu": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [],
+   "site": "https://www.ascendjiujitsu.com/schedule",
+   "text": 0,
+   "watched": "https://www.ascendjiujitsu.com/schedule"
+  },
+  "Advanced Martial Arts": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "11:30- no gi",
+    "5:30- kids class(w/gi)",
+    "6:30- beginner bjj",
+    "6:30- bjj",
+    "6:30-bjj",
+    "7:30- no gi",
+    "friday \u2013 9:00am open mat",
+    "monday \u2013 9:00am open mat",
+    "saturday \u2013 10:30 drill class",
+    "thursday \u2013 5:30 kids class(no gi)",
+    "tuesday \u2013 6:30 beginner bjj(w/gi)",
+    "wednesday \u2013 9:00am open mat"
+   ],
+   "site": "https://advancedbjjnj.com/schedule/",
+   "text": 12,
+   "watched": "https://advancedbjjnj.com/schedule/"
+  },
+  "Ahlert Jiu Jitsu": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "10:00am \u2013 11:00am no gi class (all levels)",
+    "10:00am \u2013 11:00am yoga for bjj",
+    "11:00am bjj open mat",
+    "5:30pm-6:15pm technique/drilling only",
+    "5:30pm-6:30pm gi bjj (all levels)",
+    "5:30pm-6:30pm no gi bjj (all levels)",
+    "5:30pm-6:45pm gi bjj (all levels)",
+    "6:15pm-7:30pm gi bjj (all levels)",
+    "6:30pm-7:30pm jiu jitsu for mma \u2013 (all levels)",
+    "6:30pm-7:30pm muay thai (all levels)",
+    "6:30pm-7:30pm no gi bjj (all levels)",
+    "6:45pm-7:30pm technique/drilling only",
+    "7:30pm \u2013 8:00pm muay thai sparing",
+    "7:30pm \u2013 8:00pmq&a/drilling/open mat",
+    "7:30pm-8:00pm q&a/drilling/open mat",
+    "9:00am \u2013 10:00am combatives (all levels)",
+    "9:00am \u2013 10:00am women\u2019s bjj (all levels)",
+    "q&a/drilling/open mat",
+    "image: 12_5_2025_sched-1024x803.jpg"
+   ],
+   "site": "https://ahlertbjj.com/class-schedule/",
+   "text": 18,
+   "watched": "https://ahlertbjj.com/class-schedule/"
+  },
+  "Americana Jiu Jitsu": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [],
+   "site": "https://americanajj.com",
+   "text": 0,
+   "watched": "https://americanajj.com"
+  },
+  "BJJ North Jersey": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "10:00 am - 11:00 am adult no-gi/wrestle-jitsu (all levels)",
+    "10:00 am - 11:00 am adult open mat",
+    "11:00 am - 3:30 pm small group & personalized lessons",
+    "11:00 am - kickboxing/muy thai",
+    "11:15 am - 12:00 pm kids no gi (9-14yrs)",
+    "12:00 pm - 12:30 pm kids gi (6-8yrs)",
+    "12:00 pm - 1:00 pm adult gi (foundations)",
+    "12:00 pm - 1:00 pm adult no gi (all levels)",
+    "12:00 pm - adult gi (foundations & self defense)",
+    "12:30 pm - 1:00 pm kids (4 & 5yrs)",
+    "4:30 pm - 5:15 pm kids gi (9-14yrs)",
+    "4:30 pm - 6:30 pm small group & personalized lessons",
+    "5:15 pm - 5:45 pm kids (6-8yrs)",
+    "5:15 pm - 5:45 pm kids gi (6-8yrs)",
+    "5:15 pm - 6:00 pm kids striking (8-14yrs)",
+    "6:30 pm - 7:30 pm adult gi (all-levels)",
+    "6:30 pm - 7:30 pm adult gi (foundations & self defense)",
+    "6:30 pm - 7:30 pm muay thai/kickboxing",
+    "6:30 pm - 7:30 pm skills lab/open mat (grappling & striking)",
+    "6:30 pm - 7:30 pm youth wrestling",
+    "7:30 pm - 8:30 pm adult gi (all levels)",
+    "7:30 pm - 8:30 pm adult no-gi (foundations)",
+    "7:30 pm - adult no gi/wrestle-jitsu (all levels)",
+    "7:30 pm - adult no-gi/wrestle-jitsu (all levels)"
+   ],
+   "site": "https://jiujitsunorthjersey.com",
+   "text": 24,
+   "watched": "https://jiujitsunorthjersey.com/Home/Schedule"
+  },
+  "Bataille Jiu Jitsu": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "10:30am",
+    "8:15pm",
+    "no gi - open mat"
+   ],
+   "site": "https://www.bataillejj.com",
+   "text": 3,
+   "watched": "https://www.bataillejj.com/schedule/"
+  },
+  "Bayshore BJJ": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "image: schedule_260113_page-0001.jpg"
+   ],
+   "site": "https://bayshorebjj.com",
+   "text": 0,
+   "watched": "https://bayshorebjj.com/schedule/"
+  },
+  "Binding Arts Jiu Jitsu": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "10:00 am open mat",
+    "4:15 pm kids 3 - 6*",
+    "5:00 pm kids 7 -12*",
+    "5:00 pm women\u2019s fund*",
+    "6:00 am fundamentals*",
+    "6:00 pm no gi",
+    "7:00 pm fundamentals\u00ba",
+    "9:00 am kids all ages",
+    "9:00 am women\u2019s fund",
+    "\u00ba fri open mat 6pm"
+   ],
+   "site": "https://www.bindingartsbjj.com",
+   "text": 10,
+   "watched": "https://www.bindingartsbjj.com/schedule"
+  },
+  "Bones Jiu Jitsu Academy": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [],
+   "site": "https://bonesjiujitsu.com",
+   "text": 0,
+   "watched": "https://bonesjiujitsu.com"
+  },
+  "CULTR Fight Club": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "6:00am - 8:00pm",
+    "6:00am - 9:00pm",
+    "7:30am - 2:00pm"
+   ],
+   "site": "https://www.cultrfightclub.com",
+   "text": 3,
+   "watched": "https://www.cultrfightclub.com"
+  },
+  "Camal and Cruz Judo & BJJ": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "$ 0.00 existing balance",
+    "1 - 2pm",
+    "10 - 11:30am",
+    "10 - 11am",
+    "10:00am",
+    "10:00am - 11:00am",
+    "10:00am - 11:30am",
+    "10:00pm",
+    "11:00am",
+    "11:00pm",
+    "11:30am - 12:00pm",
+    "11:30am - 12pm",
+    "11:45am - 1:00pm",
+    "11:45am - 1pm",
+    "12 - 1pm",
+    "12:00am",
+    "12:00pm",
+    "12:00pm - 1:00pm",
+    "1:00am",
+    "1:00pm",
+    "1:00pm - 2:00pm",
+    "2:00am",
+    "2:00pm",
+    "3:00am",
+    "3:00pm",
+    "4:00am",
+    "4:00pm",
+    "5 - 5:45pm",
+    "5 - 6pm",
+    "5:00am",
+    "5:00pm",
+    "5:00pm - 5:45pm",
+    "5:00pm - 6:00pm",
+    "5:15 - 5:45pm",
+    "5:15pm - 5:45pm",
+    "5:30 - 6:30pm",
+    "5:30 - 6pm",
+    "5:30pm - 6:00pm",
+    "5:30pm - 6:30pm",
+    "5:45 - 6:30pm",
+    "5:45pm - 6:30pm",
+    "6 - 7:30pm",
+    "6 - 7pm",
+    "6:00am",
+    "6:00pm",
+    "6:00pm - 7:00pm",
+    "6:00pm - 7:30pm",
+    "6:30 - 7:30am",
+    "6:30 - 7:30pm",
+    "6:30am - 7:30am",
+    "6:30pm - 7:30pm",
+    "7 - 8pm",
+    "7:00am",
+    "7:00pm",
+    "7:00pm - 8:00pm",
+    "7:30 - 9pm",
+    "7:30pm - 9:00pm",
+    "8:00am",
+    "8:00pm",
+    "9 - 10am",
+    "9:00am",
+    "9:00am - 10:00am",
+    "9:00am - 1:00pm",
+    "9:00pm",
+    "9am - 1pm",
+    "open mat"
+   ],
+   "site": "https://camalandcruz.gymdesk.com/schedule",
+   "text": 66,
+   "watched": "https://camalandcruz.gymdesk.com/schedule"
+  },
+  "Chokelab BJJ Academy": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "10:00 am - 12:00 pm adult all level no-gi",
+    "10:00 am - 12:00 pm adult all levels bjj (blue kimono)",
+    "10:30 am - 12:30 pm open mat - all levels jiu-jitsu",
+    "5:30 pm - 6:30 pm tiny scientists mma",
+    "5:30 pm - 6:30 pm tiny scientists self defense bjj",
+    "5:30 pm - 7:30 pm all level kids competition bjj",
+    "5:30 pm - 8:30 pm all levels sparring (gi & no gi)",
+    "5:30 pm - 8:30 pm all levels sparring (white kimono)",
+    "5:30 pm- 7:30 pm all level kids competition bjj",
+    "6:30 pm - 7:30 pm jr. scientists mma",
+    "6:30 pm - 7:30 pm jr. scientists self defense bjj",
+    "7:30 pm - 8:45 pm adult all level bjj (white kimono)",
+    "7:30 pm - 9:30 pm adult all level bjj (white kimono)",
+    "7:30 pm - 9:30 pm all levels bjj (open mat)",
+    "9:30 am - 11:30 am adult all levels bjj (black kimono)"
+   ],
+   "site": "https://chokelabacademy.com/bjj-class-schedule-harrison-nj/",
+   "text": 15,
+   "watched": "https://chokelabacademy.com/bjj-class-schedule-harrison-nj/"
+  },
+  "Close Quarters BJJ & Fitness": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "image: 695bfa668987903b1fc6b6d1_close%20quarter%20schedule.webp",
+    "image: 695bfa6b2d51dfb2e3b9ab49_close%20quarter%20schedule%20(1).webp"
+   ],
+   "site": "https://www.cqbjjfit.com",
+   "text": 0,
+   "watched": "https://www.cqbjjfit.com/schedule"
+  },
+  "Dan Covel Martial Arts": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [],
+   "site": "https://coveljiujitsu.com",
+   "text": 0,
+   "watched": "https://coveljiujitsu.com"
+  },
+  "Daniel Gracie Art of Movement": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "friday: 4:30pm - 5:30pm (mma)",
+    "friday: 4pm - 8pm",
+    "monday - friday 6:30pm - 7:30pm",
+    "monday thru friday: 10am - 4pm",
+    "monday thru friday: 5:30pm - 9pm",
+    "monday: 4:30pm-5:30pm (bjj)",
+    "monday: 4pm - 8pm",
+    "sunday 12pm -1pm (open mat bjj)",
+    "sunday: 11am - 12pm (gi bjj)",
+    "sunday: 11am - 1pm",
+    "thursday: 4:30pm - 5:30pm (striking)",
+    "thursday: 4pm - 8pm",
+    "tuesday - friday 5:30pm - 6:30pm",
+    "tuesday: 4:30pm - 5:30pm (striking)",
+    "tuesday: 4pm - 8pm",
+    "wednesday: 4:30pm - 5:30pm (bjj)",
+    "wednesday: 4pm - 8pm",
+    "image: schedule-img1.jpg",
+    "image: schedule-img2.jpg"
+   ],
+   "site": "https://aommma.com/schedule/",
+   "text": 17,
+   "watched": "https://aommma.com/schedule/"
+  },
+  "Echo Alpha Gracie Jiu Jitsu": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "monday (nogi) 7pm-8:30pm, tuesday (gi) 7:30-9:00pm, wednesday (gi/nogi) 7pm-8:30pm, thursday (gi) 7:30-9:00pm, saturday 10:30am-12:30pm",
+    "open mat tuesday & thursday 8:00-9:00pm saturdays 11:30-12:30am",
+    "saturday 09:30-10:15",
+    "tuesday & thursday 5:30-6:15 pm"
+   ],
+   "site": "https://www.echoalphabjj.com",
+   "text": 4,
+   "watched": "https://www.echoalphabjj.com/schedule"
+  },
+  "Elevate Jiu Jitsu Academy": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "image: cce09b81--1000x1250.jpg"
+   ],
+   "site": "https://elevatejiujitsuacademy.com",
+   "text": 0,
+   "watched": "https://elevatejiujitsuacademy.com"
+  },
+  "Elijah BJJ": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [],
+   "site": "https://ebjj.com",
+   "text": 0,
+   "watched": "https://ebjj.com"
+  },
+  "Esoteric Jiu Jitsu": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "advanced fundamentals 7:00pm \u2013 8:30pm",
+    "advanced nogi 6:00pm \u2013 7:30pm",
+    "fundamentals 5:30pm \u2013 7:00pm",
+    "fundamentals 7:00pm \u2013 8:30pm",
+    "fundamentals 9:00am-10:30am",
+    "fundamentals 9:15am \u2013 10:45am",
+    "jr. kids gi (5-7 year olds) 5:00pm \u2013 5:45pm",
+    "kids gi (8-13 year olds) 6:00pm \u2013 7:00pm",
+    "kids mma style class (age 7 and up) 5:00pm \u2013 5-45pm",
+    "kids nogi (8-13 year olds) 12:00pm \u2013 1:00pm",
+    "mini kids (3-4 year olds) 11:00am \u2013 11:45am",
+    "mini kids (3-4 year olds) 4:00pm \u2013 4:45pm",
+    "mma style class 7:30pm \u2013 8:30pm",
+    "nogi 7:00pm-8:30pm",
+    "nogi 9:15am \u2013 10:45am",
+    "open mat",
+    "open mat 6:00pm \u2013 7:30pm"
+   ],
+   "site": "http://www.esotericjiujitsu.com/",
+   "text": 17,
+   "watched": "https://www.esotericjiujitsu.com/"
+  },
+  "Fight Republic": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "6pm gi",
+    "7pm gi, 8pm no gi",
+    "7pm no gi, 8pm gi",
+    "mon & wed 9:00 am friday 8 am",
+    "monday 7:00pm",
+    "sat 9:00 am",
+    "saturday 10:00am (open gym)",
+    "saturday 10am open mat",
+    "thursday 6:00am",
+    "thursday 6am no gi",
+    "tuesday 6:00am",
+    "tuesday 6am no gi",
+    "wednesday 7:00pm"
+   ],
+   "site": "https://www.fight-rep.com",
+   "text": 13,
+   "watched": "https://www.fight-rep.com/class-schedule"
+  },
+  "Gael Force Jiu Jitsu": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "open mat",
+    "open mat is unstructured. when you come to open mat you can work with a partner to drill the techniques you choose to practice or you can do live rounds."
+   ],
+   "site": "https://www.gaelforcejiujitsu.com",
+   "text": 2,
+   "watched": "https://www.gaelforcejiujitsu.com/schedule/"
+  },
+  "Garden State BJJ Academy": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "10:00am \u2013 11:00am essentials",
+    "10:00am \u2013 11:15am intermediate",
+    "10:30am \u2013 11:15am orange team",
+    "10:30am \u2013 11:30am blue team",
+    "11:30am \u2013 12:30pm essentials",
+    "11:30am \u2013 12:30pm level 2 kids class",
+    "11:30am \u2013 12:30pm red team",
+    "12:00pm \u2013 1:15pm intermediate",
+    "12:30 pm \u2013 1:45 pm",
+    "4:15pm \u2013 5:00pm orange team",
+    "5:00pm -6:00pm red team",
+    "5:00pm \u2013 5:45pm orange team",
+    "5:00pm \u2013 6:00pm blue team",
+    "5:00pm \u2013 6:00pm level 2 kids class",
+    "5:00pm \u2013 6:00pm red team",
+    "6:00am \u2013 7:00am essentials",
+    "6:00pm -7:00pm red team",
+    "6:00pm \u2013 7:00pm advanced",
+    "6:00pm \u2013 7:00pm essentials",
+    "6:00pm \u2013 7:00pm level 2 kids class",
+    "6:00pm \u2013 7:00pm red team",
+    "6:00pm \u2013 7:15pm intermediate",
+    "7:00am \u2013 7:30am open mat",
+    "7:15pm \u2013 8:15pm",
+    "7:15pm \u2013 8:15pm advanced",
+    "7:15pm \u2013 8:15pm essentials",
+    "7:15pm \u2013 8:15pm women\u2019s class",
+    "7:15pm \u2013 8:30pm intermediate",
+    "7:15pm \u2013 8:30pm open mat",
+    "8:00am \u2013 9:00am",
+    "9:00am \u2013 10:00am essentials",
+    "9:00am \u2013 10:15am advanced",
+    "9:15am \u2013 10:45am"
+   ],
+   "site": "https://gardenstatebjj.com/schedule/",
+   "text": 33,
+   "watched": "https://gardenstatebjj.com/schedule/"
+  },
+  "Garry Tonon Jiu Jitsu": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "11:00am (sat - sun)",
+    "11:00am kids (sunday)",
+    "12:30pm (mon, weds, fri)",
+    "5:30pm kids (mon - thurs)",
+    "6:00am (thursday)",
+    "6:30pm (mon, weds, fri)",
+    "7:30pm (mon - friday)",
+    "all levels: 7:00 pm \u2013 8:30 pm",
+    "basic : 12:30 pm \u2013 1:30 pm",
+    "basic gi : 10:00 am \u2013 11:00 am",
+    "basic no-gi: 11:00 am \u2013 12:00 pm",
+    "basic: 11:00 am \u2013 12:00 pm",
+    "basic: 12:30 pm \u2013 1:30 pm",
+    "basic: 6:00 am \u2013 7:00 am",
+    "basic: 6:30 pm \u2013 7:30 pm",
+    "basic: 7:30 pm \u2013 8:30 pm",
+    "intermediate: 7:30 pm \u2013 8:30 pm",
+    "intermediate: 7:30 pm \u2013 8:30 pm \u200b",
+    "kids : 5:30 pm \u2013 6:30 pm",
+    "kids: 11:00 am \u2013 12:00 pm",
+    "kids: 5:30 pm \u2013 6:30 pm",
+    "open mat is a time available for students to use the mats, stretch, review techniques with fellow students, live train jiu jitsu under instructor supervision.",
+    "open mat/live training",
+    "open mat: 6:30 pm \u2013 7:30 pm"
+   ],
+   "site": "https://www.garrytononjiujitsu.com/class-schedule",
+   "text": 24,
+   "watched": "https://www.garrytononjiujitsu.com/class-schedule"
+  },
+  "Gorilla BJJ Academy": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [],
+   "site": "https://www.gorillabjjacademy.com",
+   "text": 0,
+   "watched": "https://www.gorillabjjacademy.com"
+  },
+  "Gracie Barra North Princeton": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [],
+   "site": "https://gbprinceton.com",
+   "text": 0,
+   "watched": "https://gbprinceton.com"
+  },
+  "Gracie Barra Princeton": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [],
+   "site": "https://gbprinceton.com",
+   "text": 0,
+   "watched": "https://gbprinceton.com"
+  },
+  "Hibiscus Brazilian BJJ": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [],
+   "site": "https://www.hibiscusbjj.com",
+   "text": 0,
+   "watched": "https://www.hibiscusbjj.com"
+  },
+  "High Impact Martial Arts": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "10:00 \u2013 11:00 am",
+    "11:00 am \u2013 12:00 pm",
+    "12 \u2013 1 pm",
+    "5:30 \u2013 6:30 pm",
+    "6:30 \u2013 7:30 pm",
+    "7:30 \u2013 8:30 pm",
+    "8:30 \u2013 9:30 pm",
+    "9 \u2013 10 am (open mat)",
+    "friday @ 6:30 \u2013 7:30 pm",
+    "friday @ 7:30 \u2013 8:30 pm",
+    "monday @ 5:30 \u2013 6:30 pm",
+    "monday @ 6:30 \u2013 7:30 pm",
+    "monday @ 7:30 \u2013 8:30 pm",
+    "monday @ 8:30 \u2013 9:30 pm",
+    "saturday (open mat) @ 9 \u2013 10 am",
+    "saturday @ 10 \u2013 11 am",
+    "saturday @ 11 am \u2013 12 pm",
+    "saturday @ 12 \u2013 1 pm",
+    "thursday @ 6:30 \u2013 7:30 pm",
+    "thursday @ 7:30 \u2013 8:30 pm",
+    "thursday @ 8:30 \u2013 9:30 pm",
+    "tuesday @ 6:30 \u2013 7:30 pm",
+    "tuesday @ 7:30 \u2013 8:30 pm",
+    "tuesday @ 8:30 \u2013 9:30 pm",
+    "wednesday @ 5:30 \u2013 6:30 pm",
+    "wednesday @ 6:30 \u2013 7:30 pm",
+    "wednesday @ 7:30 \u2013 8:30 pm",
+    "wednesday @ 8:30 \u2013 9:30 pm",
+    "image: 05.jpg"
+   ],
+   "site": "https://www.highimpactma.com",
+   "text": 28,
+   "watched": "https://www.highimpactma.com"
+  },
+  "Hillsborough BJJ": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [],
+   "site": "https://www.hillsboroughbjj.com",
+   "text": 0,
+   "watched": "https://www.hillsboroughbjj.com"
+  },
+  "House of Salt Jiu-Jitsu": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "image: schedule2026.png"
+   ],
+   "site": "https://houseofsaltnj.com",
+   "text": 0,
+   "watched": "https://houseofsaltnj.com/schedule"
+  },
+  "Immortals Jiu Jitsu": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "10:00 am - 11:00 am immortals juniors 6-15 yrs",
+    "11:00 am - 12:30 pm striking",
+    "12:30 pm - 2:00 pm no gi jiu jitsu",
+    "1:00 pm - 2:00 pm muay thai kickboxing",
+    "2:00 pm - 4:00 pm open mat",
+    "5:00 pm - 5:30 pm immortals minis (gi) 4-6 yrs",
+    "5:30 pm - 6:30 pm immortals juniors (gi) 7-13 year olds",
+    "5:30 pm - 6:30 pm immortals juniors (no-gi)",
+    "5:30 pm - 6:30 pm immortals juniors (no-gi) 7-13 year olds",
+    "5:30 pm - 6:30 pm kids kickboxing",
+    "6:30 pm - 7:30 pm fundamentals jiu jitsu",
+    "6:30 pm - 7:30 pm muay thai kickboxing",
+    "6:30 pm - 7:30 pm no gi jiu jitsu",
+    "7:30 pm - 8:30 pm no gi jiu jitsu",
+    "7:30 pm - 8:30 pm wrestling",
+    "9:00 am - 10:00 am immortals juniors 4-6 yrs"
+   ],
+   "site": "https://immortalsjiujitsu.com/Home/Schedule",
+   "text": 16,
+   "watched": "https://immortalsjiujitsu.com/Home/Schedule"
+  },
+  "Impact Martial Arts": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "1:00 pm \u2013 9:30 pm",
+    "9:30am\u201312:30pm"
+   ],
+   "site": "https://impactmartialarts.net",
+   "text": 2,
+   "watched": "https://impactmartialarts.net"
+  },
+  "Kombat BJJ": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "mon-fri 11am-8:30pm / sat:11:30am-1pm"
+   ],
+   "site": "https://kombatjits.com",
+   "text": 1,
+   "watched": "https://kombatjits.com"
+  },
+  "Loftus Jiu Jitsu Academy": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "11:00 am \u2013 noon",
+    "1:00 \u2013 2:00 pm",
+    "4:00 \u2013 4:40 pm",
+    "4:30 \u2013 5:30 pm",
+    "5:00 \u2013 6:00 pm",
+    "5:30 \u2013 6:30 pm",
+    "6:00 \u2013 7:00 am",
+    "6:00 \u2013 7:00 pm",
+    "6:30 \u2013 7:30 pm",
+    "7:00 \u2013 8:00 pm",
+    "7:30 \u2013 8:30 pm",
+    "8:00 \u2013 9:00 pm",
+    "noon \u2013 1:00 pm",
+    "open mat"
+   ],
+   "site": "https://loftusjiujitsu.com/classes/",
+   "text": 14,
+   "watched": "https://loftusjiujitsu.com/classes/"
+  },
+  "Madhouse Academy": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "image: placeholder.png"
+   ],
+   "site": "https://madhouseacademy.com",
+   "text": 0,
+   "watched": "https://madhouseacademy.com"
+  },
+  "Mark Ramos Academy": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "image: schedule-3-1-2024.jpg"
+   ],
+   "site": "https://www.markramosacademy.com",
+   "text": 0,
+   "watched": "https://www.markramosacademy.com/our-schedule"
+  },
+  "Method Jiu Jitsu": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "image: 68dec405327fa9c9da5ea079_method%202025%20schedule-01-01.png"
+   ],
+   "site": "https://www.methodjj.com/",
+   "text": 0,
+   "watched": "https://www.methodjj.com/"
+  },
+  "Move Jiu Jitsu Academy": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "3:00 pm \u2013 open mat for everyone!",
+    "4:00 pm \u2013 bjj gi",
+    "7:00 pm \u2013 bjj no-gi",
+    "8:00 pm \u2013 bjj gi",
+    "8:00 pm \u2013 bjj no-gi",
+    "8:30 am \u2013 bjj gi"
+   ],
+   "site": "https://movejiujitsu.com",
+   "text": 6,
+   "watched": "https://movejiujitsu.com/schedule/"
+  },
+  "Mundo BJJ": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "image: 2025-06-20-11_40_43-schedule---google-sheets-dwxopp2vnvfzlber.jpg"
+   ],
+   "site": "https://mundobjjacademy.com",
+   "text": 0,
+   "watched": "https://mundobjjacademy.com/schedule"
+  },
+  "NJ Ronin Jiu Jitsu": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "friday bjj gi 4:45pm-5:30pm",
+    "friday jiu jitsu (gi) 6:30pm",
+    "friday jiu jitsu 5:30pm-6:15pm saturday striking/boxing 10am-10:45am",
+    "monday jiu jitsu 5:30pm-6:15pm | wednesday jiu jitsu 5:30pm-6:15pm",
+    "monday jiu jitsu 6:30pm",
+    "monday striking/boxing 4:45pm-5:30pm | wednesday jiu jitsu 4:45pm-5:30pm",
+    "saturday striking 11am open mat12pm",
+    "thursday judo 6:30pm",
+    "tuesday striking 7pm jiu jitsu (gi) 8pm",
+    "wednesday striking 6:30pm jiu jitsu 7:15pm",
+    "image: new-schedule-819x1024.png"
+   ],
+   "site": "https://njronin.com/schedule/",
+   "text": 10,
+   "watched": "https://njronin.com/schedule/"
+  },
+  "New Journey MMA": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "10:15am-11:20am",
+    "10am-2pm",
+    "12-2pm",
+    "12pm-6pm",
+    "3-6yrs @ 3pm & @4pm",
+    "4:30pm- 5:00pm",
+    "4:30pm-5:00pm",
+    "5:00pm-5:45pm",
+    "5:10pm-5:40pm",
+    "5:45pm - 6:30pm",
+    "5:45pm- 6:30pm",
+    "5:45pm-6:30pm",
+    "6:30pm - grappling only",
+    "6:30pm- grappling only",
+    "6:30pm-7:15pm",
+    "6:30pm-8pm open mat",
+    "7-13yrs @5pm & @6pm",
+    "7:20pm - 8:20pm",
+    "7:30pm - 8:30pm",
+    "7:30pm - 8:30pm (stand up and ground)",
+    "7:30pm-9:00pm",
+    "8:00am - 8:50am",
+    "8:20pm-9:20pm",
+    "9:00am-9:30pm",
+    "9:30am-10:15pm",
+    "9:30am-10:30am",
+    "9am-12pm"
+   ],
+   "site": "https://newjourneymma.com",
+   "text": 27,
+   "watched": "https://newjourneymma.com/schedule"
+  },
+  "North South Jiu Jitsu": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [],
+   "site": "https://northsouthbjj.com",
+   "text": 0,
+   "watched": "https://northsouthbjj.com"
+  },
+  "Ocean County BJJ": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [],
+   "site": "https://oceancountybjj.com",
+   "text": 0,
+   "watched": "https://oceancountybjj.com"
+  },
+  "Performance Jiu-Jitsu": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "adult all level bjj open mat 10:30 \u2013 11:45 am",
+    "adult all level bjj open mat 11:00 am \u2013 12:15 pm",
+    "adult all level bjj open mat 12:00 \u2013 2:00 pm",
+    "adult all level bjj open mat 7:00 \u2013 8:00 pm",
+    "adult bjj advanced (gi) 6:00 \u2013 7:15 pm",
+    "adult bjj all level (gi) 11:00 am \u2013 12:15 pm",
+    "adult bjj all level (no-gi) 11:00 am \u2013 12:00 pm",
+    "adult bjj all level (no-gi) 6:00 \u2013 7:00 pm",
+    "adult bjj all level (no-gi) 7:15 \u2013 8:15 pm",
+    "adult bjj early morning (all levels) 6:30 \u2013 7:30 am",
+    "beginner & open mat",
+    "fri 6:30 am\u201312:15 pm",
+    "gi jiu-jitsu drill class 6:00 \u2013 7:15 pm",
+    "gracie self defense 6:00 \u2013 7:00 pm",
+    "kid's bjj (ages 5\u20138) 11:10 am \u2013 12:00 pm",
+    "kid's bjj (ages 5\u20138) 4:30 \u2013 5:10 pm",
+    "kid's bjj (ages 5\u20138) 5:20 \u2013 6:00 pm",
+    "kid's bjj (ages 9\u201313) 10:00 \u2013 11:10 am",
+    "kid's bjj (ages 9\u201313) 5:10 \u2013 6:00 pm",
+    "kids no-gi jiu-jitsu (ages 9\u201313) 4:30 \u2013 5:20 pm",
+    "mon 11:00 am\u20138:00 pm",
+    "sat 10:00 am\u20132:00 pm",
+    "sun 9:30 am\u201311:45 am",
+    "thu 4:30 pm\u20138:15 pm",
+    "tue 4:30 pm\u20138:30 pm",
+    "wed 6:30 am\u20137:00 pm",
+    "white belt gracie fundamentals 7:15 \u2013 8:30 pm",
+    "white belt gracie fundamentals 9:30 \u2013 10:30 am"
+   ],
+   "site": "https://armlock.com/schedule",
+   "text": 28,
+   "watched": "https://armlock.com/schedule"
+  },
+  "Pinelands BJJ": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [],
+   "site": "https://pinelandsbjj.com",
+   "text": 0,
+   "watched": "https://pinelandsbjj.com"
+  },
+  "Precise BJJ": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "10:00am - 11:00am",
+    "11:00am - 12:00pm",
+    "12:00pm - 1:00pm",
+    "5:30pm - 6:15pm",
+    "6:00pm - 7:00pm",
+    "6:15pm - 7:15pm",
+    "6:30 pm - 8:30 pm",
+    "7:30pm - 8:30pm",
+    "adult no gi 7:30pm - 8:30pm",
+    "adult open mat",
+    "image: green%20and%20cream%20illustrative%20weekly%20schedule%20instagram%20post.png"
+   ],
+   "site": "https://www.precisebjj.com/",
+   "text": 10,
+   "watched": "https://www.precisebjj.com/"
+  },
+  "Princeton BJJ": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [],
+   "site": "https://www.princetonbjj.com",
+   "text": 0,
+   "watched": "https://www.princetonbjj.com"
+  },
+  "Prolific BJJ": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [],
+   "site": "https://www.prolificbjj.com",
+   "text": 0,
+   "watched": "https://www.prolificbjj.com"
+  },
+  "Pure Mixed Martial Arts": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "10:00 am - 10:30 am kids karate - tiny tigers",
+    "10:00 am - 11:00 am mma sparring (fight team/invite only)",
+    "10:45 am - 11:30 am kids karate - super junior",
+    "11:00 am - 12:00 pm all levels muay thai/kickboxing",
+    "11:00 am - 12:00 pm expert nogi open mat",
+    "11:00 am - 12:00 pm muay thai/kickboxing",
+    "12:00 pm - 1:00 pm all levels gi jiu jitsu",
+    "12:00 pm - 1:00 pm all levels jiu jitsu",
+    "12:00 pm - 1:00 pm all levels nogi jiu jitsu",
+    "3:45 pm - 4:30 pm kids karate - super junior",
+    "4:30 pm - 5:00 pm kids karate - tiny tigers",
+    "4:30 pm - 5:30 pm kids karate - tiny tigers",
+    "4:45 pm - 5:30 pm kids jiu jitsu (3-5 yrs)",
+    "5:00 pm - 5:45 pm kids karate - super junior",
+    "5:00 pm - 5:45 pm kids karate - super junior (white belt)",
+    "5:30 pm - 6:30 pm kids jiu jitsu",
+    "5:45 pm - 6:30 pm kids karate - super junior (yellow & up)",
+    "5:45 pm - 6:30 pm teen/adult karate",
+    "5:45 pm - 6:30 pm teen/adults karate",
+    "6:00 pm - 7:00 pm muay thai/kickboxing",
+    "6:30 am - 7:30 am all levels gi jiu jitsu",
+    "6:30 am - 7:30 am all levels nogi jiu jitsu",
+    "6:30 pm - 7:15 pm kids karate - super junior (green & up)",
+    "6:30 pm - 7:30 pm advanced gi jiu jitsu",
+    "6:30 pm - 7:30 pm all levels jiu jitsu",
+    "6:30 pm - 7:30 pm women's gi jiu jitsu",
+    "6:30 pm - 7:30 pm women's nogi jiu jitsu",
+    "6:30 pm - 7:45 pm all levels nogi jiu jitsu",
+    "6:45 pm - 7:30 pm fundamentals muay thai/kickboxing",
+    "7:00 pm - 8:00 pm beginners nogi jiu jitsu",
+    "7:30 pm - 8:30 pm all levels nogi jiu jitsu",
+    "7:30 pm - 8:30 pm beginners gi jiu jitsu",
+    "7:30 pm - 8:30 pm muay thai / kickboxing",
+    "7:30 pm - 8:30 pm muay thai/kickboxing",
+    "8:00 am - 9:00 am leo only class",
+    "8:00 am - 9:00 am nogi jiu jitsu open mat",
+    "8:00 pm - 9:00 pm muay thai / sparring",
+    "9:00 am - 10:00 am kids nogi jiu jitsu - all ages",
+    "9:15 am - 10:00 am teens/adults karate",
+    "image: pure-mixed-martial-arts-schedule-296952.jpg"
+   ],
+   "site": "https://puremixedmartialarts.com",
+   "text": 39,
+   "watched": "https://puremixedmartialarts.com/Home/Schedule"
+  },
+  "ROLLSTAR Jiu Jitsu": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [],
+   "site": "https://www.rollstarbjj.com",
+   "text": 0,
+   "watched": "https://www.rollstarbjj.com"
+  },
+  "Radji Barrett Jiu Jitsu": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [],
+   "site": "https://www.radjibarrettjiujitsu.com",
+   "text": 0,
+   "watched": "https://radjibarrettjiujitsu.com/"
+  },
+  "Rare Breed MMA": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [],
+   "site": "https://www.rarebreedmma.com",
+   "text": 0,
+   "watched": "https://rarebreedmma.com/"
+  },
+  "Renzo Gracie Jersey City": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "open mat (members only)",
+    "open mat = members only",
+    "\u2022 open mat may be adjusted or canceled based on class needs"
+   ],
+   "site": "https://renzograciejc.com",
+   "text": 3,
+   "watched": "https://renzograciejc.com/schedule"
+  },
+  "Renzo Gracie Newark": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [],
+   "site": "https://www.renzogracienj.com",
+   "text": 0,
+   "watched": "https://www.renzogracienj.com"
+  },
+  "Revel Jiu Jitsu": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "10:00 am - 11:00 am",
+    "11:00 am - 12:00 pm",
+    "11:00 am - 1:00 pm",
+    "4:30 pm - 5:15 pm",
+    "5:15 pm - 6:15 pm",
+    "6:00 am - 7:00 am",
+    "6:15 pm - 7:15 pm",
+    "7:15 pm - 8:15 pm",
+    "8:15 pm - 9:30 pm",
+    "9:00 am - 10:00 am",
+    "free open training - all gyms welcome!",
+    "open training (revel only)",
+    "image: tr"
+   ],
+   "site": "https://reveljiujitsu.com",
+   "text": 12,
+   "watched": "https://reveljiujitsu.com/schedule/"
+  },
+  "Rival Jiu-Jitsu": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "mon-fri: 4pm to 8pm. sat: 9am to 12pm. sun: 9am to 11am.",
+    "mon\u2013fri: 4pm\u20138pm",
+    "sat: 9am\u201312pm",
+    "sun: 9am\u201311am"
+   ],
+   "site": "https://rivalbjj.com",
+   "text": 4,
+   "watched": "https://rivalbjj.com"
+  },
+  "Rolling Bear BJJ": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "6 am. you could be in bed. but you could also be",
+    "6 pm fundamentals no-gi followed by 7pm advanced n",
+    "check out our female only classes - every friday at 7pm",
+    "friday, july 3: holiday open mat from 10:00 am to",
+    "i went as a visitor for open mat and everyone was very friendly and even gave me some tips on things i was messing up on during rolls.",
+    "image: aaaaanrstlmaahatztgaaabbsurbvhja7cexaqaaamkg9u9tdb+gaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "image: placeholder.png"
+   ],
+   "site": "https://rollingbearbjj.com/#Schedule",
+   "text": 5,
+   "watched": "https://rollingbearbjj.com/#Schedule"
+  },
+  "Senshi Tori MMA": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "10:00 am - adult bjj",
+    "11:00 am - no gi",
+    "12:00 pm - kickboxing",
+    "1:00 pm - little warriors (3-5 years)",
+    "4:15 pm - fitness kickboxing",
+    "4:15 pm - law enforcement self defense",
+    "5:30 pm - kids bjj (6-9 years)",
+    "5:30 pm - kids karate (6-9 years)",
+    "5:30 pm - open mat",
+    "6:30 pm - kickboxing",
+    "6:30 pm - kids bjj (10-13 years)",
+    "6:30 pm - kids karate (10-13 years)",
+    "7:30 pm - adult bjj (gi)",
+    "7:30 pm - boxing",
+    "8:30 pm - adult bjj (no gi)",
+    "8:30 pm - kickboxing",
+    "9:00 am - law enforcement self defense"
+   ],
+   "site": "https://senshitori.com",
+   "text": 17,
+   "watched": "https://senshitori.com/Home/Schedule"
+  },
+  "Sheridan BJJ": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "6am, noon, and evening classes every day for adults"
+   ],
+   "site": "https://www.sheridanbjj.com",
+   "text": 1,
+   "watched": "https://www.sheridanbjj.com"
+  },
+  "Silva Fusion MMA & BJJ": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "10:00am - no gi brazilian jiu jitsu open mat",
+    "4:45pm - little ninja bjj (ages 4-6)",
+    "5:00am - no gi brazilian jiu jitsu open mat",
+    "5:00pm - kids bjj competition team",
+    "5:30pm - kids brazilian jiu jitsu (ages 7-15)",
+    "6:00pm - brazilian jiu jitsu open mat",
+    "6:15pm - kids mma (ages 7-12)",
+    "6:15pm - muay thai",
+    "7:00pm - brazilian jiu jitsu",
+    "7:00pm - no gi brazilian jiu jitsu",
+    "9:00am - yoga by kelly"
+   ],
+   "site": "https://silvafusion.com",
+   "text": 11,
+   "watched": "https://silvafusion.com/class-schedule"
+  },
+  "Silver Fox BJJ": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "10:00 - 12:00 pm",
+    "10:30 - 11:30 am",
+    "11:30 - 12:30 pm",
+    "12:30 - 1:30 pm",
+    "1:30 - 2:00 pm",
+    "4:15 - 5:00 pm",
+    "5:00 - 5:45 pm",
+    "6:00 - 7:00 pm",
+    "6:30 - 7:30 am",
+    "7:00 - 8:00 pm",
+    "7:30 - 8:00 am",
+    "8:00 - 8:30 pm",
+    "8:00 - 9:00 pm",
+    "9:30 - 10:15 am",
+    "open mat*"
+   ],
+   "site": "https://silverfoxbjj.com/saddle-brook-schedule/",
+   "text": 15,
+   "watched": "https://silverfoxbjj.com/saddle-brook-schedule/"
+  },
+  "Silver Fox BJJ Butler": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [],
+   "site": "https://www.silverfoxbjjbutler.com",
+   "text": 0,
+   "watched": "https://silverfoxbjjbutler.com/"
+  },
+  "Silver Fox BJJ East Hanover": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "10:30am - 11:15am",
+    "11:30am - 12:30pm",
+    "12:00pm - 1:00pm",
+    "12:30pm - 2:00pm",
+    "1:00pm - 1:30pm",
+    "4:15pm - 4:45pm",
+    "5:00pm - 5:45pm",
+    "6:00am - 7:00am",
+    "6:00pm - 7:00pm",
+    "7:00am - 7:30am",
+    "7:00pm - 8:00pm",
+    "open mat (advanced program)"
+   ],
+   "site": "https://www.silverfoxbjjeh.com/schedule",
+   "text": 12,
+   "watched": "https://www.silverfoxbjjeh.com/schedule"
+  },
+  "South Jersey BJJ": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [],
+   "site": "https://sjbjj.com",
+   "text": 0,
+   "watched": "https://sjbjj.com"
+  },
+  "South Mountain Martial Arts": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "image: south_mountain_schedule_austin2.png"
+   ],
+   "site": "https://southmountainmartialarts.com",
+   "text": 0,
+   "watched": "https://southmountainmartialarts.com/schedule"
+  },
+  "Strive BJJ Academy": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [],
+   "site": "https://strivebjj.com",
+   "text": 0,
+   "watched": "https://strivebjj.com"
+  },
+  "Studio 1908 (Miyao Bros)": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "10:00am \u2013 11:00am",
+    "10:00am \u2013 12:00pm",
+    "11:00am \u2013 12:00pm",
+    "11:00am \u2013 1:00pm",
+    "12:00pm \u2013 1:00pm",
+    "4:30pm \u2013 5:00pm",
+    "5:15pm \u2013 6:00pm",
+    "6:00pm \u2013 7:00pm",
+    "7:00am \u2013 8:00am",
+    "7:00pm \u2013 8:00pm",
+    "8:00pm \u2013 09:00pm",
+    "8:00pm \u2013 9:00pm",
+    "open mat"
+   ],
+   "site": "https://studio1908jj.com/schedule/",
+   "text": 13,
+   "watched": "https://studio1908jj.com/schedule/"
+  },
+  "The Academy of Jiu-Jitsu": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "10am - kickboxing sparring",
+    "11am - gi jiu-jitsu | fundamentals",
+    "11am - no-gi jiu-jitsu | all levels",
+    "12pm - gi jiu-jitsu open mat | all levels",
+    "12pm - no-gi jiu-jitsu open mat | all levels",
+    "6:15pm - gi jiu-jitsu | advanced",
+    "6:15pm - no-gi jiu-jitsu | advanced",
+    "6:15pm - no-gi jiu-jitsu | all levels",
+    "6:15pm - no-gi jiu-jitsu | fundamentals",
+    "6am - no-gi jiu-jitsu | all levels",
+    "7pm - gi jiu-jitsu competition class | all levels",
+    "7pm - kickboxing | all levels",
+    "7pm - mma & sparring",
+    "7pm - no-gi jiu-jitsu competition class | all levels",
+    "7pm - no-gi jiu-jitsu randori | all levels",
+    "8:30am - no-gi jiu jitsu open mat | all levels",
+    "8pm - gi jiu-jitsu | fundamentals",
+    "8pm - no-gi jiu-jitsu | fundamentals",
+    "9am - kids kickboxing | mixed age group",
+    "randori/open mat/sparring - no formal instruction, focus on live rounds and practicing what we\u2019ve learned. only those cleared to live train may attend."
+   ],
+   "site": "https://theacademyjj.com/schedule",
+   "text": 20,
+   "watched": "https://theacademyjj.com/schedule"
+  },
+  "The Fight Lab USA": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "10:00 am",
+    "10:00 am \u2013 11:00 am",
+    "11:00 am \u2013 12:00 pm",
+    "12:15 \u2013 1:15 pm",
+    "1:30 pm",
+    "1:30pm gym closed",
+    "4:15 pm \u2013 5:15 pm",
+    "5:15 pm \u2013 6:15 pm",
+    "6:15 pm \u2013 7:15 pm",
+    "6:15 pm \u2013 7:15pm",
+    "7:00am competition class by invitation only",
+    "7:15pm \u2013 8:15 pm",
+    "7:15pm \u2013 8:15pm",
+    "9:00 am \u2013 10:00 am",
+    "friday: 9:00 am - 8:30",
+    "monday: 9:00 am - 8:30",
+    "open mat 10am-12pm",
+    "saturday: 9:00 am - 8:30",
+    "sunday: 9:00 am - 8:30",
+    "thursday: 9:00 am - 8:30",
+    "tuesday: 9:00 am - 8:30",
+    "wednesday: 9:00 am - 8:30"
+   ],
+   "site": "https://thefightlabusa.com",
+   "text": 22,
+   "watched": "https://thefightlabusa.com/schedule/"
+  },
+  "The Inferno Training Center": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "image: 736342884_18613842784030343_251104366843718771_n.jpg",
+    "image: 752761316_18619462618030343_6876460488400874835_n.jpg"
+   ],
+   "site": "https://www.infernotpc.com",
+   "text": 0,
+   "watched": "https://www.infernotpc.com"
+  },
+  "Touro MMA": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "9:00\u201310:00 am"
+   ],
+   "site": "https://www.touromma.com",
+   "text": 1,
+   "watched": "https://www.touromma.com"
+  },
+  "Trasso Jiu Jitsu & Wrestling": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "10:00 \u2013 11:00 am",
+    "4:00 \u2013 4:45 pm",
+    "5:00 \u2013 5:55 pm",
+    "6:00 \u2013 7:00 pm",
+    "6:30 \u2013 7:30 am",
+    "7:15 \u2013 8:15 pm",
+    "8:00 \u2013 8:45 am",
+    "9:00 \u2013 9:55 am",
+    "open mat",
+    "\u26a0 register by 10:30 pm prior night",
+    "image: image"
+   ],
+   "site": "https://www.trassojjw.com",
+   "text": 10,
+   "watched": "https://www.trassojjw.com/schedule"
+  },
+  "Viper's Den Jiu-Jitsu": {
+   "error": "URLError: <urlopen error [SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol versio",
+   "fails": 1,
+   "lastFail": "2026-08-02",
+   "lines": []
+  },
+  "Vitor Shaolin BJJ": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "image: class-schedule.jpg"
+   ],
+   "site": "https://www.shaolinbjj.com/schedule.shtml",
+   "text": 0,
+   "watched": "https://www.shaolinbjj.com/schedule.shtml"
+  },
+  "Zealous Nation MMA": {
+   "checked": "2026-08-02",
+   "fails": 0,
+   "lines": [
+    "10:00am - 12:00pm submission grappling (no gi)",
+    "10:00am \u2013 12:00pm: submission grappling (no gi)",
+    "12:00pm - 1:00pm boxing",
+    "12:00pm \u2013 1:00pm: boxing",
+    "1:00pm - 2:00pm open mat grappling matches",
+    "1:00pm \u2013 2:00pm: open mat grappling matches",
+    "6:00pm - 7:00pm",
+    "6:00pm - 7:00pm dutch style kickboxing",
+    "6:00pm \u2013 7:00pm boxing",
+    "6:00pm \u2013 7:00pm dutch style kickboxing",
+    "7:00pm - 8:30pm",
+    "7:00pm - 8:30pm submission grappling",
+    "7:00pm \u2013 8:30pm submission grappling",
+    "7:00pm \u2013 8:30pm submission grappling (no gi)"
+   ],
+   "site": "https://www.zealousnationmma.com",
+   "text": 14,
+   "watched": "https://www.zealousnationmma.com/schedule-and-pricing/"
+  }
+ }
+}

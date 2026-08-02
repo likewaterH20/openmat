@@ -45,5 +45,14 @@ verifiedDate, site, ig.
    have mats per openmatlocator not yet added)
 3. Confirm amber "reported" entries on gym sites -> flip to green
 4. "CHECK BEFORE GOING" flag state for suspected closures
-5. GitHub Actions daily automation (replaces manual update ritual)
-6. V2: accounts, gym claim flow, reviews
+5. V2: accounts, gym claim flow, reviews
+
+## Daily sweep (automated)
+`.github/workflows/daily-sweep.yml` runs `.github/scripts/sweep.py` every morning
+at 7:00 AM ET. It fetches each gym's own site, pulls the schedule-ish lines, and
+diffs them against `.github/data/snapshots.json`.
+- It NEVER edits gym data. Changes open an issue; a person verifies and edits MATS.
+- Quiet day = it bumps LAST_UPDATE and commits.
+- Mondays it lists the gyms whose schedule is an image or a JS widget — those are
+  unreadable to the robot and only get checked when a person looks.
+- Run it on demand from the Actions tab, or locally: `python3 .github/scripts/sweep.py --dry-run`
