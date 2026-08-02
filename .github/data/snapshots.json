@@ -557,6 +557,7 @@
    ],
    "site": "https://www.hillsboroughbjj.com",
    "text": 1,
+   "thinAt": "2026-08-02",
    "watched": "https://www.hillsboroughbjj.com/schedule"
   },
   "House of Salt Jiu-Jitsu": {
@@ -833,10 +834,21 @@
   "Princeton BJJ": {
    "checked": "2026-08-02",
    "fails": 0,
-   "lines": [],
+   "lines": [
+    "12:30-1:30 p.m.",
+    "4:45-5:30 p.m.",
+    "5:30-6:30 p.m.",
+    "6:00-6:50 a.m.",
+    "6:30-7:30 p.m.",
+    "7:30-8:30 p.m.",
+    "7:30-9:00 p.m.",
+    "8:30-9:00 p.m.",
+    "9:15-10:00 a.m.",
+    "open mat"
+   ],
    "site": "https://www.princetonbjj.com",
-   "text": 0,
-   "watched": "https://www.princetonbjj.com"
+   "text": 10,
+   "watched": "https://www.princetonbjj.com/classes/"
   },
   "Prolific BJJ": {
    "checked": "2026-08-02",

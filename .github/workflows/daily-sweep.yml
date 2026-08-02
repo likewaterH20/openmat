@@ -52,11 +52,9 @@ jobs:
             git push
           fi
 
-      - name: Open an issue when something moved
+      - name: Open an issue when something needs a person
         if: steps.sweep.outputs.alert == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
-          CHANGED: ${{ steps.sweep.outputs.changed }}
-        run: |
-          TITLE="Sweep $(date -u +%Y-%m-%d): $CHANGED gym page(s) changed"
-          gh issue create --title "$TITLE" --body-file .github/data/sweep-report.md
+          TITLE: ${{ steps.sweep.outputs.title }}
+        run: gh issue create --title "$TITLE" --body-file .github/data/sweep-report.md

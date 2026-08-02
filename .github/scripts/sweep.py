@@ -129,9 +129,15 @@ def schedule_url(page_html, base):
         if full.rstrip("/") == base.rstrip("/"):
             continue
         path = urllib.parse.urlparse(full).path.rstrip("/")
-        if not re.search(r"schedule|timetable|open-?mat", path, re.I):
-            continue  # "classes" alone chases kids-class pages
-        score = 2 if re.search(r"(schedule|timetable|open-?mat)$", path, re.I) else 1
+        depth = len([s for s in path.split("/") if s])
+        if re.search(r"(schedule|timetable|open-?mat)$", path, re.I):
+            score = 3
+        elif re.search(r"schedule|timetable|open-?mat", path, re.I):
+            score = 2
+        elif depth == 1:
+            score = 1  # a top-level /classes page is often the real timetable
+        else:
+            continue   # /classes/little-gators-3-6 and friends are not schedules
         if best is None or score > best[0]:
             best = (score, full)
     return best[1] if best else None
@@ -338,8 +344,18 @@ def main():
     if gh:
         with open(gh, "a") as f:
             f.write("changed=%d\n" % len(changed))
-            f.write("alert=%s\n" % ("true" if (changed or persistent) else "false"))
+            # Monday's hand-check list has to open an issue too, or the weekly
+            # ritual just sits in a run summary nobody reads.
+            f.write("alert=%s\n" % ("true" if (changed or persistent
+                                               or (handcheck and monday)) else "false"))
             f.write("bumped=%s\n" % ("true" if (quiet and healthy) else "false"))
+            if changed:
+                title = "Sweep %s: %d gym page(s) changed" % (today, len(changed))
+            elif persistent:
+                title = "Sweep %s: %d gym site(s) down" % (today, len(persistent))
+            else:
+                title = "Sweep %s: %d gyms need a hand-check this week" % (today, len(handcheck))
+            f.write("title=%s\n" % title)
     return 0
 
 
