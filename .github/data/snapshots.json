@@ -557,7 +557,6 @@
    ],
    "site": "https://www.hillsboroughbjj.com",
    "text": 1,
-   "thinAt": "2026-08-02",
    "watched": "https://www.hillsboroughbjj.com/schedule"
   },
   "House of Salt Jiu-Jitsu": {
@@ -1251,9 +1250,7 @@
   },
   "Viper's Den Jiu-Jitsu": {
    "checked": "2026-08-02",
-   "error": "URLError: <urlopen error [SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol versio",
-   "fails": 1,
-   "lastFail": "2026-08-02",
+   "fails": 0,
    "lines": [
     "10:00-12:00 pm open mat",
     "11:30-12:30 pm fundamentals bjj",
