@@ -313,6 +313,21 @@
     </div>
   </div>
 </div>
+<!-- message-the-school modal -->
+<div class="overlay" id="msgOverlay" role="dialog" aria-modal="true" aria-labelledby="mg-title">
+  <div class="modal">
+    <h2 id="mg-title">Message the school</h2>
+    <p id="mg-sub">Sent from your own email or texts · replies come straight to you.</p>
+    <div class="field"><label for="mg-text">Your question</label><textarea id="mg-text" rows="4" placeholder="Is your open mat open to visitors? Any mat fee?" style="width:100%;border:1px solid var(--line);background:var(--card);padding:12px 14px;font-family:'Inter',sans-serif;font-size:14px;color:var(--ink);resize:vertical"></textarea></div>
+    <div class="field" id="mg-namewrap"><label for="mg-name">Your name</label><input id="mg-name" type="text" placeholder="So they know who's asking"></div>
+    <div class="actions">
+      <button class="btn ghost" id="mg-close">Cancel</button>
+      <button class="btn" id="mg-email">✉ Email</button>
+      <button class="btn alt" id="mg-sms">✆ Text</button>
+    </div>
+  </div>
+</div>
+
 <!-- fighter profile modal -->
 <div class="overlay" id="profOverlay" role="dialog" aria-modal="true" aria-labelledby="fp-title">
   <div class="modal">
@@ -365,97 +380,97 @@ const MATS = [
   /* MERCER (Trenton area) */
   { gym:"Princeton BJJ", town:"Princeton", county:"Mercer", lat:40.3573, lng:-74.6672,
     day:1, start:"8:30 PM", end:"9:00 PM", startH:20.5, endH:21.0, format:"Gi + No-Gi", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://www.princetonbjj.com", phone:"(609) 919-0740", logo:"princeton-bjj-princeton.png", ig:"https://www.instagram.com/princetonbjj" },
+    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://www.princetonbjj.com", phone:"(609) 919-0740", logo:"princeton-bjj-princeton.png", email:"info@princetonbjj.com", ig:"https://www.instagram.com/princetonbjj" },
   { gym:"Princeton BJJ", town:"Princeton", county:"Mercer", lat:40.3573, lng:-74.6672,
     day:3, start:"8:30 PM", end:"9:00 PM", startH:20.5, endH:21.0, format:"Gi + No-Gi", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://www.princetonbjj.com", phone:"(609) 919-0740", logo:"princeton-bjj-princeton.png", ig:"https://www.instagram.com/princetonbjj" },
+    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://www.princetonbjj.com", phone:"(609) 919-0740", logo:"princeton-bjj-princeton.png", email:"info@princetonbjj.com", ig:"https://www.instagram.com/princetonbjj" },
   { gym:"Princeton BJJ", town:"Princeton", county:"Mercer", lat:40.3573, lng:-74.6672,
     day:6, start:"12:00 PM", end:"1:00 PM", startH:12.0, endH:13.0, format:"Gi + No-Gi", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://www.princetonbjj.com", phone:"(609) 919-0740", logo:"princeton-bjj-princeton.png", ig:"https://www.instagram.com/princetonbjj" },
+    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://www.princetonbjj.com", phone:"(609) 919-0740", logo:"princeton-bjj-princeton.png", email:"info@princetonbjj.com", ig:"https://www.instagram.com/princetonbjj" },
   { gym:"Princeton BJJ", town:"Princeton", county:"Mercer", lat:40.3573, lng:-74.6672,
     day:0, start:"9:00 AM", end:"10:00 AM", startH:9.0, endH:10.0, format:"Gi + No-Gi", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://www.princetonbjj.com", phone:"(609) 919-0740", logo:"princeton-bjj-princeton.png", ig:"https://www.instagram.com/princetonbjj" },
+    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://www.princetonbjj.com", phone:"(609) 919-0740", logo:"princeton-bjj-princeton.png", email:"info@princetonbjj.com", ig:"https://www.instagram.com/princetonbjj" },
   { gym:"Gracie Barra North Princeton", town:"Princeton", county:"Mercer", lat:40.3894, lng:-74.6520,
     day:5, start:"7:00 PM", end:"8:30 PM", startH:19.0, endH:20.5, format:"Gi + No-Gi", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-26", site:"https://gbprinceton.com", phone:"(609) 285-5871", logo:"gracie-barra-north-princeton-princeton.png", ig:"https://www.instagram.com/graciebarranorthprinceton" },
+    verified:"reported", verifiedDate:"2026-07-26", site:"https://gbprinceton.com", phone:"(609) 285-5871", logo:"gracie-barra-north-princeton-princeton.png", email:"contact@gbprinceton.com", ig:"https://www.instagram.com/graciebarranorthprinceton" },
   { gym:"Gracie Barra Princeton", town:"Lawrence Township", county:"Mercer", lat:40.3009, lng:-74.7479,
     day:2, start:"6:00 AM", end:"7:30 AM", startH:6.0, endH:7.5, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-26", site:"https://gbprinceton.com", phone:"(609) 622-5116", logo:"gracie-barra-princeton-lawrence-township.png", ig:"https://www.instagram.com/gbprinceton" },
+    verified:"reported", verifiedDate:"2026-07-26", site:"https://gbprinceton.com", phone:"(609) 622-5116", logo:"gracie-barra-princeton-lawrence-township.png", email:"info@gbprinceton.com", ig:"https://www.instagram.com/gbprinceton" },
 
   /* MIDDLESEX — Revel moved their free open mat: Sat 11-1 per reveljiujitsu.com/schedule (Sunday now closed) */
   { gym:"Revel Jiu Jitsu", town:"East Brunswick", county:"Middlesex", lat:40.4276, lng:-74.4160,
     day:6, start:"11:00 AM", end:"1:00 PM", startH:11.0, endH:13.0, format:"Gi + No-Gi", cost:"Free",
-    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://reveljiujitsu.com", phone:"(732) 630-5722", logo:"revel-jiu-jitsu-east-brunswick.png", ig:"https://www.instagram.com/reveljiujitsu" },
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://reveljiujitsu.com", phone:"(732) 630-5722", logo:"revel-jiu-jitsu-east-brunswick.png", email:"info@reveljiujitsu.com", ig:"https://www.instagram.com/reveljiujitsu" },
 
   /* MONMOUTH — Garden State BJJ: times corrected per gardenstatebjj.com/schedule (gym site overrides directory) */
   { gym:"Garden State BJJ Academy", town:"Red Bank", county:"Monmouth", lat:40.3471, lng:-74.0643,
     day:2, start:"7:00 AM", end:"7:30 AM", startH:7.0, endH:7.5, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-28", site:"https://gardenstatebjj.com/schedule/", phone:"(908) 433-3025", logo:"garden-state-bjj-academy-red-bank.png", ig:"https://www.instagram.com/gardenstatebjj" },
+    verified:"confirmed", verifiedDate:"2026-07-28", site:"https://gardenstatebjj.com/schedule/", phone:"(908) 433-3025", logo:"garden-state-bjj-academy-red-bank.png", email:"gardenstatebjj@gmail.com", ig:"https://www.instagram.com/gardenstatebjj" },
   { gym:"Garden State BJJ Academy", town:"Red Bank", county:"Monmouth", lat:40.3471, lng:-74.0643,
     day:3, start:"7:15 PM", end:"8:30 PM", startH:19.25, endH:20.5, format:"No-Gi", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-28", site:"https://gardenstatebjj.com/schedule/", phone:"(908) 433-3025", logo:"garden-state-bjj-academy-red-bank.png", ig:"https://www.instagram.com/gardenstatebjj" },
+    verified:"confirmed", verifiedDate:"2026-07-28", site:"https://gardenstatebjj.com/schedule/", phone:"(908) 433-3025", logo:"garden-state-bjj-academy-red-bank.png", email:"gardenstatebjj@gmail.com", ig:"https://www.instagram.com/gardenstatebjj" },
   { gym:"Garden State BJJ Academy", town:"Red Bank", county:"Monmouth", lat:40.3471, lng:-74.0643,
     day:4, start:"7:00 AM", end:"7:30 AM", startH:7.0, endH:7.5, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-28", site:"https://gardenstatebjj.com/schedule/", phone:"(908) 433-3025", logo:"garden-state-bjj-academy-red-bank.png", ig:"https://www.instagram.com/gardenstatebjj" },
+    verified:"confirmed", verifiedDate:"2026-07-28", site:"https://gardenstatebjj.com/schedule/", phone:"(908) 433-3025", logo:"garden-state-bjj-academy-red-bank.png", email:"gardenstatebjj@gmail.com", ig:"https://www.instagram.com/gardenstatebjj" },
 
   /* BERGEN */
   { gym:"Trasso Jiu Jitsu & Wrestling", town:"Glen Rock", county:"Bergen", lat:40.9629, lng:-74.1329,
     day:6, start:"10:00 AM", end:"11:00 AM", startH:10.0, endH:11.0, format:"Gi + No-Gi", cost:"First class free",
-    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://www.trassojjw.com", phone:"(201) 207-8019", logo:"trasso-jiu-jitsu-wrestling-glen-rock.png", ig:"https://www.instagram.com/trassojjw" },
+    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://www.trassojjw.com", phone:"(201) 207-8019", logo:"trasso-jiu-jitsu-wrestling-glen-rock.png", email:"contact@trassojjw.com", ig:"https://www.instagram.com/trassojjw" },
 
   /* HUDSON */
   { gym:"High Impact Martial Arts", town:"West New York", county:"Hudson", lat:40.7879, lng:-74.0143,
     day:6, start:"9:00 AM", end:"10:00 AM", startH:9.0, endH:10.0, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://www.highimpactma.com", phone:"(201) 320-4305", logo:"high-impact-martial-arts-west-new-york.png", ig:"https://www.instagram.com/highimpactmartialarts" },
+    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://www.highimpactma.com", phone:"(201) 320-4305", logo:"high-impact-martial-arts-west-new-york.png", email:"highimpactma@gmail.com", ig:"https://www.instagram.com/highimpactmartialarts" },
 
   /* UNION */
   { gym:"Sheridan BJJ", town:"Vauxhall", county:"Union", lat:40.7018, lng:-74.2407,
     day:0, start:"9:00 AM", end:"10:00 AM", startH:9.0, endH:10.0, format:"Gi + No-Gi", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://www.sheridanbjj.com", phone:"(973) 433-5369", logo:"sheridan-bjj-vauxhall.png", ig:"https://www.instagram.com/sheridanbjj" },
+    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://www.sheridanbjj.com", phone:"(973) 433-5369", logo:"sheridan-bjj-vauxhall.png", email:"sheridanbjj@gmail.com", ig:"https://www.instagram.com/sheridanbjj" },
 
   /* PASSAIC — Camal and Cruz: 30-min open mats confirmed on their own booking site */
   { gym:"Camal and Cruz Judo & BJJ", town:"Totowa", county:"Passaic", lat:40.9056, lng:-74.2093,
     day:1, start:"5:30 PM", end:"6:00 PM", startH:17.5, endH:18.0, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://camalandcruz.gymdesk.com/schedule", phone:"(973) 256-0110", ig:"" },
+    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://camalandcruz.gymdesk.com/schedule", phone:"(973) 256-0110", email:"camalandcruz@gmail.com", ig:"" },
   { gym:"Camal and Cruz Judo & BJJ", town:"Totowa", county:"Passaic", lat:40.9056, lng:-74.2093,
     day:5, start:"5:30 PM", end:"6:00 PM", startH:17.5, endH:18.0, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://camalandcruz.gymdesk.com/schedule", phone:"(973) 256-0110", ig:"" },
+    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://camalandcruz.gymdesk.com/schedule", phone:"(973) 256-0110", email:"camalandcruz@gmail.com", ig:"" },
   { gym:"Camal and Cruz Judo & BJJ", town:"Totowa", county:"Passaic", lat:40.9056, lng:-74.2093,
     day:6, start:"11:30 AM", end:"12:00 PM", startH:11.5, endH:12.0, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://camalandcruz.gymdesk.com/schedule", phone:"(973) 256-0110", ig:"" },
+    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://camalandcruz.gymdesk.com/schedule", phone:"(973) 256-0110", email:"camalandcruz@gmail.com", ig:"" },
 
   /* BERGEN — Performance Jiu-Jitsu Fair Lawn: no-gi open mats confirmed on armlock.com/schedule */
   { gym:"Performance Jiu-Jitsu", town:"Fair Lawn", county:"Bergen", lat:40.9265, lng:-74.0972,
     day:1, start:"7:00 PM", end:"8:00 PM", startH:19.0, endH:20.0, format:"No-Gi", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://armlock.com/schedule", phone:"(201) 390-5229", logo:"performance-jiu-jitsu-fair-lawn.png", ig:"" },
+    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://armlock.com/schedule", phone:"(201) 390-5229", logo:"performance-jiu-jitsu-fair-lawn.png", email:"vintalorojj@gmail.com", ig:"" },
   { gym:"Performance Jiu-Jitsu", town:"Fair Lawn", county:"Bergen", lat:40.9265, lng:-74.0972,
     day:5, start:"11:00 AM", end:"12:15 PM", startH:11.0, endH:12.25, format:"No-Gi", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://armlock.com/schedule", phone:"(201) 390-5229", logo:"performance-jiu-jitsu-fair-lawn.png", ig:"" },
+    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://armlock.com/schedule", phone:"(201) 390-5229", logo:"performance-jiu-jitsu-fair-lawn.png", email:"vintalorojj@gmail.com", ig:"" },
   { gym:"Performance Jiu-Jitsu", town:"Fair Lawn", county:"Bergen", lat:40.9265, lng:-74.0972,
     day:6, start:"12:00 PM", end:"2:00 PM", startH:12.0, endH:14.0, format:"No-Gi", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://armlock.com/schedule", phone:"(201) 390-5229", logo:"performance-jiu-jitsu-fair-lawn.png", ig:"" },
+    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://armlock.com/schedule", phone:"(201) 390-5229", logo:"performance-jiu-jitsu-fair-lawn.png", email:"vintalorojj@gmail.com", ig:"" },
   { gym:"Performance Jiu-Jitsu", town:"Fair Lawn", county:"Bergen", lat:40.9265, lng:-74.0972,
     day:0, start:"10:30 AM", end:"11:45 AM", startH:10.5, endH:11.75, format:"No-Gi", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://armlock.com/schedule", phone:"(201) 390-5229", logo:"performance-jiu-jitsu-fair-lawn.png", ig:"" },
+    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://armlock.com/schedule", phone:"(201) 390-5229", logo:"performance-jiu-jitsu-fair-lawn.png", email:"vintalorojj@gmail.com", ig:"" },
 
   /* OCEAN — The Academy of Jiu-Jitsu (Tom DeBlass), Toms River: open mats confirmed on theacademyjj.com/schedule; end times per directory */
   { gym:"The Academy of Jiu-Jitsu", town:"Toms River", county:"Ocean", lat:39.9774, lng:-74.1389,
     day:1, start:"12:00 PM", end:"1:30 PM", startH:12.0, endH:13.5, format:"No-Gi", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://theacademyjj.com/schedule", phone:"(732) 504-7423", logo:"the-academy-of-jiu-jitsu-toms-river.png", ig:"" },
+    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://theacademyjj.com/schedule", phone:"(732) 504-7423", logo:"the-academy-of-jiu-jitsu-toms-river.png", email:"theacademyjj@gmail.com", ig:"" },
   { gym:"The Academy of Jiu-Jitsu", town:"Toms River", county:"Ocean", lat:39.9774, lng:-74.1389,
     day:3, start:"12:00 PM", end:"1:30 PM", startH:12.0, endH:13.5, format:"Gi", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://theacademyjj.com/schedule", phone:"(732) 504-7423", logo:"the-academy-of-jiu-jitsu-toms-river.png", ig:"" },
+    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://theacademyjj.com/schedule", phone:"(732) 504-7423", logo:"the-academy-of-jiu-jitsu-toms-river.png", email:"theacademyjj@gmail.com", ig:"" },
   { gym:"The Academy of Jiu-Jitsu", town:"Toms River", county:"Ocean", lat:39.9774, lng:-74.1389,
     day:5, start:"12:00 PM", end:"1:30 PM", startH:12.0, endH:13.5, format:"No-Gi", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://theacademyjj.com/schedule", phone:"(732) 504-7423", logo:"the-academy-of-jiu-jitsu-toms-river.png", ig:"" },
+    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://theacademyjj.com/schedule", phone:"(732) 504-7423", logo:"the-academy-of-jiu-jitsu-toms-river.png", email:"theacademyjj@gmail.com", ig:"" },
   { gym:"The Academy of Jiu-Jitsu", town:"Toms River", county:"Ocean", lat:39.9774, lng:-74.1389,
     day:0, start:"8:30 AM", end:"10:00 AM", startH:8.5, endH:10.0, format:"No-Gi", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://theacademyjj.com/schedule", phone:"(732) 504-7423", logo:"the-academy-of-jiu-jitsu-toms-river.png", ig:"" },
+    verified:"confirmed", verifiedDate:"2026-07-26", site:"https://theacademyjj.com/schedule", phone:"(732) 504-7423", logo:"the-academy-of-jiu-jitsu-toms-river.png", email:"theacademyjj@gmail.com", ig:"" },
 
   /* CAMDEN */
   { gym:"Strive BJJ Academy", town:"Cherry Hill", county:"Camden", lat:39.9050, lng:-74.9741,
     day:0, start:"10:00 AM", end:"12:00 PM", startH:10.0, endH:12.0, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://strivebjj.com", phone:"(856) 429-3800", logo:"strive-bjj-academy-cherry-hill.png", ig:"https://www.instagram.com/strivebjj/" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://strivebjj.com", phone:"(856) 429-3800", logo:"strive-bjj-academy-cherry-hill.png", email:"strivebjj@gmail.com", ig:"https://www.instagram.com/strivebjj/" },
 
   /* GLOUCESTER */
   { gym:"Close Quarters BJJ & Fitness", town:"Mantua", county:"Gloucester", lat:39.7951, lng:-75.1722,
@@ -465,54 +480,54 @@ const MATS = [
   /* HUNTERDON */
   { gym:"Loftus Jiu Jitsu Academy", town:"Flemington", county:"Hunterdon", lat:40.5217, lng:-74.8561,
     day:5, start:"5:30 PM", end:"6:30 PM", startH:17.5, endH:18.5, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://loftusjiujitsu.com/classes/", phone:"(908) 500-2637", logo:"loftus-jiu-jitsu-academy-flemington.png", ig:"https://www.instagram.com/loftusjiujitsu/" },
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://loftusjiujitsu.com/classes/", phone:"(908) 500-2637", logo:"loftus-jiu-jitsu-academy-flemington.png", email:"loftusbjj@gmail.com", ig:"https://www.instagram.com/loftusjiujitsu/" },
   { gym:"Loftus Jiu Jitsu Academy", town:"Flemington", county:"Hunterdon", lat:40.5217, lng:-74.8561,
     day:6, start:"1:00 PM", end:"2:00 PM", startH:13.0, endH:14.0, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://loftusjiujitsu.com/classes/", phone:"(908) 500-2637", logo:"loftus-jiu-jitsu-academy-flemington.png", ig:"https://www.instagram.com/loftusjiujitsu/" },
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://loftusjiujitsu.com/classes/", phone:"(908) 500-2637", logo:"loftus-jiu-jitsu-academy-flemington.png", email:"loftusbjj@gmail.com", ig:"https://www.instagram.com/loftusjiujitsu/" },
 
   /* ESSEX */
   { gym:"Rare Breed MMA", town:"Bloomfield", county:"Essex", lat:40.7935, lng:-74.1989,
     day:5, start:"8:00 PM", end:"9:00 PM", startH:20.0, endH:21.0, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.rarebreedmma.com", phone:"(862) 500-1512", ig:"https://www.instagram.com/rarebreedmma/" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.rarebreedmma.com", phone:"(862) 500-1512", email:"info@rarebreedmma.com", ig:"https://www.instagram.com/rarebreedmma/" },
   { gym:"Rare Breed MMA", town:"Bloomfield", county:"Essex", lat:40.7935, lng:-74.1989,
     day:6, start:"12:00 PM", end:"1:00 PM", startH:12.0, endH:13.0, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.rarebreedmma.com", phone:"(862) 500-1512", ig:"https://www.instagram.com/rarebreedmma/" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.rarebreedmma.com", phone:"(862) 500-1512", email:"info@rarebreedmma.com", ig:"https://www.instagram.com/rarebreedmma/" },
 
   /* PASSAIC (Clifton) */
   { gym:"Bones Jiu Jitsu Academy", town:"Clifton", county:"Passaic", lat:40.8919, lng:-74.1413,
     day:5, start:"8:00 PM", end:"9:30 PM", startH:20.0, endH:21.5, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://bonesjiujitsu.com", phone:"(201) 292-3641", ig:"https://www.instagram.com/bonesbjjacademy/" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://bonesjiujitsu.com", phone:"(201) 292-3641", email:"bonesjiujitsu@gmail.com", ig:"https://www.instagram.com/bonesbjjacademy/" },
   { gym:"Immortals Jiu Jitsu", town:"Clifton", county:"Passaic", lat:40.8517, lng:-74.1531,
     day:0, start:"2:00 PM", end:"4:00 PM", startH:14.0, endH:16.0, format:"No-Gi", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://immortalsjiujitsu.com/Home/Schedule", phone:"(201) 815-7066", logo:"immortals-jiu-jitsu-clifton.png", ig:"https://www.instagram.com/immortalsjiujitsu/" },
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://immortalsjiujitsu.com/Home/Schedule", phone:"(201) 815-7066", logo:"immortals-jiu-jitsu-clifton.png", email:"mikerakshan@gmail.com", ig:"https://www.instagram.com/immortalsjiujitsu/" },
 
   /* HUDSON (more) */
   { gym:"Chokelab BJJ Academy", town:"Harrison", county:"Hudson", lat:40.7480, lng:-74.1482,
     day:5, start:"7:30 PM", end:"9:30 PM", startH:19.5, endH:21.5, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://chokelabacademy.com/bjj-class-schedule-harrison-nj/", phone:"(973) 445-7796", logo:"chokelab-bjj-academy-harrison.png", ig:"https://www.instagram.com/chokelab_hq/" },
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://chokelabacademy.com/bjj-class-schedule-harrison-nj/", phone:"(973) 445-7796", logo:"chokelab-bjj-academy-harrison.png", email:"josef@jmbjj.com", ig:"https://www.instagram.com/chokelab_hq/" },
   { gym:"Chokelab BJJ Academy", town:"Harrison", county:"Hudson", lat:40.7480, lng:-74.1482,
     day:6, start:"10:30 AM", end:"12:30 PM", startH:10.5, endH:12.5, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://chokelabacademy.com/bjj-class-schedule-harrison-nj/", phone:"(973) 445-7796", logo:"chokelab-bjj-academy-harrison.png", ig:"https://www.instagram.com/chokelab_hq/" },
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://chokelabacademy.com/bjj-class-schedule-harrison-nj/", phone:"(973) 445-7796", logo:"chokelab-bjj-academy-harrison.png", email:"josef@jmbjj.com", ig:"https://www.instagram.com/chokelab_hq/" },
   { gym:"Senshi Tori MMA", town:"Bayonne", county:"Hudson", lat:40.6741, lng:-74.1098,
     day:5, start:"5:30 PM", end:"7:00 PM", startH:17.5, endH:19.0, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://senshitori.com", phone:"(201) 726-9741", logo:"senshi-tori-mma-bayonne.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://senshitori.com", phone:"(201) 726-9741", logo:"senshi-tori-mma-bayonne.png", email:"bayonnemma@yahoo.com", ig:"" },
   { gym:"Studio 1908 (Miyao Bros)", town:"Jersey City", county:"Hudson", lat:40.7173, lng:-74.0548,
     day:2, start:"8:00 PM", end:"9:00 PM", startH:20.0, endH:21.0, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://studio1908jj.com/schedule/", phone:"(201) 367-1347", logo:"studio-1908-miyao-bros-jersey-city.png", ig:"https://www.instagram.com/studio.1908/" },
+    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://studio1908jj.com/schedule/", phone:"(201) 367-1347", logo:"studio-1908-miyao-bros-jersey-city.png", email:"studio1908jj@gmail.com", ig:"https://www.instagram.com/studio.1908/" },
   { gym:"Studio 1908 (Miyao Bros)", town:"Jersey City", county:"Hudson", lat:40.7173, lng:-74.0548,
     day:4, start:"8:00 PM", end:"9:00 PM", startH:20.0, endH:21.0, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://studio1908jj.com/schedule/", phone:"(201) 367-1347", logo:"studio-1908-miyao-bros-jersey-city.png", ig:"https://www.instagram.com/studio.1908/" },
+    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://studio1908jj.com/schedule/", phone:"(201) 367-1347", logo:"studio-1908-miyao-bros-jersey-city.png", email:"studio1908jj@gmail.com", ig:"https://www.instagram.com/studio.1908/" },
   { gym:"Studio 1908 (Miyao Bros)", town:"Jersey City", county:"Hudson", lat:40.7173, lng:-74.0548,
     day:6, start:"12:00 PM", end:"1:00 PM", startH:12.0, endH:13.0, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://studio1908jj.com/schedule/", phone:"(201) 367-1347", logo:"studio-1908-miyao-bros-jersey-city.png", ig:"https://www.instagram.com/studio.1908/" },
+    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://studio1908jj.com/schedule/", phone:"(201) 367-1347", logo:"studio-1908-miyao-bros-jersey-city.png", email:"studio1908jj@gmail.com", ig:"https://www.instagram.com/studio.1908/" },
   { gym:"Studio 1908 (Miyao Bros)", town:"Jersey City", county:"Hudson", lat:40.7173, lng:-74.0548,
     day:0, start:"11:00 AM", end:"1:00 PM", startH:11.0, endH:13.0, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://studio1908jj.com/schedule/", phone:"(201) 367-1347", logo:"studio-1908-miyao-bros-jersey-city.png", ig:"https://www.instagram.com/studio.1908/" },
+    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://studio1908jj.com/schedule/", phone:"(201) 367-1347", logo:"studio-1908-miyao-bros-jersey-city.png", email:"studio1908jj@gmail.com", ig:"https://www.instagram.com/studio.1908/" },
 
   /* BERGEN (more) — Silver Fox Saddle Brook: open to Silver Fox/Renzo affiliated schools only */
   { gym:"Silver Fox BJJ", town:"Saddle Brook", county:"Bergen", lat:40.8967, lng:-74.0973,
     day:0, start:"10:00 AM", end:"12:00 PM", startH:10.0, endH:12.0, format:"Check gym", cost:"Affiliates only",
-    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://silverfoxbjj.com/saddle-brook-schedule/", phone:"(551) 239-1301", logo:"silver-fox-bjj-saddle-brook.png", ig:"" },
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://silverfoxbjj.com/saddle-brook-schedule/", phone:"(551) 239-1301", logo:"silver-fox-bjj-saddle-brook.png", email:"info@silverfoxbjj.com", ig:"" },
 
   /* MORRIS — Silver Fox East Hanover: listed as advanced-program open mat */
   { gym:"Silver Fox BJJ East Hanover", town:"East Hanover", county:"Morris", lat:40.8135, lng:-74.3883,
@@ -522,10 +537,10 @@ const MATS = [
   /* UNION (more) — Rolling Bear: free for visitors with training experience */
   { gym:"Rolling Bear BJJ", town:"Kenilworth", county:"Union", lat:40.6793, lng:-74.2834,
     day:5, start:"5:30 PM", end:"7:00 PM", startH:17.5, endH:19.0, format:"Check gym", cost:"Free",
-    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://rollingbearbjj.com/#Schedule", phone:"(908) 259-4627", ig:"https://www.instagram.com/rollingbearbjj" },
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://rollingbearbjj.com/#Schedule", phone:"(908) 259-4627", email:"rollingbearbjj@gmail.com", ig:"https://www.instagram.com/rollingbearbjj" },
   { gym:"Rolling Bear BJJ", town:"Kenilworth", county:"Union", lat:40.6793, lng:-74.2834,
     day:0, start:"10:30 AM", end:"12:00 PM", startH:10.5, endH:12.0, format:"Check gym", cost:"Free",
-    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://rollingbearbjj.com/#Schedule", phone:"(908) 259-4627", ig:"https://www.instagram.com/rollingbearbjj" },
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://rollingbearbjj.com/#Schedule", phone:"(908) 259-4627", email:"rollingbearbjj@gmail.com", ig:"https://www.instagram.com/rollingbearbjj" },
   { gym:"Vitor Shaolin BJJ", town:"Scotch Plains", county:"Union", lat:40.6567, lng:-74.4005,
     day:0, start:"10:45 AM", end:"12:15 PM", startH:10.75, endH:12.25, format:"Check gym", cost:"Paid · ask gym",
     verified:"confirmed", verifiedDate:"2026-07-27", site:"https://www.shaolinbjj.com/schedule.shtml", phone:"(551) 556-3338", ig:"https://www.instagram.com/vshaolin" },
@@ -533,37 +548,37 @@ const MATS = [
   /* MIDDLESEX (more) */
   { gym:"ASCEND Jiu-Jitsu", town:"Edison", county:"Middlesex", lat:40.5022, lng:-74.3890,
     day:3, start:"12:00 PM", end:"1:00 PM", startH:12.0, endH:13.0, format:"Gi + No-Gi", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://www.ascendjiujitsu.com/schedule", phone:"(848) 202-9466", ig:"https://www.instagram.com/ascend.bjj" },
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://www.ascendjiujitsu.com/schedule", phone:"(848) 202-9466", email:"ascendjiujitsu25@gmail.com", ig:"https://www.instagram.com/ascend.bjj" },
   { gym:"ASCEND Jiu-Jitsu", town:"Edison", county:"Middlesex", lat:40.5022, lng:-74.3890,
     day:5, start:"6:00 AM", end:"7:00 AM", startH:6.0, endH:7.0, format:"Gi + No-Gi", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://www.ascendjiujitsu.com/schedule", phone:"(848) 202-9466", ig:"https://www.instagram.com/ascend.bjj" },
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://www.ascendjiujitsu.com/schedule", phone:"(848) 202-9466", email:"ascendjiujitsu25@gmail.com", ig:"https://www.instagram.com/ascend.bjj" },
   { gym:"ASCEND Jiu-Jitsu", town:"Edison", county:"Middlesex", lat:40.5022, lng:-74.3890,
     day:5, start:"6:00 PM", end:"7:00 PM", startH:18.0, endH:19.0, format:"Gi + No-Gi", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://www.ascendjiujitsu.com/schedule", phone:"(848) 202-9466", ig:"https://www.instagram.com/ascend.bjj" },
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://www.ascendjiujitsu.com/schedule", phone:"(848) 202-9466", email:"ascendjiujitsu25@gmail.com", ig:"https://www.instagram.com/ascend.bjj" },
   { gym:"ASCEND Jiu-Jitsu", town:"Edison", county:"Middlesex", lat:40.5022, lng:-74.3890,
     day:6, start:"12:00 PM", end:"1:00 PM", startH:12.0, endH:13.0, format:"Gi + No-Gi", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://www.ascendjiujitsu.com/schedule", phone:"(848) 202-9466", ig:"https://www.instagram.com/ascend.bjj" },
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://www.ascendjiujitsu.com/schedule", phone:"(848) 202-9466", email:"ascendjiujitsu25@gmail.com", ig:"https://www.instagram.com/ascend.bjj" },
   { gym:"ASCEND Jiu-Jitsu", town:"Edison", county:"Middlesex", lat:40.5022, lng:-74.3890,
     day:0, start:"11:00 AM", end:"12:00 PM", startH:11.0, endH:12.0, format:"Gi + No-Gi", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://www.ascendjiujitsu.com/schedule", phone:"(848) 202-9466", ig:"https://www.instagram.com/ascend.bjj" },
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://www.ascendjiujitsu.com/schedule", phone:"(848) 202-9466", email:"ascendjiujitsu25@gmail.com", ig:"https://www.instagram.com/ascend.bjj" },
   { gym:"Method Jiu Jitsu", town:"South Plainfield", county:"Middlesex", lat:40.5868, lng:-74.4185,
     day:5, start:"7:00 PM", end:"9:00 PM", startH:19.0, endH:21.0, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://www.methodjj.com/", phone:"(732) 527-9614", logo:"method-jiu-jitsu-south-plainfield.png", ig:"https://www.instagram.com/method_jiu_jitsu" },
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://www.methodjj.com/", phone:"(732) 527-9614", logo:"method-jiu-jitsu-south-plainfield.png", email:"chris@methodjj.com", ig:"https://www.instagram.com/method_jiu_jitsu" },
   { gym:"Advanced Martial Arts", town:"North Brunswick", county:"Middlesex", lat:40.4755, lng:-74.4265,
     day:1, start:"9:00 AM", end:"", startH:9.0, endH:null, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://advancedbjjnj.com/schedule/", phone:"(908) 670-8242", logo:"advanced-martial-arts-north-brunswick.png", ig:"" },
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://advancedbjjnj.com/schedule/", phone:"(908) 670-8242", logo:"advanced-martial-arts-north-brunswick.png", email:"advancedbjj@gmail.com", ig:"" },
   { gym:"Advanced Martial Arts", town:"North Brunswick", county:"Middlesex", lat:40.4755, lng:-74.4265,
     day:3, start:"9:00 AM", end:"10:30 AM", startH:9.0, endH:10.5, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://advancedbjjnj.com/schedule/", phone:"(908) 670-8242", logo:"advanced-martial-arts-north-brunswick.png", ig:"" },
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://advancedbjjnj.com/schedule/", phone:"(908) 670-8242", logo:"advanced-martial-arts-north-brunswick.png", email:"advancedbjj@gmail.com", ig:"" },
   { gym:"Advanced Martial Arts", town:"North Brunswick", county:"Middlesex", lat:40.4755, lng:-74.4265,
     day:5, start:"9:00 AM", end:"10:30 AM", startH:9.0, endH:10.5, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://advancedbjjnj.com/schedule/", phone:"(908) 670-8242", logo:"advanced-martial-arts-north-brunswick.png", ig:"" },
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://advancedbjjnj.com/schedule/", phone:"(908) 670-8242", logo:"advanced-martial-arts-north-brunswick.png", email:"advancedbjj@gmail.com", ig:"" },
   { gym:"Garry Tonon Jiu Jitsu", town:"East Brunswick", county:"Middlesex", lat:40.4489, lng:-74.4088,
     day:2, start:"6:30 PM", end:"7:30 PM", startH:18.5, endH:19.5, format:"Gi", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://www.garrytononjiujitsu.com/class-schedule", phone:"(646) 504-7952", logo:"garry-tonon-jiu-jitsu-east-brunswick.png", ig:"" },
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://www.garrytononjiujitsu.com/class-schedule", phone:"(646) 504-7952", logo:"garry-tonon-jiu-jitsu-east-brunswick.png", email:"garrytononjiujitsu@gmail.com", ig:"" },
   { gym:"Garry Tonon Jiu Jitsu", town:"East Brunswick", county:"Middlesex", lat:40.4489, lng:-74.4088,
     day:4, start:"6:30 PM", end:"7:30 PM", startH:18.5, endH:19.5, format:"Gi", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://www.garrytononjiujitsu.com/class-schedule", phone:"(646) 504-7952", logo:"garry-tonon-jiu-jitsu-east-brunswick.png", ig:"" },
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://www.garrytononjiujitsu.com/class-schedule", phone:"(646) 504-7952", logo:"garry-tonon-jiu-jitsu-east-brunswick.png", email:"garrytononjiujitsu@gmail.com", ig:"" },
 
   /* ===== jitsopenmats second-source sweep 2026-07-27 ===== */
   { gym:"Esoteric Jiu Jitsu", town:"Washington", county:"Warren", lat:40.7583, lng:-74.9794,
@@ -571,211 +586,211 @@ const MATS = [
     verified:"confirmed", verifiedDate:"2026-07-27", site:"http://www.esotericjiujitsu.com/", phone:"(908) 329-5965", logo:"esoteric-jiu-jitsu-washington.png", ig:"https://www.instagram.com/esotericjiujitsuacademy" },
   { gym:"NJ Ronin Jiu Jitsu", town:"Hackettstown", county:"Warren", lat:40.8538, lng:-74.8298,
     day:6, start:"12:00 PM", end:"", startH:12.0, endH:null, format:"No-Gi", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://njronin.com/schedule/", phone:"(973) 797-9420", logo:"nj-ronin-jiu-jitsu-hackettstown.png", ig:"https://www.instagram.com/njronin" },
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://njronin.com/schedule/", phone:"(973) 797-9420", logo:"nj-ronin-jiu-jitsu-hackettstown.png", email:"admin@njronin.com", ig:"https://www.instagram.com/njronin" },
   { gym:"Ahlert Jiu Jitsu", town:"Hazlet", county:"Monmouth", lat:40.4315, lng:-74.1845,
     day:5, start:"11:00 AM", end:"", startH:11.0, endH:null, format:"Gi", cost:"Ask gym",
     verified:"confirmed", verifiedDate:"2026-07-27", site:"https://ahlertbjj.com/class-schedule/", phone:"(732) 860-8525", ig:"https://www.instagram.com/ahlert_jiu_jitsu" },
   { gym:"Daniel Gracie Art of Movement", town:"Medford", county:"Burlington", lat:39.8693, lng:-74.8103,
     day:0, start:"12:00 PM", end:"1:00 PM", startH:12.0, endH:13.0, format:"Gi", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://aommma.com/schedule/", phone:"(609) 451-1093", logo:"daniel-gracie-art-of-movement-medford.png", ig:"https://www.instagram.com/aom_bjj_mma" },
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://aommma.com/schedule/", phone:"(609) 451-1093", logo:"daniel-gracie-art-of-movement-medford.png", email:"info.aommma@gmail.com", ig:"https://www.instagram.com/aom_bjj_mma" },
   { gym:"Precise BJJ", town:"Maywood", county:"Bergen", lat:40.9061, lng:-74.0652,
     day:5, start:"6:30 PM", end:"8:30 PM", startH:18.5, endH:20.5, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://www.precisebjj.com/", phone:"(201) 926-8217", ig:"" },
+    verified:"confirmed", verifiedDate:"2026-07-27", site:"https://www.precisebjj.com/", phone:"(201) 926-8217", email:"precisebjj@gmail.com", ig:"" },
   { gym:"Renzo Gracie Jersey City", town:"Jersey City", county:"Hudson", lat:40.7321, lng:-74.0669,
     day:1, start:"5:00 PM", end:"6:00 PM", startH:17.0, endH:18.0, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://renzograciejc.com", phone:"(201) 500-3356", logo:"renzo-gracie-jersey-city-jersey-city.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://renzograciejc.com", phone:"(201) 500-3356", logo:"renzo-gracie-jersey-city-jersey-city.png", email:"renzograciejerseycity@gmail.com", ig:"" },
   { gym:"Renzo Gracie Jersey City", town:"Jersey City", county:"Hudson", lat:40.7321, lng:-74.0669,
     day:2, start:"5:00 PM", end:"6:00 PM", startH:17.0, endH:18.0, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://renzograciejc.com", phone:"(201) 500-3356", logo:"renzo-gracie-jersey-city-jersey-city.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://renzograciejc.com", phone:"(201) 500-3356", logo:"renzo-gracie-jersey-city-jersey-city.png", email:"renzograciejerseycity@gmail.com", ig:"" },
   { gym:"Renzo Gracie Jersey City", town:"Jersey City", county:"Hudson", lat:40.7321, lng:-74.0669,
     day:3, start:"5:00 PM", end:"6:00 PM", startH:17.0, endH:18.0, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://renzograciejc.com", phone:"(201) 500-3356", logo:"renzo-gracie-jersey-city-jersey-city.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://renzograciejc.com", phone:"(201) 500-3356", logo:"renzo-gracie-jersey-city-jersey-city.png", email:"renzograciejerseycity@gmail.com", ig:"" },
   { gym:"Renzo Gracie Jersey City", town:"Jersey City", county:"Hudson", lat:40.7321, lng:-74.0669,
     day:4, start:"5:00 PM", end:"6:00 PM", startH:17.0, endH:18.0, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://renzograciejc.com", phone:"(201) 500-3356", logo:"renzo-gracie-jersey-city-jersey-city.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://renzograciejc.com", phone:"(201) 500-3356", logo:"renzo-gracie-jersey-city-jersey-city.png", email:"renzograciejerseycity@gmail.com", ig:"" },
   { gym:"Renzo Gracie Jersey City", town:"Jersey City", county:"Hudson", lat:40.7321, lng:-74.0669,
     day:5, start:"5:00 PM", end:"6:00 PM", startH:17.0, endH:18.0, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://renzograciejc.com", phone:"(201) 500-3356", logo:"renzo-gracie-jersey-city-jersey-city.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://renzograciejc.com", phone:"(201) 500-3356", logo:"renzo-gracie-jersey-city-jersey-city.png", email:"renzograciejerseycity@gmail.com", ig:"" },
   { gym:"Renzo Gracie Newark", town:"Newark", county:"Essex", lat:40.7363, lng:-74.165,
     day:5, start:"9:30 AM", end:"", startH:9.5, endH:null, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.renzogracienj.com", phone:"(973) 351-4064", logo:"renzo-gracie-newark-newark.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.renzogracienj.com", phone:"(973) 351-4064", logo:"renzo-gracie-newark-newark.png", email:"rgnjiujitsu@gmail.com", ig:"" },
   { gym:"Renzo Gracie Newark", town:"Newark", county:"Essex", lat:40.7363, lng:-74.165,
     day:6, start:"10:30 AM", end:"", startH:10.5, endH:null, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.renzogracienj.com", phone:"(973) 351-4064", logo:"renzo-gracie-newark-newark.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.renzogracienj.com", phone:"(973) 351-4064", logo:"renzo-gracie-newark-newark.png", email:"rgnjiujitsu@gmail.com", ig:"" },
   { gym:"Renzo Gracie Newark", town:"Newark", county:"Essex", lat:40.7363, lng:-74.165,
     day:0, start:"10:30 AM", end:"", startH:10.5, endH:null, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.renzogracienj.com", phone:"(973) 351-4064", logo:"renzo-gracie-newark-newark.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.renzogracienj.com", phone:"(973) 351-4064", logo:"renzo-gracie-newark-newark.png", email:"rgnjiujitsu@gmail.com", ig:"" },
   { gym:"Mundo BJJ", town:"Jersey City", county:"Hudson", lat:40.7524, lng:-74.0476,
     day:0, start:"11:00 AM", end:"12:00 PM", startH:11.0, endH:12.0, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://mundobjjacademy.com", phone:"(201) 628-1947", logo:"mundo-bjj-jersey-city.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://mundobjjacademy.com", phone:"(201) 628-1947", logo:"mundo-bjj-jersey-city.png", email:"aprendejj.enespanol@gmail.com", ig:"" },
   { gym:"CULTR Fight Club", town:"Jersey City", county:"Hudson", lat:40.7328, lng:-74.0451,
     day:5, start:"12:00 PM", end:"", startH:12.0, endH:null, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.cultrfightclub.com", phone:"(201) 345-9311", logo:"cultr-fight-club-jersey-city.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.cultrfightclub.com", phone:"(201) 345-9311", logo:"cultr-fight-club-jersey-city.png", email:"info@cultrfightclub.com", ig:"" },
   { gym:"Prolific BJJ", town:"Bayonne", county:"Hudson", lat:40.6699, lng:-74.1134,
     day:1, start:"12:00 PM", end:"1:00 PM", startH:12.0, endH:13.0, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.prolificbjj.com", phone:"(201) 292-3661", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.prolificbjj.com", phone:"(201) 292-3661", email:"prolificbjj@gmail.com", ig:"" },
   { gym:"North South Jiu Jitsu", town:"Bloomfield", county:"Essex", lat:40.8355, lng:-74.1821,
     day:6, start:"11:00 AM", end:"12:15 PM", startH:11.0, endH:12.25, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://northsouthbjj.com", phone:"(973) 855-1114", logo:"north-south-jiu-jitsu-bloomfield.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://northsouthbjj.com", phone:"(973) 855-1114", logo:"north-south-jiu-jitsu-bloomfield.png", email:"info@northsouthjj.com", ig:"" },
   { gym:"North South Jiu Jitsu", town:"Bloomfield", county:"Essex", lat:40.8355, lng:-74.1821,
     day:0, start:"12:00 PM", end:"12:45 PM", startH:12.0, endH:12.75, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://northsouthbjj.com", phone:"(973) 855-1114", logo:"north-south-jiu-jitsu-bloomfield.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://northsouthbjj.com", phone:"(973) 855-1114", logo:"north-south-jiu-jitsu-bloomfield.png", email:"info@northsouthjj.com", ig:"" },
   { gym:"Fight Club BJJ", town:"Newark", county:"Essex", lat:40.7186, lng:-74.1571,
     day:5, start:"7:00 PM", end:"", startH:19.0, endH:null, format:"Check gym", cost:"Ask gym",
     verified:"reported", verifiedDate:"2026-07-27", site:"https://jitsopenmats.com/open-mats/newark-nj", phone:"(973) 536-5671", ig:"" },
   { gym:"Dan Covel Martial Arts", town:"Cedar Grove", county:"Essex", lat:40.8487, lng:-74.2293,
     day:5, start:"6:00 PM", end:"", startH:18.0, endH:null, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://coveljiujitsu.com", phone:"(315) 525-7094", logo:"dan-covel-martial-arts-cedar-grove.png", ig:"" },
+    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://coveljiujitsu.com", phone:"(315) 525-7094", logo:"dan-covel-martial-arts-cedar-grove.png", email:"dancoveljiujitsu@gmail.com", ig:"" },
   { gym:"Dan Covel Martial Arts", town:"Cedar Grove", county:"Essex", lat:40.8487, lng:-74.2293,
     day:0, start:"9:00 AM", end:"", startH:9.0, endH:null, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://coveljiujitsu.com", phone:"(315) 525-7094", logo:"dan-covel-martial-arts-cedar-grove.png", ig:"" },
+    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://coveljiujitsu.com", phone:"(315) 525-7094", logo:"dan-covel-martial-arts-cedar-grove.png", email:"dancoveljiujitsu@gmail.com", ig:"" },
   { gym:"Fight Republic", town:"Fairfield", county:"Essex", lat:40.8604, lng:-74.3187,
     day:6, start:"10:00 AM", end:"", startH:10.0, endH:null, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://www.fight-rep.com", phone:"(862) 202-3518", ig:"" },
+    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://www.fight-rep.com", phone:"(862) 202-3518", email:"myfightrepublic@gmail.com", ig:"" },
   { gym:"AMA BJJ & Muay Thai", town:"Cedar Knolls", county:"Morris", lat:40.8128, lng:-74.4536,
     day:4, start:"7:00 PM", end:"8:00 PM", startH:19.0, endH:20.0, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.joinamafightclub.com", phone:"(973) 877-8294", logo:"ama-bjj-muay-thai-cedar-knolls.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.joinamafightclub.com", phone:"(973) 877-8294", logo:"ama-bjj-muay-thai-cedar-knolls.png", email:"amafightclub@yahoo.com", ig:"" },
   { gym:"AMA BJJ & Muay Thai", town:"Cedar Knolls", county:"Morris", lat:40.8128, lng:-74.4536,
     day:5, start:"12:00 PM", end:"1:00 PM", startH:12.0, endH:13.0, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.joinamafightclub.com", phone:"(973) 877-8294", logo:"ama-bjj-muay-thai-cedar-knolls.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.joinamafightclub.com", phone:"(973) 877-8294", logo:"ama-bjj-muay-thai-cedar-knolls.png", email:"amafightclub@yahoo.com", ig:"" },
   { gym:"Gael Force Jiu Jitsu", town:"Roxbury", county:"Morris", lat:40.8804, lng:-74.6972,
     day:1, start:"7:15 PM", end:"8:00 PM", startH:19.25, endH:20.0, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.gaelforcejiujitsu.com", phone:"(201) 677-8143", logo:"gael-force-jiu-jitsu-roxbury.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.gaelforcejiujitsu.com", phone:"(201) 677-8143", logo:"gael-force-jiu-jitsu-roxbury.png", email:"gaelforcebjj@gmail.com", ig:"" },
   { gym:"Gael Force Jiu Jitsu", town:"Roxbury", county:"Morris", lat:40.8804, lng:-74.6972,
     day:0, start:"11:00 AM", end:"12:00 PM", startH:11.0, endH:12.0, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.gaelforcejiujitsu.com", phone:"(201) 677-8143", logo:"gael-force-jiu-jitsu-roxbury.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.gaelforcejiujitsu.com", phone:"(201) 677-8143", logo:"gael-force-jiu-jitsu-roxbury.png", email:"gaelforcebjj@gmail.com", ig:"" },
   { gym:"Echo Alpha Gracie Jiu Jitsu", town:"Succasunna", county:"Morris", lat:40.8617, lng:-74.6296,
     day:2, start:"8:00 PM", end:"9:00 PM", startH:20.0, endH:21.0, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://www.echoalphabjj.com", phone:"(973) 970-4350", logo:"echo-alpha-gracie-jiu-jitsu-succasunna.png", ig:"" },
+    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://www.echoalphabjj.com", phone:"(973) 970-4350", logo:"echo-alpha-gracie-jiu-jitsu-succasunna.png", email:"echo4ace@gmail.com", ig:"" },
   { gym:"Echo Alpha Gracie Jiu Jitsu", town:"Succasunna", county:"Morris", lat:40.8617, lng:-74.6296,
     day:4, start:"8:00 PM", end:"9:00 PM", startH:20.0, endH:21.0, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://www.echoalphabjj.com", phone:"(973) 970-4350", logo:"echo-alpha-gracie-jiu-jitsu-succasunna.png", ig:"" },
+    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://www.echoalphabjj.com", phone:"(973) 970-4350", logo:"echo-alpha-gracie-jiu-jitsu-succasunna.png", email:"echo4ace@gmail.com", ig:"" },
   { gym:"Echo Alpha Gracie Jiu Jitsu", town:"Succasunna", county:"Morris", lat:40.8617, lng:-74.6296,
     day:6, start:"11:30 AM", end:"12:30 PM", startH:11.5, endH:12.5, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://www.echoalphabjj.com", phone:"(973) 970-4350", logo:"echo-alpha-gracie-jiu-jitsu-succasunna.png", ig:"" },
+    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://www.echoalphabjj.com", phone:"(973) 970-4350", logo:"echo-alpha-gracie-jiu-jitsu-succasunna.png", email:"echo4ace@gmail.com", ig:"" },
   { gym:"Pure Mixed Martial Arts", town:"Rockaway", county:"Morris", lat:40.9053, lng:-74.5038,
     day:6, start:"8:00 AM", end:"9:00 AM", startH:8.0, endH:9.0, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://puremixedmartialarts.com", phone:"(973) 784-3777", logo:"pure-mixed-martial-arts-rockaway.png", ig:"" },
+    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://puremixedmartialarts.com", phone:"(973) 784-3777", logo:"pure-mixed-martial-arts-rockaway.png", email:"puremixedmartialarts@gmail.com", ig:"" },
   { gym:"South Mountain Martial Arts", town:"Madison", county:"Morris", lat:40.7576, lng:-74.4134,
     day:5, start:"7:00 PM", end:"9:00 PM", startH:19.0, endH:21.0, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://southmountainmartialarts.com", phone:"(973) 906-3503", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://southmountainmartialarts.com", phone:"(973) 906-3503", email:"DaynD@aol.com", ig:"" },
   { gym:"Hibiscus Brazilian BJJ", town:"North Haledon", county:"Passaic", lat:40.9557, lng:-74.1818,
     day:1, start:"11:00 AM", end:"", startH:11.0, endH:null, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.hibiscusbjj.com", phone:"(973) 304-4700", logo:"hibiscus-brazilian-bjj-north-haledon.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.hibiscusbjj.com", phone:"(973) 304-4700", logo:"hibiscus-brazilian-bjj-north-haledon.png", email:"info@hibiscusbjj.com", ig:"" },
   { gym:"Hibiscus Brazilian BJJ", town:"North Haledon", county:"Passaic", lat:40.9557, lng:-74.1818,
     day:3, start:"11:00 AM", end:"", startH:11.0, endH:null, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.hibiscusbjj.com", phone:"(973) 304-4700", logo:"hibiscus-brazilian-bjj-north-haledon.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.hibiscusbjj.com", phone:"(973) 304-4700", logo:"hibiscus-brazilian-bjj-north-haledon.png", email:"info@hibiscusbjj.com", ig:"" },
   { gym:"Hibiscus Brazilian BJJ", town:"North Haledon", county:"Passaic", lat:40.9557, lng:-74.1818,
     day:5, start:"5:30 PM", end:"", startH:17.5, endH:null, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.hibiscusbjj.com", phone:"(973) 304-4700", logo:"hibiscus-brazilian-bjj-north-haledon.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.hibiscusbjj.com", phone:"(973) 304-4700", logo:"hibiscus-brazilian-bjj-north-haledon.png", email:"info@hibiscusbjj.com", ig:"" },
   { gym:"Bataille Jiu Jitsu", town:"Bloomingdale", county:"Passaic", lat:41.0018, lng:-74.3243,
     day:5, start:"6:00 PM", end:"7:00 PM", startH:18.0, endH:19.0, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://www.bataillejj.com", phone:"(973) 737-9916", logo:"bataille-jiu-jitsu-bloomingdale.png", ig:"" },
+    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://www.bataillejj.com", phone:"(973) 737-9916", logo:"bataille-jiu-jitsu-bloomingdale.png", email:"info@bataillejj.com", ig:"" },
   { gym:"Bataille Jiu Jitsu", town:"Bloomingdale", county:"Passaic", lat:41.0018, lng:-74.3243,
     day:0, start:"10:00 AM", end:"12:00 PM", startH:10.0, endH:12.0, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://www.bataillejj.com", phone:"(973) 737-9916", logo:"bataille-jiu-jitsu-bloomingdale.png", ig:"" },
+    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://www.bataillejj.com", phone:"(973) 737-9916", logo:"bataille-jiu-jitsu-bloomingdale.png", email:"info@bataillejj.com", ig:"" },
   { gym:"Americana Jiu Jitsu", town:"Hawthorne", county:"Passaic", lat:40.9456, lng:-74.1474,
     day:6, start:"10:30 AM", end:"11:30 AM", startH:10.5, endH:11.5, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://americanajj.com", phone:"(201) 375-6650", logo:"americana-jiu-jitsu-hawthorne.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://americanajj.com", phone:"(201) 375-6650", logo:"americana-jiu-jitsu-hawthorne.png", email:"info@americanajj.com", ig:"" },
   { gym:"Gorilla BJJ Academy", town:"Mahwah", county:"Bergen", lat:41.0799, lng:-74.1444,
     day:5, start:"7:00 PM", end:"", startH:19.0, endH:null, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.gorillabjjacademy.com", phone:"(201) 962-8400", logo:"gorilla-bjj-academy-mahwah.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.gorillabjjacademy.com", phone:"(201) 962-8400", logo:"gorilla-bjj-academy-mahwah.png", email:"gorillabjjacademy@gmail.com", ig:"" },
   { gym:"Gorilla BJJ Academy", town:"Mahwah", county:"Bergen", lat:41.0799, lng:-74.1444,
     day:0, start:"10:00 AM", end:"", startH:10.0, endH:null, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.gorillabjjacademy.com", phone:"(201) 962-8400", logo:"gorilla-bjj-academy-mahwah.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.gorillabjjacademy.com", phone:"(201) 962-8400", logo:"gorilla-bjj-academy-mahwah.png", email:"gorillabjjacademy@gmail.com", ig:"" },
   { gym:"BJJ North Jersey", town:"Waldwick", county:"Bergen", lat:41.019, lng:-74.1268,
     day:6, start:"10:00 AM", end:"", startH:10.0, endH:null, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://jiujitsunorthjersey.com", phone:"(201) 852-4275", logo:"bjj-north-jersey-waldwick.png", ig:"" },
+    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://jiujitsunorthjersey.com", phone:"(201) 852-4275", logo:"bjj-north-jersey-waldwick.png", email:"jiujitsunorthjersey@gmail.com", ig:"" },
   { gym:"Rival Jiu-Jitsu", town:"Waldwick", county:"Bergen", lat:41.0175, lng:-74.1231,
     day:0, start:"10:00 AM", end:"11:00 AM", startH:10.0, endH:11.0, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://rivalbjj.com", phone:"(201) 904-3470", logo:"rival-jiu-jitsu-waldwick.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://rivalbjj.com", phone:"(201) 904-3470", logo:"rival-jiu-jitsu-waldwick.png", email:"rivaljiujitsu@gmail.com", ig:"" },
   { gym:"Elevate Jiu Jitsu Academy", town:"Westwood", county:"Bergen", lat:40.9828, lng:-74.0147,
     day:2, start:"10:00 AM", end:"11:00 AM", startH:10.0, endH:11.0, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://elevatejiujitsuacademy.com", phone:"(201) 389-8625", logo:"elevate-jiu-jitsu-academy-westwood.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://elevatejiujitsuacademy.com", phone:"(201) 389-8625", logo:"elevate-jiu-jitsu-academy-westwood.png", email:"info@elevatejiujitsuacademy.com", ig:"" },
   { gym:"Elevate Jiu Jitsu Academy", town:"Westwood", county:"Bergen", lat:40.9828, lng:-74.0147,
     day:4, start:"10:00 AM", end:"11:00 AM", startH:10.0, endH:11.0, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://elevatejiujitsuacademy.com", phone:"(201) 389-8625", logo:"elevate-jiu-jitsu-academy-westwood.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://elevatejiujitsuacademy.com", phone:"(201) 389-8625", logo:"elevate-jiu-jitsu-academy-westwood.png", email:"info@elevatejiujitsuacademy.com", ig:"" },
   { gym:"Elevate Jiu Jitsu Academy", town:"Westwood", county:"Bergen", lat:40.9828, lng:-74.0147,
     day:5, start:"6:00 PM", end:"7:30 PM", startH:18.0, endH:19.5, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://elevatejiujitsuacademy.com", phone:"(201) 389-8625", logo:"elevate-jiu-jitsu-academy-westwood.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://elevatejiujitsuacademy.com", phone:"(201) 389-8625", logo:"elevate-jiu-jitsu-academy-westwood.png", email:"info@elevatejiujitsuacademy.com", ig:"" },
   { gym:"Elevate Jiu Jitsu Academy", town:"Westwood", county:"Bergen", lat:40.9828, lng:-74.0147,
     day:0, start:"11:00 AM", end:"12:30 PM", startH:11.0, endH:12.5, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://elevatejiujitsuacademy.com", phone:"(201) 389-8625", logo:"elevate-jiu-jitsu-academy-westwood.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://elevatejiujitsuacademy.com", phone:"(201) 389-8625", logo:"elevate-jiu-jitsu-academy-westwood.png", email:"info@elevatejiujitsuacademy.com", ig:"" },
   { gym:"ROLLSTAR Jiu Jitsu", town:"Hackensack", county:"Bergen", lat:40.8889, lng:-74.0404,
     day:0, start:"12:30 PM", end:"1:30 PM", startH:12.5, endH:13.5, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.rollstarbjj.com", phone:"(201) 477-0461", logo:"rollstar-jiu-jitsu-hackensack.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.rollstarbjj.com", phone:"(201) 477-0461", logo:"rollstar-jiu-jitsu-hackensack.png", email:"hq@rollstarbjj.com", ig:"" },
   { gym:"Mark Ramos Academy", town:"Lodi", county:"Bergen", lat:40.8708, lng:-74.088,
     day:0, start:"11:00 AM", end:"12:00 PM", startH:11.0, endH:12.0, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.markramosacademy.com", phone:"(201) 294-0556", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.markramosacademy.com", phone:"(201) 294-0556", email:"Markramosacademy@gmail.com", ig:"" },
   { gym:"The Fight Lab USA", town:"Fort Lee", county:"Bergen", lat:40.8299, lng:-73.9799,
     day:6, start:"10:00 AM", end:"12:00 PM", startH:10.0, endH:12.0, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://thefightlabusa.com", phone:"(201) 908-0323", logo:"the-fight-lab-usa-fort-lee.png", ig:"" },
+    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://thefightlabusa.com", phone:"(201) 908-0323", logo:"the-fight-lab-usa-fort-lee.png", email:"info@thefightlabusa.com", ig:"" },
   { gym:"Kombat BJJ", town:"Clark", county:"Union", lat:40.6269, lng:-74.3036,
     day:6, start:"11:30 AM", end:"", startH:11.5, endH:null, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://kombatjits.com", phone:"(973) 445-9618", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://kombatjits.com", phone:"(973) 445-9618", email:"Heliosa47@gmail.com", ig:"" },
   { gym:"Elijah BJJ", town:"Union", county:"Union", lat:40.7015, lng:-74.2644,
     day:6, start:"11:00 AM", end:"12:00 PM", startH:11.0, endH:12.0, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://ebjj.com", phone:"(908) 578-2522", logo:"elijah-bjj-union.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://ebjj.com", phone:"(908) 578-2522", logo:"elijah-bjj-union.png", email:"elijahtyrone@aol.com", ig:"" },
   { gym:"Zealous Nation MMA", town:"Middlesex", county:"Middlesex", lat:40.5641, lng:-74.5062,
     day:6, start:"1:00 PM", end:"2:00 PM", startH:13.0, endH:14.0, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://www.zealousnationmma.com", phone:"(908) 405-8814", ig:"" },
+    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://www.zealousnationmma.com", phone:"(908) 405-8814", email:"Oleg.Savitsky.MMA@gmail.com", ig:"" },
   { gym:"Radji Barrett Jiu Jitsu", town:"Fords", county:"Middlesex", lat:40.5285, lng:-74.3138,
     day:1, start:"7:30 PM", end:"9:00 PM", startH:19.5, endH:21.0, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.radjibarrettjiujitsu.com", phone:"(646) 248-8020", logo:"radji-barrett-jiu-jitsu-fords.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.radjibarrettjiujitsu.com", phone:"(646) 248-8020", logo:"radji-barrett-jiu-jitsu-fords.png", email:"radjibarrettjiujitsu@gmail.com", ig:"" },
   { gym:"Radji Barrett Jiu Jitsu", town:"Fords", county:"Middlesex", lat:40.5285, lng:-74.3138,
     day:2, start:"8:30 PM", end:"9:30 PM", startH:20.5, endH:21.5, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.radjibarrettjiujitsu.com", phone:"(646) 248-8020", logo:"radji-barrett-jiu-jitsu-fords.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.radjibarrettjiujitsu.com", phone:"(646) 248-8020", logo:"radji-barrett-jiu-jitsu-fords.png", email:"radjibarrettjiujitsu@gmail.com", ig:"" },
   { gym:"Radji Barrett Jiu Jitsu", town:"Fords", county:"Middlesex", lat:40.5285, lng:-74.3138,
     day:3, start:"7:30 PM", end:"8:30 PM", startH:19.5, endH:20.5, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.radjibarrettjiujitsu.com", phone:"(646) 248-8020", logo:"radji-barrett-jiu-jitsu-fords.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.radjibarrettjiujitsu.com", phone:"(646) 248-8020", logo:"radji-barrett-jiu-jitsu-fords.png", email:"radjibarrettjiujitsu@gmail.com", ig:"" },
   { gym:"Radji Barrett Jiu Jitsu", town:"Fords", county:"Middlesex", lat:40.5285, lng:-74.3138,
     day:4, start:"8:30 PM", end:"9:30 PM", startH:20.5, endH:21.5, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.radjibarrettjiujitsu.com", phone:"(646) 248-8020", logo:"radji-barrett-jiu-jitsu-fords.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.radjibarrettjiujitsu.com", phone:"(646) 248-8020", logo:"radji-barrett-jiu-jitsu-fords.png", email:"radjibarrettjiujitsu@gmail.com", ig:"" },
   { gym:"Radji Barrett Jiu Jitsu", town:"Fords", county:"Middlesex", lat:40.5285, lng:-74.3138,
     day:6, start:"12:00 PM", end:"1:00 PM", startH:12.0, endH:13.0, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.radjibarrettjiujitsu.com", phone:"(646) 248-8020", logo:"radji-barrett-jiu-jitsu-fords.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.radjibarrettjiujitsu.com", phone:"(646) 248-8020", logo:"radji-barrett-jiu-jitsu-fords.png", email:"radjibarrettjiujitsu@gmail.com", ig:"" },
   { gym:"Radji Barrett Jiu Jitsu", town:"Fords", county:"Middlesex", lat:40.5285, lng:-74.3138,
     day:0, start:"10:00 AM", end:"12:00 PM", startH:10.0, endH:12.0, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.radjibarrettjiujitsu.com", phone:"(646) 248-8020", logo:"radji-barrett-jiu-jitsu-fords.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.radjibarrettjiujitsu.com", phone:"(646) 248-8020", logo:"radji-barrett-jiu-jitsu-fords.png", email:"radjibarrettjiujitsu@gmail.com", ig:"" },
   { gym:"New Journey MMA", town:"Somerset", county:"Somerset", lat:40.5103, lng:-74.492,
     day:5, start:"6:30 PM", end:"8:00 PM", startH:18.5, endH:20.0, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://newjourneymma.com", phone:"(908) 304-9444", logo:"new-journey-mma-somerset.png", ig:"" },
+    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://newjourneymma.com", phone:"(908) 304-9444", logo:"new-journey-mma-somerset.png", email:"contactus@newjourneymma.com", ig:"" },
   { gym:"Hillsborough BJJ", town:"Hillsborough", county:"Somerset", lat:40.4898, lng:-74.6403,
     day:1, start:"8:00 PM", end:"10:00 PM", startH:20.0, endH:22.0, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.hillsboroughbjj.com", phone:"(201) 320-0640", logo:"hillsborough-bjj-hillsborough.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.hillsboroughbjj.com", phone:"(201) 320-0640", logo:"hillsborough-bjj-hillsborough.png", email:"hillsboroughbjj@gmail.com", ig:"" },
   { gym:"Impact Martial Arts", town:"Clinton", county:"Hunterdon", lat:40.627, lng:-74.9196,
     day:5, start:"5:30 PM", end:"6:30 PM", startH:17.5, endH:18.5, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://impactmartialarts.net", phone:"(908) 713-1440", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://impactmartialarts.net", phone:"(908) 713-1440", email:"info@impactmartialarts.net", ig:"" },
   { gym:"House of Salt Jiu-Jitsu", town:"Long Branch", county:"Monmouth", lat:40.2846, lng:-73.9854,
     day:3, start:"6:30 PM", end:"7:30 PM", startH:18.5, endH:19.5, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://houseofsaltnj.com", phone:"(732) 571-5187", logo:"house-of-salt-jiu-jitsu-long-branch.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://houseofsaltnj.com", phone:"(732) 571-5187", logo:"house-of-salt-jiu-jitsu-long-branch.png", email:"houseofsaltnj@gmail.com", ig:"" },
   { gym:"Move Jiu Jitsu Academy", town:"Sea Bright", county:"Monmouth", lat:40.3796, lng:-73.9745,
     day:0, start:"3:00 PM", end:"", startH:15.0, endH:null, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://movejiujitsu.com", phone:"(917) 324-5299", logo:"move-jiu-jitsu-academy-sea-bright.png", ig:"" },
+    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://movejiujitsu.com", phone:"(917) 324-5299", logo:"move-jiu-jitsu-academy-sea-bright.png", email:"movejiujitsu@gmail.com", ig:"" },
   { gym:"Madhouse Academy", town:"Wall", county:"Monmouth", lat:40.1656, lng:-74.049,
     day:5, start:"10:00 AM", end:"11:00 AM", startH:10.0, endH:11.0, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://madhouseacademy.com", phone:"(732) 503-8480", logo:"madhouse-academy-wall.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://madhouseacademy.com", phone:"(732) 503-8480", logo:"madhouse-academy-wall.png", email:"themadhouseacademy@gmail.com", ig:"" },
   { gym:"The Inferno Training Center", town:"Marlboro", county:"Monmouth", lat:40.3171, lng:-74.247,
     day:5, start:"5:30 PM", end:"", startH:17.5, endH:null, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.infernotpc.com", phone:"(732) 414-1771", logo:"the-inferno-training-center-marlboro.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.infernotpc.com", phone:"(732) 414-1771", logo:"the-inferno-training-center-marlboro.png", email:"infernotpc.help@gmail.com", ig:"" },
   { gym:"The Inferno Training Center", town:"Marlboro", county:"Monmouth", lat:40.3171, lng:-74.247,
     day:0, start:"10:00 AM", end:"", startH:10.0, endH:null, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.infernotpc.com", phone:"(732) 414-1771", logo:"the-inferno-training-center-marlboro.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.infernotpc.com", phone:"(732) 414-1771", logo:"the-inferno-training-center-marlboro.png", email:"infernotpc.help@gmail.com", ig:"" },
   { gym:"Binding Arts Jiu Jitsu", town:"Howell", county:"Monmouth", lat:40.1209, lng:-74.1445,
     day:5, start:"6:00 PM", end:"", startH:18.0, endH:null, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://www.bindingartsbjj.com", phone:"(732) 771-7981", ig:"" },
+    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://www.bindingartsbjj.com", phone:"(732) 771-7981", email:"info@bindingartsbjj.com", ig:"" },
   { gym:"Binding Arts Jiu Jitsu", town:"Howell", county:"Monmouth", lat:40.1209, lng:-74.1445,
     day:6, start:"10:00 AM", end:"", startH:10.0, endH:null, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://www.bindingartsbjj.com", phone:"(732) 771-7981", ig:"" },
+    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://www.bindingartsbjj.com", phone:"(732) 771-7981", email:"info@bindingartsbjj.com", ig:"" },
   { gym:"Bayshore BJJ", town:"Hazlet", county:"Monmouth", lat:40.429, lng:-74.1896,
     day:0, start:"10:00 AM", end:"", startH:10.0, endH:null, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://bayshorebjj.com", phone:"(732) 616-4457", logo:"bayshore-bjj-hazlet.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://bayshorebjj.com", phone:"(732) 616-4457", logo:"bayshore-bjj-hazlet.png", email:"bayshorebjj@gmail.com", ig:"" },
   { gym:"Silva Fusion MMA & BJJ", town:"Jackson", county:"Ocean", lat:40.1648, lng:-74.2946,
     day:5, start:"6:00 PM", end:"", startH:18.0, endH:null, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://silvafusion.com", phone:"(732) 759-1907", logo:"silva-fusion-mma-bjj-jackson.png", ig:"" },
+    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://silvafusion.com", phone:"(732) 759-1907", logo:"silva-fusion-mma-bjj-jackson.png", email:"fusionmartialartsnj@gmail.com", ig:"" },
   { gym:"Silva Fusion MMA & BJJ", town:"Jackson", county:"Ocean", lat:40.1648, lng:-74.2946,
     day:6, start:"10:00 AM", end:"", startH:10.0, endH:null, format:"Check gym", cost:"Ask gym",
-    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://silvafusion.com", phone:"(732) 759-1907", logo:"silva-fusion-mma-bjj-jackson.png", ig:"" },
+    verified:"confirmed", verifiedDate:"2026-07-30", site:"https://silvafusion.com", phone:"(732) 759-1907", logo:"silva-fusion-mma-bjj-jackson.png", email:"fusionmartialartsnj@gmail.com", ig:"" },
   { gym:"Pinelands BJJ", town:"Little Egg Harbor", county:"Ocean", lat:39.5836, lng:-74.3713,
     day:1, start:"7:00 PM", end:"8:00 PM", startH:19.0, endH:20.0, format:"Check gym", cost:"Ask gym",
     verified:"reported", verifiedDate:"2026-07-27", site:"https://pinelandsbjj.com", phone:"(732) 575-3674", ig:"" },
@@ -790,31 +805,31 @@ const MATS = [
     verified:"reported", verifiedDate:"2026-07-27", site:"https://pinelandsbjj.com", phone:"(732) 575-3674", ig:"" },
   { gym:"Ocean County BJJ", town:"Forked River", county:"Ocean", lat:39.8473, lng:-74.1963,
     day:6, start:"10:15 AM", end:"11:00 AM", startH:10.25, endH:11.0, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://oceancountybjj.com", phone:"(848) 992-2028", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://oceancountybjj.com", phone:"(848) 992-2028", email:"info@oceancountybjj.com", ig:"" },
   { gym:"South Jersey BJJ", town:"Berlin", county:"Camden", lat:39.7969, lng:-74.9283,
     day:0, start:"9:00 AM", end:"10:30 AM", startH:9.0, endH:10.5, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://sjbjj.com", phone:"(856) 809-0429", logo:"south-jersey-bjj-berlin.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://sjbjj.com", phone:"(856) 809-0429", logo:"south-jersey-bjj-berlin.png", email:"senseibon@aol.com", ig:"" },
   { gym:"Silver Fox BJJ Butler", town:"Butler", county:"Morris", lat:41.0063, lng:-74.3586,
     day:0, start:"10:00 AM", end:"12:00 PM", startH:10.0, endH:12.0, format:"Check gym", cost:"Ask gym",
     verified:"reported", verifiedDate:"2026-07-27", site:"https://www.silverfoxbjjbutler.com", phone:"(201) 885-7289", ig:"" },
   { gym:"Viper's Den Jiu-Jitsu", town:"Fair Lawn", county:"Bergen", lat:40.9304, lng:-74.1172,
     day:0, start:"10:00 AM", end:"12:00 PM", startH:10.0, endH:12.0, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://vipersdenbjj.com", phone:"(201) 655-1332", logo:"viper-s-den-jiu-jitsu-fair-lawn.png", ig:"" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://vipersdenbjj.com", phone:"(201) 655-1332", logo:"viper-s-den-jiu-jitsu-fair-lawn.png", email:"chris@vipersdenbjj.com", ig:"" },
   { gym:"Bones Jiu Jitsu Academy", town:"Clifton", county:"Passaic", lat:40.8918, lng:-74.1418,
     day:0, start:"11:00 AM", end:"", startH:11.0, endH:null, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://bonesjiujitsu.com", phone:"(201) 292-3641", ig:"https://www.instagram.com/bonesbjjacademy/" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://bonesjiujitsu.com", phone:"(201) 292-3641", email:"bonesjiujitsu@gmail.com", ig:"https://www.instagram.com/bonesbjjacademy/" },
   { gym:"Method Jiu Jitsu", town:"South Plainfield", county:"Middlesex", lat:40.5868, lng:-74.4185,
     day:4, start:"6:00 PM", end:"", startH:18.0, endH:null, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.methodjj.com", phone:"(732) 527-9614", logo:"method-jiu-jitsu-south-plainfield.png", ig:"https://www.instagram.com/method_jiu_jitsu" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.methodjj.com", phone:"(732) 527-9614", logo:"method-jiu-jitsu-south-plainfield.png", email:"chris@methodjj.com", ig:"https://www.instagram.com/method_jiu_jitsu" },
   { gym:"Method Jiu Jitsu", town:"South Plainfield", county:"Middlesex", lat:40.5868, lng:-74.4185,
     day:0, start:"10:00 AM", end:"11:00 AM", startH:10.0, endH:11.0, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.methodjj.com", phone:"(732) 527-9614", logo:"method-jiu-jitsu-south-plainfield.png", ig:"https://www.instagram.com/method_jiu_jitsu" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.methodjj.com", phone:"(732) 527-9614", logo:"method-jiu-jitsu-south-plainfield.png", email:"chris@methodjj.com", ig:"https://www.instagram.com/method_jiu_jitsu" },
   { gym:"Gracie Barra Princeton", town:"Lawrence Township", county:"Mercer", lat:40.3009, lng:-74.7479,
     day:5, start:"7:00 PM", end:"", startH:19.0, endH:null, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://gbprinceton.com", phone:"(609) 622-5116", logo:"gracie-barra-princeton-lawrence-township.png", ig:"https://www.instagram.com/gbprinceton" },
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://gbprinceton.com", phone:"(609) 622-5116", logo:"gracie-barra-princeton-lawrence-township.png", email:"info@gbprinceton.com", ig:"https://www.instagram.com/gbprinceton" },
   { gym:"Touro MMA", town:"Oak Ridge", county:"Passaic", lat:41.0462, lng:-74.486,
     day:0, start:"10:00 AM", end:"", startH:10.0, endH:null, format:"Check gym", cost:"Ask gym",
-    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.touromma.com", phone:"(201) 452-4742", ig:"" }
+    verified:"reported", verifiedDate:"2026-07-27", site:"https://www.touromma.com", phone:"(201) 452-4742", email:"info@touromma.com", ig:"" }
 ];
 
 /* ========================================================= */
@@ -1015,6 +1030,44 @@ function shareMat(m){
   else{navigator.clipboard.writeText(text).then(()=>toast("Copied. Send it to the group chat.")).catch(()=>toast("Could not copy · screenshot it instead"));}
 }
 
+/* message the school: user's words, user's own email/texts, profile-signed */
+const msgOverlay=document.getElementById("msgOverlay");
+let MSG_GYM=null;
+function openMessage(m){
+  MSG_GYM=m;
+  document.getElementById("mg-title").textContent="Message "+m.gym;
+  const hasName=PROFILE&&PROFILE.name;
+  document.getElementById("mg-namewrap").style.display=hasName?"none":"";
+  if(!hasName)document.getElementById("mg-name").value="";
+  document.getElementById("mg-email").style.display=m.email?"":"none";
+  document.getElementById("mg-sms").style.display=m.phone?"":"none";
+  msgOverlay.classList.add("open");
+  document.getElementById("mg-text").focus();
+}
+function msgBody(){
+  const q=document.getElementById("mg-text").value.trim()||"Is your open mat open to visitors?";
+  const name=(PROFILE&&PROFILE.name)||document.getElementById("mg-name").value.trim();
+  const who=(name||"A fighter")+(PROFILE?" · "+PROFILE.belt+" belt · trains "+PROFILE.trains:"");
+  return "Hi "+MSG_GYM.gym+",\n\n"+q+"\n\n— "+who+"\nvia OPENMAT · "+SITE_URL;
+}
+document.getElementById("mg-close").onclick=()=>msgOverlay.classList.remove("open");
+msgOverlay.addEventListener("click",e=>{if(e.target===msgOverlay)msgOverlay.classList.remove("open");});
+document.getElementById("mg-email").onclick=()=>{
+  if(!MSG_GYM||!MSG_GYM.email)return;
+  const body=msgBody();
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(body).catch(()=>{});}
+  window.location.href="mailto:"+MSG_GYM.email+"?subject="+encodeURIComponent("Open mat question · via OPENMAT")+"&body="+encodeURIComponent(body);
+  msgOverlay.classList.remove("open");
+  toast("Opening your email · message copied too");
+};
+document.getElementById("mg-sms").onclick=()=>{
+  if(!MSG_GYM||!MSG_GYM.phone)return;
+  const digits=String(MSG_GYM.phone).replace(/\D/g,"").replace(/^1/,"");
+  window.location.href="sms:+1"+digits+"?&body="+encodeURIComponent(msgBody());
+  msgOverlay.classList.remove("open");
+  toast("Opening your messages");
+};
+
 /* fighter profile builder */
 const profOverlay=document.getElementById("profOverlay");
 const BELTS=["White","Blue","Purple","Brown","Black"];
@@ -1075,7 +1128,7 @@ document.getElementById("openPost").onclick=openModal;
 document.getElementById("openPost2").onclick=openModal;
 document.getElementById("closePost").onclick=()=>overlay.classList.remove("open");
 overlay.addEventListener("click",e=>{if(e.target===overlay)overlay.classList.remove("open");});
-document.addEventListener("keydown",e=>{if(e.key==="Escape"){overlay.classList.remove("open");profOverlay.classList.remove("open");}});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){overlay.classList.remove("open");profOverlay.classList.remove("open");msgOverlay.classList.remove("open");}});
 function parseTimes(str){
   const m=(str||"").match(/(\d{1,2}(?::\d{2})?\s*(?:AM|PM))/gi)||[];
   const to24=s=>{const p=s.match(/(\d{1,2})(?::(\d{2}))?\s*(AM|PM)/i);if(!p)return null;let h=(+p[1])%12+(p[3].toUpperCase()==="PM"?12:0);return h+(+(p[2]||0))/60;};
@@ -1379,6 +1432,7 @@ openGymSheet=function(list){
   }
   const gs=m.site&&!/openmatlocator\.com|jitsopenmats\.com/.test(m.site)?m.site:"";if(gs){const a=document.createElement("a");a.textContent="Website";a.href=gs;a.target="_blank";a.rel="noopener";acts.appendChild(a);}
   const dir=document.createElement("a");dir.textContent="Address";dir.target="_blank";dir.rel="noopener";dir.href="https://www.google.com/maps/dir/?api=1&destination="+m.lat+","+m.lng;acts.appendChild(dir);
+  if(m.email||m.phone){const mb=document.createElement("button");mb.textContent="Message";mb.onclick=()=>openMessage(m);acts.appendChild(mb);}
   if(m.ig){const a=document.createElement("a");a.textContent="IG";a.href=m.ig;a.target="_blank";a.rel="noopener";acts.appendChild(a);}
   const sh=document.createElement("button");sh.textContent="Share";sh.onclick=()=>shareMat(m);acts.appendChild(sh);
   det.appendChild(acts);
