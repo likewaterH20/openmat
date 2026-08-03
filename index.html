@@ -1518,7 +1518,7 @@ openGymSheet=function(list){
     acts.appendChild(call);
   }
   /* the school's own waiver sits with the other taps, not buried below them */
-  if(m.waiver){const a=document.createElement("a");a.className="waiverbtn";a.textContent="✍ Waiver";a.href=m.waiver;a.target="_blank";a.rel="noopener";acts.appendChild(a);}
+  if(m.waiver){const a=document.createElement("a");a.className="waiverbtn";a.textContent="Waiver";a.href=m.waiver;a.target="_blank";a.rel="noopener";acts.appendChild(a);}
   const gs=m.site&&!/openmatlocator\.com|jitsopenmats\.com/.test(m.site)?m.site:"";if(gs){const a=document.createElement("a");a.textContent="Website";a.href=gs;a.target="_blank";a.rel="noopener";acts.appendChild(a);}
   const dir=document.createElement("a");dir.textContent="Address";dir.target="_blank";dir.rel="noopener";dir.href="https://www.google.com/maps/dir/?api=1&destination="+m.lat+","+m.lng;acts.appendChild(dir);
   if(m.email||m.phone){const mb=document.createElement("button");mb.textContent="Message";mb.onclick=()=>openMessage(m);acts.appendChild(mb);}
