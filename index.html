@@ -188,6 +188,10 @@
   .actions2 a.primary{background:var(--mat);border-color:var(--mat);color:#fff}
   .actions2 a.primary:hover{background:var(--ink);border-color:var(--ink)}
   .actions2 .callrow{flex-basis:100%;font-size:12px;letter-spacing:.08em}
+  /* the waiver: outlined in tatami blue so it reads as the one that gets you on
+     the mat, without competing with the solid blue call row above it */
+  .actions2 a.waiverbtn{border-color:var(--mat);color:var(--mat)}
+  .actions2 a.waiverbtn:hover{background:var(--mat);border-color:var(--mat);color:#fff}
   .sheet .closer{position:absolute;top:10px;right:14px;appearance:none;border:0;background:none;font-size:24px;line-height:1;cursor:pointer;color:var(--mist)}
   @media(min-width:900px){.sheet{left:auto;right:24px;bottom:24px;width:430px;border:1px solid var(--line);border-top:4px solid var(--mat)}}
 
@@ -1513,20 +1517,21 @@ openGymSheet=function(list){
     call.href="tel:+1"+String(m.phone).replace(/\D/g,"").replace(/^1/,"");
     acts.appendChild(call);
   }
+  /* the school's own waiver sits with the other taps, not buried below them */
+  if(m.waiver){const a=document.createElement("a");a.className="waiverbtn";a.textContent="✍ Waiver";a.href=m.waiver;a.target="_blank";a.rel="noopener";acts.appendChild(a);}
   const gs=m.site&&!/openmatlocator\.com|jitsopenmats\.com/.test(m.site)?m.site:"";if(gs){const a=document.createElement("a");a.textContent="Website";a.href=gs;a.target="_blank";a.rel="noopener";acts.appendChild(a);}
   const dir=document.createElement("a");dir.textContent="Address";dir.target="_blank";dir.rel="noopener";dir.href="https://www.google.com/maps/dir/?api=1&destination="+m.lat+","+m.lng;acts.appendChild(dir);
   if(m.email||m.phone){const mb=document.createElement("button");mb.textContent="Message";mb.onclick=()=>openMessage(m);acts.appendChild(mb);}
   if(m.ig){const a=document.createElement("a");a.textContent="IG";a.href=m.ig;a.target="_blank";a.rel="noopener";acts.appendChild(a);}
   const sh=document.createElement("button");sh.textContent="Share";sh.onclick=()=>shareMat(m);acts.appendChild(sh);
   det.appendChild(acts);
-  /* walk in ready: the school's own waiver + trial signup */
-  if(m.waiver||m.trial){
+  /* walk in ready: the trial signup. The waiver moved up into the tap row, and
+     some schools use one page for both, so this can end up with nothing to show. */
+  if(m.trial&&m.trial!==m.waiver){
     const w=document.createElement("div");w.className="walkin";
     const wt=document.createElement("div");wt.className="wtitle";wt.textContent="Walk in ready";w.appendChild(wt);
     const wa=document.createElement("div");wa.className="actions2";wa.style.marginTop="0";
-    if(m.waiver){const a=document.createElement("a");a.className="primary";a.textContent="✍ Sign their waiver";a.href=m.waiver;a.target="_blank";a.rel="noopener";wa.appendChild(a);}
-    /* some schools use one page for both; don't show it twice */
-    if(m.trial&&m.trial!==m.waiver){const a=document.createElement("a");a.textContent="Trial / Join";a.href=m.trial;a.target="_blank";a.rel="noopener";wa.appendChild(a);}
+    const a=document.createElement("a");a.className="primary";a.textContent="Trial / Join";a.href=m.trial;a.target="_blank";a.rel="noopener";wa.appendChild(a);
     w.appendChild(wa);det.appendChild(w);
   }
   /* claim funnel */
