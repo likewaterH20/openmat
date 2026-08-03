@@ -1330,10 +1330,13 @@ document.getElementById("sendPost").onclick=async()=>{
   }
   const town=entry.town;
   if(entry.lat!==null){
-    PENDING.push(entry);savePending();
-    if(entry.day!==null){activeDay=entry.day;}
-    render();
-    map.flyTo([entry.lat,entry.lng],13,{duration:.7});
+    /* showing the pin is a nicety; never let it stop the submission going out */
+    try{
+      PENDING.push(entry);savePending();
+      if(entry.day!==null){activeDay=entry.day;}
+      render();
+      map.flyTo([entry.lat,entry.lng],13,{duration:.7});
+    }catch(e){}
   }
   /* 2. send it to us for verification (no email app needed) */
   const timeStr=entry.start+(entry.end?" to "+entry.end:"");
