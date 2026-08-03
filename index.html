@@ -85,7 +85,7 @@
   .locstatus button{appearance:none;border:0;background:none;cursor:pointer;color:var(--mist);font:inherit;text-decoration:underline;margin-left:8px}
 
   .daystrip{display:grid;grid-template-columns:repeat(7,1fr);border-bottom:1px solid var(--line);background:var(--paper);position:sticky;top:0;z-index:600}
-  .day{appearance:none;border:0;background:none;cursor:pointer;font-family:'Anton',sans-serif;font-size:clamp(15px,4.2vw,24px);letter-spacing:.03em;text-transform:uppercase;padding:14px 0 10px;color:var(--mist);border-right:1px solid var(--line);position:relative;transition:color .15s}
+  .day{appearance:none;border:0;background:none;cursor:pointer;font-family:'Anton',sans-serif;font-size:clamp(15px,4.2vw,24px);letter-spacing:.03em;text-transform:uppercase;padding:14px 0 10px;color:var(--mist);border-right:1px solid var(--line);position:relative;transition:color .15s,transform .08s ease-out}
   .day:last-child{border-right:0}
   .day:hover{color:var(--ink)}
   .day:focus-visible{outline:2px solid var(--mat);outline-offset:-2px}
@@ -163,7 +163,7 @@
   }
 
   /* ---- LAB: gym directory rows ---- */
-  .gymrow{border:1px solid var(--line);background:var(--card);padding:14px 16px;margin-bottom:10px;cursor:pointer;display:flex;justify-content:space-between;gap:10px;align-items:center;transition:border-color .15s}
+  .gymrow{border:1px solid var(--line);background:var(--card);padding:14px 16px;margin-bottom:10px;cursor:pointer;display:flex;justify-content:space-between;gap:10px;align-items:center;transition:border-color .15s,transform .08s ease-out}
   .gymrow:hover{border-color:var(--ink)}
   .gymrow .gname{font-family:'Anton',sans-serif;font-size:16px;text-transform:uppercase;letter-spacing:.02em;line-height:1.15}
   .gymrow .gsub{font-size:12px;color:var(--mist);margin-top:2px}
@@ -283,8 +283,10 @@
   .chip:active,.day:active,.mode-opt:active,#paneltabs button:active,
   .sugrow:active,.backbtn:active,.gymrow:active,.card:active,
   .actions2 a:active,.actions2 button:active{transform:scale(.975)}
-  .chip,.day,.mode-opt,#paneltabs button,.sugrow,.backbtn,.gymrow,.card,
-  .actions2 a,.actions2 button{transition:transform .08s ease-out}
+  /* Only elements that had NO transition of their own get one here. `transition`
+     is a shorthand: setting it on .chip/.mode-opt (all) or .card/.day would wipe
+     the colour and border eases those already have. */
+  #paneltabs button,.sugrow,.backbtn,.actions2 a,.actions2 button{transition:transform .08s ease-out}
   .postbtn:active,.profilebtn:active,#nearBtn:active,#goBtn:active,
   #recenterBtn:active,.primary:active{transform:scale(.96);opacity:.9}
 
@@ -303,10 +305,9 @@
   }
 
   @media(max-width:899px){
-    /* 5. Days and filters snap like a native segmented control instead of
-          drifting to a stop wherever the finger left off. */
-    .daystrip{scroll-snap-type:x proximity;overscroll-behavior-x:contain}
-    .daystrip .day{scroll-snap-align:center}
+    /* 5. The filter row snaps instead of drifting to a stop wherever the finger
+          left off. (The daystrip is a 7-column grid that always fits, so it
+          never scrolls and needs no snapping.) */
     .filters{scroll-snap-type:x proximity;overscroll-behavior-x:contain}
     .filters .chip{scroll-snap-align:start}
     /* 6. Opening a school reads as pushing a new screen, not swapping text. */
@@ -884,7 +885,7 @@ const MATS = [
   { gym:"Viper's Den Jiu-Jitsu", town:"Fair Lawn", county:"Bergen", lat:40.9304, lng:-74.1172,
     day:0, start:"10:00 AM", end:"12:00 PM", startH:10.0, endH:12.0, format:"Check gym", cost:"Ask gym",
     verified:"reported", verifiedDate:"2026-07-27", site:"https://vipersdenbjj.com", phone:"(201) 655-1332", logo:"viper-s-den-jiu-jitsu-fair-lawn.png", email:"chris@vipersdenbjj.com", trial:"https://bookmenow.info/group/GRP-9c683423-4f8b-4954-8b69-c8547bec395f/trial-booking", ig:"" },
-  { gym:"Bones Jiu Jitsu Academy", town:"Clifton", county:"Passaic", lat:40.8918, lng:-74.1418,
+  { gym:"Bones Jiu Jitsu Academy", town:"Clifton", county:"Passaic", lat:40.8919, lng:-74.1413,
     day:0, start:"11:00 AM", end:"", startH:11.0, endH:null, format:"Check gym", cost:"Ask gym",
     verified:"reported", verifiedDate:"2026-07-27", site:"https://bonesjiujitsu.com", phone:"(201) 292-3641", email:"bonesjiujitsu@gmail.com", trial:"https://bonesjiujitsu.com/contact-us", ig:"https://www.instagram.com/bonesbjjacademy/" },
   { gym:"Method Jiu Jitsu", town:"South Plainfield", county:"Middlesex", lat:40.5868, lng:-74.4185,
@@ -1534,6 +1535,7 @@ openGymSheet=function(list){
   det.appendChild(cl);
   document.body.classList.add("detail-on");
   document.body.classList.remove("panel-peek"); /* a school page deserves the full panel */
+  det.scrollTop=0; /* otherwise the next school opens halfway down the last one */
   map.flyTo([m.lat,m.lng],13,{duration:.5});
 };
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!document.querySelector(".overlay.open"))closeGymPanel();},true); /* capture: decide before overlay handlers close things */
