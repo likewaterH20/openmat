@@ -151,6 +151,19 @@
   .modal .actions{display:flex;gap:10px;margin-top:20px}
   .modal .btn{padding:14px 20px;flex:1}
   .modal .btn.ghost{background:none;color:var(--ink);border:1px solid var(--line)}
+  /* post a mat: pick the school you already know instead of typing its address */
+  .picked{display:flex;align-items:center;gap:10px;border:1px solid var(--mat);background:var(--card);padding:10px 12px}
+  .picked img{width:26px;height:26px;border-radius:50%;object-fit:cover;background:#fff;flex:none}
+  .picked span{flex:1;font-size:14px}
+  .linkish{appearance:none;border:0;background:none;color:var(--mat);font-family:'Inter',sans-serif;font-size:12px;cursor:pointer;padding:6px 0;text-decoration:underline}
+  #pm-suggest{display:none;max-height:210px;overflow-y:auto;border:1px solid var(--line);border-top:0;background:var(--card)}
+  .daypick{display:flex;gap:6px;flex-wrap:wrap}
+  .daypick .chip{flex:1;min-width:42px;text-align:center}
+  .timerow{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .timerow span{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--mist)}
+  .timerow input[type=time]{flex:1;min-width:120px;border:1px solid var(--line);background:var(--card);padding:12px 14px;font-family:'Inter',sans-serif;font-size:14px;color:var(--ink)}
+  .timerow input[type=time]:focus{outline:2px solid var(--mat);outline-offset:-1px}
+  .hint{font-size:11px;color:var(--mist);margin-top:6px}
   .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:56px;background:var(--ink);color:var(--paper);font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:12px 18px;z-index:950;display:none}
 
   @media(min-width:900px){
@@ -369,21 +382,40 @@
   <div class="modal">
     <h2 id="pm-title">Post a mat</h2>
     <p>It lands on your map right away. We verify it, then it goes live for everyone.</p>
-    <div class="field"><label for="f-gym">Gym name</label><input id="f-gym" type="text" placeholder="e.g. Revel Jiu Jitsu"></div>
-    <div class="field"><label for="f-address">Address</label><input id="f-address" type="text" placeholder="e.g. 8 Edgeboro Rd, East Brunswick NJ"></div>
-    <div class="field"><label for="f-town">Town</label><input id="f-town" type="text" placeholder="e.g. East Brunswick"></div>
-    <div class="field"><label for="f-day">Day</label>
-      <select id="f-day"><option>Sunday</option><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option></select>
+    <div class="field">
+      <label for="f-school">1 · Which school?</label>
+      <div class="picked" id="pm-picked" style="display:none"></div>
+      <input id="f-school" type="text" placeholder="Start typing a school name" autocomplete="off">
+      <div id="pm-suggest"></div>
+      <button type="button" class="linkish" id="pm-new">Not on the list? Add a new school</button>
     </div>
-    <div class="field"><label for="f-time">Time</label><input id="f-time" type="text" placeholder="e.g. 10:00 AM to 12:00 PM"></div>
-    <div class="field"><label for="f-format">Format</label>
-      <select id="f-format"><option>Gi + No-Gi</option><option>Gi</option><option>No-Gi</option></select>
+    <div id="pm-newwrap" style="display:none">
+      <div class="field"><label for="f-gym">School name</label><input id="f-gym" type="text" placeholder="e.g. Revel Jiu Jitsu"></div>
+      <div class="field"><label for="f-address">Address</label><input id="f-address" type="text" placeholder="8 Edgeboro Rd, East Brunswick NJ"></div>
     </div>
-    <div class="field"><label for="f-cost">Cost</label><input id="f-cost" type="text" placeholder="e.g. Free / $20 drop-in"></div>
-    <div class="field"><label for="f-contact">Your email or IG (so we can confirm)</label><input id="f-contact" type="text" placeholder="you@email.com or @handle"></div>
+    <div class="field">
+      <label>2 · What day?</label>
+      <div class="daypick" id="pm-days"></div>
+    </div>
+    <div class="field">
+      <label>3 · What time?</label>
+      <div class="timerow">
+        <span>Starts</span><input id="f-start" type="time">
+        <span>Ends</span><input id="f-end" type="time">
+      </div>
+      <div class="hint">End time is optional</div>
+    </div>
+    <button type="button" class="linkish" id="pm-more">+ Add details (optional)</button>
+    <div id="pm-morewrap" style="display:none">
+      <div class="field"><label for="f-format">Format</label>
+        <select id="f-format"><option>Check gym</option><option>Gi + No-Gi</option><option>Gi</option><option>No-Gi</option></select>
+      </div>
+      <div class="field"><label for="f-cost">Cost</label><input id="f-cost" type="text" placeholder="Free / $20 drop-in"></div>
+      <div class="field"><label for="f-contact">Your email or IG (so we can confirm)</label><input id="f-contact" type="text" placeholder="you@email.com or @handle"></div>
+    </div>
     <div class="actions">
       <button class="btn ghost" id="closePost">Cancel</button>
-      <button class="btn alt" id="sendPost">Send it</button>
+      <button class="btn alt" id="sendPost">Post it</button>
     </div>
   </div>
 </div>
@@ -1199,38 +1231,104 @@ document.getElementById("saveProf").onclick=async()=>{
 
 /* post a mat */
 const overlay=document.getElementById("overlay");
-const openModal=()=>{if(typeof hideSuggest==="function")hideSuggest();overlay.classList.add("open");document.getElementById("f-gym").focus();};
+const openModal=()=>{if(typeof hideSuggest==="function")hideSuggest();pmReset();overlay.classList.add("open");document.getElementById("f-school").focus();};
 document.getElementById("openPost").onclick=openModal;
 document.getElementById("openPost2").onclick=openModal;
 document.getElementById("closePost").onclick=()=>overlay.classList.remove("open");
 overlay.addEventListener("click",e=>{if(e.target===overlay)overlay.classList.remove("open");});
 document.addEventListener("keydown",e=>{if(e.key==="Escape"){overlay.classList.remove("open");profOverlay.classList.remove("open");msgOverlay.classList.remove("open");}});
-function parseTimes(str){
-  const m=(str||"").match(/(\d{1,2}(?::\d{2})?\s*(?:AM|PM))/gi)||[];
-  const to24=s=>{const p=s.match(/(\d{1,2})(?::(\d{2}))?\s*(AM|PM)/i);if(!p)return null;let h=(+p[1])%12+(p[3].toUpperCase()==="PM"?12:0);return h+(+(p[2]||0))/60;};
-  const norm=s=>s.replace(/\s+/g," ").toUpperCase().replace(/(AM|PM)/," $1").replace(/\s+/g," ").trim();
-  return {start:m[0]?norm(m[0]):(str||"Check gym"), end:m[1]?norm(m[1]):"", startH:m[0]?to24(m[0]):null, endH:m[1]?to24(m[1]):null};
+/* ===== post a mat, the short way =====
+   Nearly every post is for a school already on the map, so pick it and the
+   address, town, county and pin all come along. Typing only happens for a
+   school we don't have yet. */
+let PM_PICK=null, PM_DAY=new Date().getDay();
+const pmEl=id=>document.getElementById(id);
+function pmDays(){
+  const el=pmEl("pm-days");if(!el)return;el.replaceChildren();
+  DAYS.forEach((d,i)=>{const b=document.createElement("button");b.type="button";
+    b.className="chip"+(i===PM_DAY?" on":"");b.textContent=d;
+    b.onclick=()=>{PM_DAY=i;pmDays();};el.appendChild(b);});
 }
+function pmPick(g){
+  PM_PICK=g?Object.assign({},g[0]):null;
+  const box=pmEl("pm-picked"),inp=pmEl("f-school");
+  box.replaceChildren();
+  if(PM_PICK){
+    if(PM_PICK.logo){const im=document.createElement("img");im.src="logos/"+PM_PICK.logo;im.alt="";box.appendChild(im);}
+    const t=document.createElement("span");t.textContent=PM_PICK.gym+" · "+PM_PICK.town;box.appendChild(t);
+    const ch=document.createElement("button");ch.type="button";ch.className="linkish";ch.textContent="change";
+    ch.onclick=()=>{pmPick(null);inp.focus();};box.appendChild(ch);
+    box.style.display="flex";inp.style.display="none";
+    pmEl("pm-new").style.display="none";pmEl("pm-newwrap").style.display="none";
+  }else{
+    box.style.display="none";inp.style.display="";
+    pmEl("pm-new").style.display="";
+  }
+  pmEl("pm-suggest").style.display="none";
+}
+function pmSuggest(){
+  const inp=pmEl("f-school"),box=pmEl("pm-suggest");
+  const v=inp.value.trim();box.replaceChildren();
+  if(v.length<2){box.style.display="none";return;}
+  const hits=gymMatches(v);
+  hits.forEach(g=>{const m=g[0];
+    const row=document.createElement("button");row.type="button";row.className="sugrow";
+    if(m.logo){const im=document.createElement("img");im.src="logos/"+m.logo;im.alt="";row.appendChild(im);}
+    else{const d=document.createElement("span");d.className="sugdot";d.textContent=(m.gym[0]||"?").replace(/[^A-Za-z0-9]/,"?");row.appendChild(d);}
+    row.appendChild(document.createTextNode(m.gym));
+    const tn=document.createElement("span");tn.className="sugtown";tn.textContent=m.town;row.appendChild(tn);
+    row.onmousedown=e=>{e.preventDefault();pmPick(g);};
+    box.appendChild(row);});
+  box.style.display=hits.length?"block":"none";
+}
+function pmReset(){
+  PM_PICK=null;PM_DAY=new Date().getDay();
+  ["f-school","f-gym","f-address","f-start","f-end","f-cost","f-contact"].forEach(id=>{const e=pmEl(id);if(e)e.value="";});
+  const f=pmEl("f-format");if(f)f.selectedIndex=0;
+  pmEl("pm-newwrap").style.display="none";
+  pmEl("pm-morewrap").style.display="none";
+  pmEl("pm-more").textContent="+ Add details (optional)";
+  pmPick(null);pmDays();
+}
+/* a native time picker beats asking someone to type "10:00 AM to 12:00 PM" */
+function hhmmDisp(v){if(!v)return "";const p=v.split(":");let h=+p[0];const ap=h>=12?"PM":"AM";h=h%12||12;return h+":"+p[1]+" "+ap;}
+function hhmmDec(v){if(!v)return null;const p=v.split(":");return +p[0]+(+p[1])/60;}
+pmEl("f-school").addEventListener("input",pmSuggest);
+pmEl("f-school").addEventListener("blur",()=>setTimeout(()=>{pmEl("pm-suggest").style.display="none";},150));
+pmEl("pm-new").onclick=()=>{const w=pmEl("pm-newwrap");w.style.display="block";pmEl("f-gym").focus();};
+pmEl("pm-more").onclick=()=>{const w=pmEl("pm-morewrap");const open=w.style.display!=="none";
+  w.style.display=open?"none":"block";pmEl("pm-more").textContent=(open?"+":"–")+" Add details (optional)";};
+pmDays();
 document.getElementById("sendPost").onclick=async()=>{
-  const v=id=>document.getElementById(id).value.trim();
-  const gym=v("f-gym"),town=v("f-town"),address=v("f-address");
-  if(!gym||!town){toast("Gym name and town are required.");return;}
+  const v=id=>{const e=document.getElementById(id);return e?e.value.trim():"";};
+  const startV=v("f-start"),endV=v("f-end");
+  if(!PM_PICK&&!v("f-gym")){toast("Pick a school, or add a new one.");return;}
+  if(!PM_PICK&&!v("f-address")){toast("Add the address so we can put it on the map.");return;}
+  if(!startV){toast("Add a start time.");return;}
+  if(endV&&hhmmDec(endV)<=hhmmDec(startV)){toast("The end time has to be after the start.");return;}
   const btn=document.getElementById("sendPost");btn.disabled=true;btn.textContent="Posting…";
-  const t=parseTimes(v("f-time"));
-  const day=DAY_NAMES.indexOf(v("f-day"));
+  const gym=PM_PICK?PM_PICK.gym:v("f-gym");
+  const address=PM_PICK?"":v("f-address");
   /* 1. put it on THIS device's map right away */
-  let entry={gym,town,county:"",lat:null,lng:null,day:day<0?null:day,
-    start:t.start,end:t.end,startH:t.startH,endH:t.endH,
-    format:v("f-format"),cost:v("f-cost")||"Ask gym",
+  let entry={gym,town:PM_PICK?PM_PICK.town:"",county:PM_PICK?PM_PICK.county:"",
+    lat:PM_PICK?PM_PICK.lat:null,lng:PM_PICK?PM_PICK.lng:null,day:PM_DAY,
+    start:hhmmDisp(startV),end:hhmmDisp(endV),startH:hhmmDec(startV),endH:hhmmDec(endV),
+    format:v("f-format")||"Check gym",cost:v("f-cost")||"Ask gym",
     verified:"pending",verifiedDate:new Date().toISOString().slice(0,10),site:"",ig:""};
-  try{
-    const hit=await nominatimLookup(address||town);
-    if(hit){
-      entry.lat=parseFloat(hit.lat);entry.lng=parseFloat(hit.lon);
-      const county=(hit.display_name||"").split(",").map(s=>s.trim()).find(s=>/County$/.test(s));
-      entry.county=county?county.replace(/\s*County$/,""):"";
-    }
-  }catch(e){}
+  /* a school we already know needs no lookup at all */
+  if(entry.lat===null){
+    try{
+      const hit=await nominatimLookup(address);
+      if(hit){
+        entry.lat=parseFloat(hit.lat);entry.lng=parseFloat(hit.lon);
+        const parts=(hit.display_name||"").split(",").map(s=>s.trim());
+        const county=parts.find(s=>/County$/.test(s));
+        entry.county=county?county.replace(/\s*County$/,""):"";
+        if(!entry.town)entry.town=parts[1]||parts[0]||"";
+      }
+    }catch(e){}
+  }
+  const town=entry.town;
   if(entry.lat!==null){
     PENDING.push(entry);savePending();
     if(entry.day!==null){activeDay=entry.day;}
@@ -1238,7 +1336,11 @@ document.getElementById("sendPost").onclick=async()=>{
     map.flyTo([entry.lat,entry.lng],13,{duration:.7});
   }
   /* 2. send it to us for verification (no email app needed) */
-  const payload={_subject:"OPENMAT submission: "+gym+", "+town,Gym:gym,Address:address,Town:town,Day:v("f-day"),Time:v("f-time"),Format:v("f-format"),Cost:v("f-cost"),Contact:v("f-contact"),Pin:entry.lat!==null?entry.lat+", "+entry.lng:"geocode failed"};
+  const timeStr=entry.start+(entry.end?" to "+entry.end:"");
+  const payload={_subject:"OPENMAT submission: "+gym+", "+town,Gym:gym,
+    Known:PM_PICK?"already listed":"NEW school",Address:address,Town:town,
+    Day:DAY_NAMES[PM_DAY],Time:timeStr,Format:entry.format,Cost:entry.cost,
+    Contact:v("f-contact"),Pin:entry.lat!==null?entry.lat+", "+entry.lng:"geocode failed"};
   let sent=false;
   try{
     const r=await fetch(FORM_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(payload)});
@@ -1246,12 +1348,12 @@ document.getElementById("sendPost").onclick=async()=>{
     sent=r.ok && String(j.success).toLowerCase()==="true"; /* FormSubmit returns 200 even pre-activation */
   }catch(e){}
   if(!sent){
-    const lines=["NEW OPEN MAT SUBMISSION","","Gym: "+gym,"Address: "+address,"Town: "+town,"Day: "+v("f-day"),"Time: "+v("f-time"),"Format: "+v("f-format"),"Cost: "+v("f-cost"),"Contact: "+v("f-contact")];
+    const lines=["NEW OPEN MAT SUBMISSION","","Gym: "+gym,"Already listed: "+(PM_PICK?"yes":"no"),"Address: "+address,"Town: "+town,"Day: "+DAY_NAMES[PM_DAY],"Time: "+timeStr,"Format: "+entry.format,"Cost: "+entry.cost,"Contact: "+v("f-contact")];
     window.location.href="mailto:"+SUBMIT_EMAIL+"?subject="+encodeURIComponent("OPENMAT submission: "+gym+", "+town)+"&body="+lines.join("%0D%0A");
   }
-  btn.disabled=false;btn.textContent="Send it";
+  btn.disabled=false;btn.textContent="Post it";
   overlay.classList.remove("open");
-  ["f-gym","f-address","f-town","f-time","f-cost","f-contact"].forEach(id=>document.getElementById(id).value="");
+  pmReset();
   toast(entry.lat!==null?"On your map · sent for verification":"Sent for verification");
 };
 
