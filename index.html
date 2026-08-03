@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>OPENMAT · NJ</title>
 <meta name="description" content="Find every BJJ open mat in New Jersey. Search your zip, see what's rolling today, free mats flagged. Checked by hand.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231E3FE0'/%3E%3Ctext x='50' y='72' font-size='62' font-family='Arial Black,sans-serif' font-weight='900' fill='%23fff' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
@@ -18,6 +18,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FAFAF8">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0C0C0B">
+<!-- add to home screen: opens standalone, no browser bar -->
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="OPENMAT">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -259,6 +266,57 @@
     #paneltabs button{padding:11px 0}
     .leaflet-control-zoom{display:none} /* pinch zoom; control just clutters under the header */
   }
+  /* ===== feels-like-an-app pass =====
+     Everything here is about touch, not looks. The design is unchanged. */
+
+  /* 1. Kill the browser tells. No rubber-band on the shell, no double-tap zoom
+        delay on controls, no text-cursor drag on chrome. Gym details stay
+        selectable on purpose so people can copy a phone number or address. */
+  html,body{overscroll-behavior:none}
+  button,.chip,.day,.mode-opt,#paneltabs button,.sugrow,.backbtn,a.claimrow{touch-action:manipulation}
+  header,.daystrip,.filters,#paneltabs,#panelHandle,.chip,.day,.mode-opt{
+    -webkit-user-select:none;user-select:none}
+  .list,#gymdetail,#gymlist{overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+
+  /* 2. Every tap answers back. A control that does not move on press is the
+        single loudest "this is a website" signal on a phone. */
+  .chip:active,.day:active,.mode-opt:active,#paneltabs button:active,
+  .sugrow:active,.backbtn:active,.gymrow:active,.card:active,
+  .actions2 a:active,.actions2 button:active{transform:scale(.975)}
+  .chip,.day,.mode-opt,#paneltabs button,.sugrow,.backbtn,.gymrow,.card,
+  .actions2 a,.actions2 button{transition:transform .08s ease-out}
+  .postbtn:active,.profilebtn:active,#nearBtn:active,#goBtn:active,
+  #recenterBtn:active,.primary:active{transform:scale(.96);opacity:.9}
+
+  /* 3. Safe areas. With viewport-fit=cover the notch and the home indicator
+        overlap content unless we pay them back. */
+  header{padding-top:calc(16px + env(safe-area-inset-top))}
+  #panel{padding-bottom:env(safe-area-inset-bottom)}
+  #gymdetail{padding-bottom:calc(20px + env(safe-area-inset-bottom))}
+
+  /* 4. Installed mode: no browser bar to sit under, so the header sits tighter
+        and the map gets the height back. */
+  @media(display-mode:standalone){
+    header{padding-top:calc(10px + env(safe-area-inset-top))}
+    body{-webkit-user-select:none;user-select:none}
+    #gymdetail,.card{-webkit-user-select:text;user-select:text}
+  }
+
+  @media(max-width:899px){
+    /* 5. Days and filters snap like a native segmented control instead of
+          drifting to a stop wherever the finger left off. */
+    .daystrip{scroll-snap-type:x proximity;overscroll-behavior-x:contain}
+    .daystrip .day{scroll-snap-align:center}
+    .filters{scroll-snap-type:x proximity;overscroll-behavior-x:contain}
+    .filters .chip{scroll-snap-align:start}
+    /* 6. Opening a school reads as pushing a new screen, not swapping text. */
+    body.labc.detail-on #gymdetail{animation:pushIn .2s cubic-bezier(.32,.72,0,1)}
+    /* 7. Bigger touch targets on the small secondary links. 15px of tappable
+          text is a miss waiting to happen. */
+    #clearLoc,#openPost2,.sharelink{padding:6px 2px;display:inline-block}
+  }
+  @keyframes pushIn{from{transform:translateX(14px);opacity:0}to{transform:none;opacity:1}}
+
   @media(prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important}}
 </style>
 </head>
