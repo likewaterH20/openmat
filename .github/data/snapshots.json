@@ -1,8 +1,8 @@
 {
- "generated": "2026-08-06",
+ "generated": "2026-08-07",
  "gyms": {
   "AMA BJJ & Muay Thai": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [],
    "site": "https://www.joinamafightclub.com",
@@ -10,7 +10,7 @@
    "watched": "https://www.joinamafightclub.com"
   },
   "ASCEND Jiu-Jitsu": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [],
    "site": "https://www.ascendjiujitsu.com/schedule",
@@ -18,7 +18,7 @@
    "watched": "https://www.ascendjiujitsu.com/schedule"
   },
   "Advanced Martial Arts": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "11:30- no gi",
@@ -36,10 +36,11 @@
    ],
    "site": "https://advancedbjjnj.com/schedule/",
    "text": 12,
+   "thinAt": "2026-08-07",
    "watched": "https://advancedbjjnj.com/schedule/"
   },
   "Ahlert Jiu Jitsu": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "10:00am \u2013 11:00am no gi class (all levels)",
@@ -67,7 +68,7 @@
    "watched": "https://ahlertbjj.com/class-schedule/"
   },
   "Americana Jiu Jitsu": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [],
    "site": "https://americanajj.com",
@@ -75,7 +76,7 @@
    "watched": "https://americanajj.com"
   },
   "BJJ North Jersey": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "10:00 am - 11:00 am adult no-gi/wrestle-jitsu (all levels)",
@@ -108,7 +109,7 @@
    "watched": "https://jiujitsunorthjersey.com/Home/Schedule"
   },
   "Bataille Jiu Jitsu": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "10:30am",
@@ -120,7 +121,7 @@
    "watched": "https://www.bataillejj.com/schedule/"
   },
   "Bayshore BJJ": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "image: schedule_260113_page-0001.jpg"
@@ -130,7 +131,7 @@
    "watched": "https://bayshorebjj.com/schedule/"
   },
   "Binding Arts Jiu Jitsu": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "10:00 am open mat",
@@ -149,7 +150,7 @@
    "watched": "https://www.bindingartsbjj.com/schedule"
   },
   "Bones Jiu Jitsu Academy": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [],
    "site": "https://bonesjiujitsu.com",
@@ -157,7 +158,7 @@
    "watched": "https://bonesjiujitsu.com"
   },
   "CULTR Fight Club": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "6:00am - 8:00pm",
@@ -169,7 +170,7 @@
    "watched": "https://www.cultrfightclub.com"
   },
   "Camal and Cruz Judo & BJJ": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "$ 0.00 existing balance",
@@ -244,7 +245,7 @@
    "watched": "https://camalandcruz.gymdesk.com/schedule"
   },
   "Chokelab BJJ Academy": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "10:00 am - 12:00 pm adult all level no-gi",
@@ -265,10 +266,11 @@
    ],
    "site": "https://chokelabacademy.com/bjj-class-schedule-harrison-nj/",
    "text": 15,
+   "thinAt": "2026-08-07",
    "watched": "https://chokelabacademy.com/bjj-class-schedule-harrison-nj/"
   },
   "Close Quarters BJJ & Fitness": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "image: 695bfa668987903b1fc6b6d1_close%20quarter%20schedule.webp",
@@ -279,7 +281,7 @@
    "watched": "https://www.cqbjjfit.com/schedule"
   },
   "Dan Covel Martial Arts": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [],
    "site": "https://coveljiujitsu.com",
@@ -287,7 +289,7 @@
    "watched": "https://coveljiujitsu.com"
   },
   "Daniel Gracie Art of Movement": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "friday: 4:30pm - 5:30pm (mma)",
@@ -312,10 +314,11 @@
    ],
    "site": "https://aommma.com/schedule/",
    "text": 17,
+   "thinAt": "2026-08-07",
    "watched": "https://aommma.com/schedule/"
   },
   "Echo Alpha Gracie Jiu Jitsu": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "monday (nogi) 7pm-8:30pm, tuesday (gi) 7:30-9:00pm, wednesday (gi/nogi) 7pm-8:30pm, thursday (gi) 7:30-9:00pm, saturday 10:30am-12:30pm",
@@ -328,7 +331,7 @@
    "watched": "https://www.echoalphabjj.com/schedule"
   },
   "Elevate Jiu Jitsu Academy": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "image: cce09b81--1000x1250.jpg"
@@ -338,7 +341,7 @@
    "watched": "https://elevatejiujitsuacademy.com"
   },
   "Elijah BJJ": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [],
    "site": "https://ebjj.com",
@@ -346,7 +349,7 @@
    "watched": "https://ebjj.com"
   },
   "Esoteric Jiu Jitsu": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "advanced fundamentals 7:00pm \u2013 8:30pm",
@@ -372,7 +375,7 @@
    "watched": "https://www.esotericjiujitsu.com/"
   },
   "Fight Republic": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "6pm gi",
@@ -394,7 +397,7 @@
    "watched": "https://www.fight-rep.com/class-schedule"
   },
   "Gael Force Jiu Jitsu": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "open mat",
@@ -402,10 +405,11 @@
    ],
    "site": "https://www.gaelforcejiujitsu.com",
    "text": 2,
+   "thinAt": "2026-08-07",
    "watched": "https://www.gaelforcejiujitsu.com/schedule/"
   },
   "Garden State BJJ Academy": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "10:00am \u2013 11:00am essentials",
@@ -447,7 +451,7 @@
    "watched": "https://gardenstatebjj.com/schedule/"
   },
   "Garry Tonon Jiu Jitsu": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "11:00am (sat - sun)",
@@ -480,7 +484,7 @@
    "watched": "https://www.garrytononjiujitsu.com/class-schedule"
   },
   "Gorilla BJJ Academy": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [],
    "site": "https://www.gorillabjjacademy.com",
@@ -488,7 +492,7 @@
    "watched": "https://www.gorillabjjacademy.com"
   },
   "Gracie Barra North Princeton": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [],
    "site": "https://gbprinceton.com",
@@ -496,7 +500,7 @@
    "watched": "https://gbprinceton.com"
   },
   "Gracie Barra Princeton": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [],
    "site": "https://gbprinceton.com",
@@ -504,7 +508,7 @@
    "watched": "https://gbprinceton.com"
   },
   "Hibiscus Brazilian BJJ": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [],
    "site": "https://www.hibiscusbjj.com",
@@ -512,7 +516,7 @@
    "watched": "https://www.hibiscusbjj.com"
   },
   "High Impact Martial Arts": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "10:00 \u2013 11:00 am",
@@ -550,7 +554,7 @@
    "watched": "https://www.highimpactma.com"
   },
   "Hillsborough BJJ": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "open mat (gi / no-gi)"
@@ -560,7 +564,7 @@
    "watched": "https://www.hillsboroughbjj.com/schedule"
   },
   "House of Salt Jiu-Jitsu": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "image: schedule2026.png"
@@ -570,7 +574,7 @@
    "watched": "https://houseofsaltnj.com/schedule"
   },
   "Immortals Jiu Jitsu": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "10:00 am - 11:00 am immortals juniors 6-15 yrs",
@@ -595,7 +599,7 @@
    "watched": "https://immortalsjiujitsu.com/Home/Schedule"
   },
   "Impact Martial Arts": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "1:00 pm \u2013 9:30 pm",
@@ -606,7 +610,7 @@
    "watched": "https://impactmartialarts.net"
   },
   "Kombat BJJ": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "mon-fri 11am-8:30pm / sat:11:30am-1pm"
@@ -616,7 +620,7 @@
    "watched": "https://kombatjits.com"
   },
   "Loftus Jiu Jitsu Academy": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "11:00 am \u2013 noon",
@@ -636,20 +640,22 @@
    ],
    "site": "https://loftusjiujitsu.com/classes/",
    "text": 14,
+   "thinAt": "2026-08-07",
    "watched": "https://loftusjiujitsu.com/classes/"
   },
   "Madhouse Academy": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "image: placeholder.png"
    ],
    "site": "https://madhouseacademy.com",
    "text": 0,
+   "thinAt": "2026-08-07",
    "watched": "https://madhouseacademy.com"
   },
   "Mark Ramos Academy": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "image: schedule-3-1-2024.jpg"
@@ -659,7 +665,7 @@
    "watched": "https://www.markramosacademy.com/our-schedule"
   },
   "Method Jiu Jitsu": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "image: 68dec405327fa9c9da5ea079_method%202025%20schedule-01-01.png"
@@ -669,7 +675,7 @@
    "watched": "https://www.methodjj.com/"
   },
   "Move Jiu Jitsu Academy": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "3:00 pm \u2013 open mat for everyone!",
@@ -684,7 +690,7 @@
    "watched": "https://movejiujitsu.com/schedule/"
   },
   "Mundo BJJ": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "image: 2025-06-20-11_40_43-schedule---google-sheets-dwxopp2vnvfzlber.jpg"
@@ -694,7 +700,7 @@
    "watched": "https://mundobjjacademy.com/schedule"
   },
   "NJ Ronin Jiu Jitsu": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "friday bjj gi 4:45pm-5:30pm",
@@ -711,10 +717,11 @@
    ],
    "site": "https://njronin.com/schedule/",
    "text": 10,
+   "thinAt": "2026-08-07",
    "watched": "https://njronin.com/schedule/"
   },
   "New Journey MMA": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "10:15am-11:20am",
@@ -750,7 +757,7 @@
    "watched": "https://newjourneymma.com/schedule"
   },
   "North South Jiu Jitsu": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [],
    "site": "https://northsouthbjj.com",
@@ -758,7 +765,7 @@
    "watched": "https://northsouthbjj.com"
   },
   "Ocean County BJJ": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [],
    "site": "https://oceancountybjj.com",
@@ -766,7 +773,7 @@
    "watched": "https://oceancountybjj.com"
   },
   "Performance Jiu-Jitsu": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "adult all level bjj open mat 10:30 \u2013 11:45 am",
@@ -803,7 +810,7 @@
    "watched": "https://armlock.com/schedule"
   },
   "Pinelands BJJ": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [],
    "site": "https://pinelandsbjj.com",
@@ -811,7 +818,7 @@
    "watched": "https://pinelandsbjj.com"
   },
   "Precise BJJ": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "10:00am - 11:00am",
@@ -831,7 +838,7 @@
    "watched": "https://www.precisebjj.com/"
   },
   "Princeton BJJ": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "12:30-1:30 p.m.",
@@ -850,7 +857,7 @@
    "watched": "https://www.princetonbjj.com/classes/"
   },
   "Prolific BJJ": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [],
    "site": "https://www.prolificbjj.com",
@@ -858,7 +865,7 @@
    "watched": "https://www.prolificbjj.com"
   },
   "Pure Mixed Martial Arts": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "10:00 am - 10:30 am kids karate - tiny tigers",
@@ -907,7 +914,7 @@
    "watched": "https://puremixedmartialarts.com/Home/Schedule"
   },
   "ROLLSTAR Jiu Jitsu": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [],
    "site": "https://www.rollstarbjj.com",
@@ -915,7 +922,7 @@
    "watched": "https://www.rollstarbjj.com"
   },
   "Radji Barrett Jiu Jitsu": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [],
    "site": "https://www.radjibarrettjiujitsu.com",
@@ -923,7 +930,7 @@
    "watched": "https://radjibarrettjiujitsu.com/"
   },
   "Rare Breed MMA": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [],
    "site": "https://www.rarebreedmma.com",
@@ -931,7 +938,7 @@
    "watched": "https://rarebreedmma.com/"
   },
   "Renzo Gracie Jersey City": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "open mat (members only)",
@@ -943,7 +950,7 @@
    "watched": "https://renzograciejc.com/schedule"
   },
   "Renzo Gracie Newark": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [],
    "site": "https://www.renzogracienj.com",
@@ -951,7 +958,7 @@
    "watched": "https://www.renzogracienj.com"
   },
   "Revel Jiu Jitsu": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "10:00 am - 11:00 am",
@@ -973,7 +980,7 @@
    "watched": "https://reveljiujitsu.com/schedule/"
   },
   "Rival Jiu-Jitsu": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "mon-fri: 4pm to 8pm. sat: 9am to 12pm. sun: 9am to 11am.",
@@ -986,7 +993,7 @@
    "watched": "https://rivalbjj.com"
   },
   "Rolling Bear BJJ": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "6 am. you could be in bed. but you could also be",
@@ -1002,7 +1009,7 @@
    "watched": "https://rollingbearbjj.com/#Schedule"
   },
   "Senshi Tori MMA": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "10:00 am - adult bjj",
@@ -1028,7 +1035,7 @@
    "watched": "https://senshitori.com/Home/Schedule"
   },
   "Sheridan BJJ": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "6am, noon, and evening classes every day for adults"
@@ -1038,7 +1045,7 @@
    "watched": "https://www.sheridanbjj.com"
   },
   "Silva Fusion MMA & BJJ": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "10:00am - no gi brazilian jiu jitsu open mat",
@@ -1058,7 +1065,7 @@
    "watched": "https://silvafusion.com/class-schedule"
   },
   "Silver Fox BJJ": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "10:00 - 12:00 pm",
@@ -1082,15 +1089,15 @@
    "watched": "https://silverfoxbjj.com/saddle-brook-schedule/"
   },
   "Silver Fox BJJ Butler": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [],
    "site": "https://www.silverfoxbjjbutler.com",
    "text": 0,
-   "watched": "https://silverfoxbjjbutler.com/"
+   "watched": "https://www.silverfoxbjjbutler.com"
   },
   "Silver Fox BJJ East Hanover": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "10:30am - 11:15am",
@@ -1111,7 +1118,7 @@
    "watched": "https://www.silverfoxbjjeh.com/schedule"
   },
   "South Jersey BJJ": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [],
    "site": "https://sjbjj.com",
@@ -1119,7 +1126,7 @@
    "watched": "https://sjbjj.com"
   },
   "South Mountain Martial Arts": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "image: south_mountain_schedule_austin2.png"
@@ -1129,7 +1136,7 @@
    "watched": "https://southmountainmartialarts.com/schedule"
   },
   "Strive BJJ Academy": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [],
    "site": "https://strivebjj.com",
@@ -1137,7 +1144,7 @@
    "watched": "https://strivebjj.com"
   },
   "Studio 1908 (Miyao Bros)": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "10:00am \u2013 11:00am",
@@ -1156,10 +1163,11 @@
    ],
    "site": "https://studio1908jj.com/schedule/",
    "text": 13,
+   "thinAt": "2026-08-07",
    "watched": "https://studio1908jj.com/schedule/"
   },
   "The Academy of Jiu-Jitsu": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "10am - kickboxing sparring",
@@ -1188,7 +1196,7 @@
    "watched": "https://theacademyjj.com/schedule"
   },
   "The Fight Lab USA": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "10:00 am",
@@ -1219,7 +1227,7 @@
    "watched": "https://thefightlabusa.com/schedule/"
   },
   "The Inferno Training Center": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "image: 736342884_18613842784030343_251104366843718771_n.jpg",
@@ -1230,7 +1238,7 @@
    "watched": "https://www.infernotpc.com"
   },
   "Touro MMA": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "9:00\u201310:00 am"
@@ -1240,7 +1248,7 @@
    "watched": "https://www.touromma.com"
   },
   "Trasso Jiu Jitsu & Wrestling": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "10:00 \u2013 11:00 am",
@@ -1260,7 +1268,7 @@
    "watched": "https://www.trassojjw.com/schedule"
   },
   "Viper's Den Jiu-Jitsu": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "10:00-12:00 pm open mat",
@@ -1285,7 +1293,7 @@
    "watched": "https://vipersdenbjj.com/schedule/"
   },
   "Vitor Shaolin BJJ": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "image: class-schedule.jpg"
@@ -1295,7 +1303,7 @@
    "watched": "https://www.shaolinbjj.com/schedule.shtml"
   },
   "Zealous Nation MMA": {
-   "checked": "2026-08-06",
+   "checked": "2026-08-07",
    "fails": 0,
    "lines": [
     "10:00am - 12:00pm submission grappling (no gi)",
