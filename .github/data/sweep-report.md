@@ -10,4 +10,4 @@
 - **Madhouse Academy** — https://madhouseacademy.com (1 schedule lines yesterday, 0 today; kept yesterday's copy)
 
 ---
-_2026-08-15 · 76 gyms checked · 73 reachable · 0 changed · 3 unreachable · 21 unreadable · 8 thin_
+_2026-08-16 · 76 gyms checked · 76 reachable · 0 changed · 0 unreachable · 21 unreadable · 8 thin_
