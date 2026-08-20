@@ -1,7 +1,10 @@
-## Came back thin — probably a blocked fetch, not a change
+## 1 gym page(s) changed — verify by hand before touching the map
 
-- **Advanced Martial Arts** — https://advancedbjjnj.com/schedule/ (12 schedule lines yesterday, 0 today; kept yesterday's copy)
-- **NJ Ronin Jiu Jitsu** — https://njronin.com/schedule/ (11 schedule lines yesterday, 0 today; kept yesterday's copy)
+### Viper's Den Jiu-Jitsu
+https://vipersdenbjj.com/schedule/
+
+- **+** `10:15–11:00 am kids striking & self-defense`
+- **+** `7:00-8:00 pm adult striking fundamentals`
 
 ---
-_2026-08-19 · 76 gyms checked · 76 reachable · 0 changed · 0 unreachable · 21 unreadable · 2 thin_
+_2026-08-20 · 76 gyms checked · 72 reachable · 1 changed · 4 unreachable · 20 unreadable · 0 thin_
