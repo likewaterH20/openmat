@@ -1,12 +1,16 @@
-## 1 gym page(s) changed — verify by hand before touching the map
+## 2 gym page(s) changed — verify by hand before touching the map
 
-### Chokelab BJJ Academy
-https://chokelabacademy.com/bjj-class-schedule-harrison-nj/
+### Camal and Cruz Judo & BJJ
+https://camalandcruz.gymdesk.com/schedule
 
-- **+** `9:30 am - 11:30 am all level bjj (black gi & no-gi)`
-- **+** `9:30 am - 11:30 am all level bjj (blue gi)`
-- **−** `9:30 am - 11:30 pm all level bjj (black gi & no-gi)`
-- **−** `9:30 am - 11:30 pm all level bjj (blue gi)`
+- **+** `7:30 - 8:30pm`
+- **+** `7:30pm - 8:30pm`
+
+### Bataille Jiu Jitsu
+https://www.bataillejj.com/schedule/
+
+- **+** `11:30am`
+- **−** `10:30am`
 
 ## Came back thin — probably a blocked fetch, not a change
 
@@ -15,4 +19,4 @@ https://chokelabacademy.com/bjj-class-schedule-harrison-nj/
 - **Binding Arts Jiu Jitsu** — https://www.bindingartsbjj.com/schedule (10 schedule lines yesterday, 1 today; kept yesterday's copy)
 
 ---
-_2026-09-19 · 76 gyms checked · 76 reachable · 1 changed · 0 unreachable · 16 unreadable · 3 thin_
+_2026-09-20 · 76 gyms checked · 76 reachable · 2 changed · 0 unreachable · 16 unreadable · 3 thin_
