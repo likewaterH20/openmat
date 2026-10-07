@@ -7,4 +7,4 @@
 - **Binding Arts Jiu Jitsu** — https://www.bindingartsbjj.com/schedule (10 schedule lines yesterday, 1 today; kept yesterday's copy)
 
 ---
-_2026-10-06 · 76 gyms checked · 74 reachable · 0 changed · 2 unreachable · 15 unreadable · 5 thin_
+_2026-10-07 · 76 gyms checked · 74 reachable · 0 changed · 2 unreachable · 15 unreadable · 5 thin_
