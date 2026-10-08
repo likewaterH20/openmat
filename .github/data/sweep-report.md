@@ -1,3 +1,19 @@
+## 2 gym page(s) changed — verify by hand before touching the map
+
+### Rolling Bear BJJ
+https://rollingbearbjj.com/#Schedule
+
+- **−** `9:30 am – 10:30 am saturday grappling club no-gi (adults)`
+
+### Viper's Den Jiu-Jitsu
+https://vipersdenbjj.com/schedule/
+
+- **+** `4:15–5:00 pm`
+
+## Unreachable 3+ days running
+
+- **Move Jiu Jitsu Academy** — https://movejiujitsu.com (3 days)
+
 ## Came back thin — probably a blocked fetch, not a change
 
 - **Silver Fox BJJ East Hanover** — https://www.silverfoxbjjeh.com/schedule (12 schedule lines yesterday, 1 today; kept yesterday's copy)
@@ -7,4 +23,4 @@
 - **Binding Arts Jiu Jitsu** — https://www.bindingartsbjj.com/schedule (10 schedule lines yesterday, 1 today; kept yesterday's copy)
 
 ---
-_2026-10-07 · 76 gyms checked · 74 reachable · 0 changed · 2 unreachable · 15 unreadable · 5 thin_
+_2026-10-08 · 76 gyms checked · 75 reachable · 2 changed · 1 unreachable · 15 unreadable · 5 thin_
