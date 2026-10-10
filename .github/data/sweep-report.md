@@ -1,6 +1,15 @@
+## 1 gym page(s) changed — verify by hand before touching the map
+
+### Rolling Bear BJJ
+https://rollingbearbjj.com/#Schedule
+
+- **+** `7 pm 1st and 3rd fridays of the month · first class free`
+- **+** `9:30 am – 10:30 am saturday grappling club no-gi (adults)`
+- **−** `7 pm – 8 pm wrestling (2nd and 4th fridays of month)`
+
 ## Unreachable 3+ days running
 
-- **Move Jiu Jitsu Academy** — https://movejiujitsu.com (4 days)
+- **Move Jiu Jitsu Academy** — https://movejiujitsu.com (5 days)
 
 ## Came back thin — probably a blocked fetch, not a change
 
@@ -15,4 +24,4 @@
 - **Silver Fox BJJ Butler** — https://www.silverfoxbjjbutler.com (1 schedule lines yesterday, 0 today; kept yesterday's copy)
 
 ---
-_2026-10-09 · 76 gyms checked · 75 reachable · 0 changed · 1 unreachable · 15 unreadable · 9 thin_
+_2026-10-10 · 76 gyms checked · 75 reachable · 1 changed · 1 unreachable · 15 unreadable · 9 thin_
