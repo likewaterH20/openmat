@@ -1,44 +1,25 @@
 ## 1 gym page(s) changed — verify by hand before touching the map
 
-### Rolling Bear BJJ
-https://rollingbearbjj.com/#Schedule
+### The Inferno Training Center
+https://www.infernotpc.com/classschedule
 
-- **−** `10:30 am – 12 pm open mat`
+- **+** `image: img_0154.jpeg`
+- **−** `image: 796726088_18635185036030343_7651067114110041302_n.jpg`
 
 ## Unreachable 3+ days running
 
-- **Move Jiu Jitsu Academy** — https://movejiujitsu.com (14 days)
+- **Move Jiu Jitsu Academy** — https://movejiujitsu.com (15 days)
 
 ## Came back thin — probably a blocked fetch, not a change
 
+- **Chokelab BJJ Academy** — https://chokelabacademy.com/bjj-class-schedule-harrison-nj/ (18 schedule lines yesterday, 0 today; kept yesterday's copy)
 - **Silver Fox BJJ East Hanover** — https://www.silverfoxbjjeh.com/schedule (12 schedule lines yesterday, 1 today; kept yesterday's copy)
+- **Advanced Martial Arts** — https://advancedbjjnj.com/schedule/ (12 schedule lines yesterday, 0 today; kept yesterday's copy)
+- **NJ Ronin Jiu Jitsu** — https://njronin.com/schedule/ (11 schedule lines yesterday, 0 today; kept yesterday's copy)
 - **Pure Mixed Martial Arts** — https://puremixedmartialarts.com/Home/Schedule (40 schedule lines yesterday, 1 today; kept yesterday's copy)
 - **The Fight Lab USA** — https://www.thefightlabusa.com/ (22 schedule lines yesterday, 0 today; kept yesterday's copy)
 - **Binding Arts Jiu Jitsu** — https://www.bindingartsbjj.com/schedule (10 schedule lines yesterday, 1 today; kept yesterday's copy)
-
-## Hand-check this week (19)
-
-_The robot can't read these — the schedule is a picture, a JS widget, or the site blocks it. They only get verified when a person looks._
-
-- [ ] **Strive BJJ Academy** — https://strivebjj.com
-- [ ] **Rare Breed MMA** — https://rarebreedmma.com/
-- [ ] **Bones Jiu Jitsu Academy** — https://bonesjiujitsu.com
-- [ ] **ASCEND Jiu-Jitsu** — https://www.ascendjiujitsu.com/schedule
-- [ ] **Renzo Gracie Newark** — https://www.renzogracienj.com
-- [ ] **Prolific BJJ** — https://www.prolificbjj.com
-- [ ] **North South Jiu Jitsu** — https://northsouthbjj.com
-- [ ] **Dan Covel Martial Arts** — https://coveljiujitsu.com
-- [ ] **AMA BJJ & Muay Thai** — https://www.joinamafightclub.com
-- [ ] **Hibiscus Brazilian BJJ** — https://www.hibiscusbjj.com
-- [ ] **Americana Jiu Jitsu** — https://americanajj.com
-- [ ] **Gorilla BJJ Academy** — https://www.gorillabjjacademy.com
-- [ ] **ROLLSTAR Jiu Jitsu** — https://www.rollstarbjj.com
-- [ ] **Radji Barrett Jiu Jitsu** — https://radjibarrettjiujitsu.com/
-- [ ] **South Jersey BJJ** — https://sjbjj.com
-- [ ] **Silver Fox BJJ East Hanover** — https://www.silverfoxbjjeh.com/schedule
-- [ ] **Pure Mixed Martial Arts** — https://puremixedmartialarts.com/Home/Schedule
-- [ ] **The Fight Lab USA** — https://www.thefightlabusa.com/
-- [ ] **Binding Arts Jiu Jitsu** — https://www.bindingartsbjj.com/schedule
+- **Silver Fox BJJ Butler** — https://www.silverfoxbjjbutler.com (1 schedule lines yesterday, 0 today; kept yesterday's copy)
 
 ---
-_2026-10-19 · 76 gyms checked · 75 reachable · 1 changed · 1 unreachable · 15 unreadable · 4 thin_
+_2026-10-20 · 76 gyms checked · 75 reachable · 1 changed · 1 unreachable · 15 unreadable · 8 thin_
