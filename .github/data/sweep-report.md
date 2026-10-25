@@ -1,20 +1,19 @@
 ## 2 gym page(s) changed — verify by hand before touching the map
 
-### Garden State BJJ Academy
-https://gardenstatebjj.com/schedule/
+### Camal and Cruz Judo & BJJ
+https://camalandcruz.gymdesk.com/schedule
 
-- **−** `10:30–11:45 am intermediate`
-- **−** `7:15pm – 8:30pm open mat`
+- **+** `7:30 - 8:30pm`
+- **+** `7:30pm - 8:30pm`
 
 ### Rolling Bear BJJ
 https://rollingbearbjj.com/#Schedule
 
-- **+** `7 pm 1st and 3rd fridays of the month · first class free`
-- **−** `7 pm – 8 pm wrestling (2nd and 4th fridays of month)`
+- **+** `10:30 am – 12 pm open mat`
 
 ## Unreachable 3+ days running
 
-- **Move Jiu Jitsu Academy** — https://movejiujitsu.com (19 days)
+- **Move Jiu Jitsu Academy** — https://movejiujitsu.com (20 days)
 
 ## Came back thin — probably a blocked fetch, not a change
 
@@ -26,4 +25,4 @@ https://rollingbearbjj.com/#Schedule
 - **South Jersey BJJ** — https://sjbjj.com (10 schedule lines yesterday, 0 today; kept yesterday's copy)
 
 ---
-_2026-10-24 · 76 gyms checked · 75 reachable · 2 changed · 1 unreachable · 14 unreadable · 6 thin_
+_2026-10-25 · 76 gyms checked · 74 reachable · 2 changed · 2 unreachable · 14 unreadable · 6 thin_
