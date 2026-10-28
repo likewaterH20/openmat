@@ -1,6 +1,14 @@
+## 1 gym page(s) changed — verify by hand before touching the map
+
+### South Mountain Martial Arts
+https://southmountainmartialarts.com/schedule
+
+- **+** `image: south_mountain_schedule_2026-10-27.png`
+- **−** `image: south_mountain_schedule_austin2.png`
+
 ## Unreachable 3+ days running
 
-- **Move Jiu Jitsu Academy** — https://movejiujitsu.com (22 days)
+- **Move Jiu Jitsu Academy** — https://movejiujitsu.com (23 days)
 
 ## Came back thin — probably a blocked fetch, not a change
 
@@ -12,4 +20,4 @@
 - **South Jersey BJJ** — https://sjbjj.com (10 schedule lines yesterday, 0 today; kept yesterday's copy)
 
 ---
-_2026-10-27 · 76 gyms checked · 75 reachable · 0 changed · 1 unreachable · 14 unreadable · 6 thin_
+_2026-10-28 · 76 gyms checked · 74 reachable · 1 changed · 2 unreachable · 14 unreadable · 6 thin_
