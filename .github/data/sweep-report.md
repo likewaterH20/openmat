@@ -1,20 +1,18 @@
 ## 1 gym page(s) changed — verify by hand before touching the map
 
-### Rolling Bear BJJ
-https://rollingbearbjj.com/#Schedule
+### Camal and Cruz Judo & BJJ
+https://camalandcruz.gymdesk.com/schedule
 
-- **+** `5 pm – 6 pm kids competition class (invite only)`
-- **+** `7 pm 1st and 3rd fridays of the month · first class free`
-- **−** `7 pm – 8 pm wrestling (2nd and 4th fridays of month)`
+- **−** `7:30 - 8:30pm`
+- **−** `7:30pm - 8:30pm`
 
 ## Unreachable 3+ days running
 
-- **Move Jiu Jitsu Academy** — https://movejiujitsu.com (26 days)
+- **Move Jiu Jitsu Academy** — https://movejiujitsu.com (27 days)
 
 ## Came back thin — probably a blocked fetch, not a change
 
 - **Revel Jiu Jitsu** — https://reveljiujitsu.com (13 schedule lines yesterday, 0 today; kept yesterday's copy)
-- **Chokelab BJJ Academy** — https://chokelabacademy.com/bjj-class-schedule-harrison-nj/ (18 schedule lines yesterday, 0 today; kept yesterday's copy)
 - **Silver Fox BJJ East Hanover** — https://www.silverfoxbjjeh.com/schedule (12 schedule lines yesterday, 1 today; kept yesterday's copy)
 - **Advanced Martial Arts** — https://advancedbjjnj.com/schedule/ (12 schedule lines yesterday, 0 today; kept yesterday's copy)
 - **NJ Ronin Jiu Jitsu** — https://njronin.com/schedule/ (11 schedule lines yesterday, 0 today; kept yesterday's copy)
@@ -25,4 +23,4 @@ https://rollingbearbjj.com/#Schedule
 - **Silver Fox BJJ Butler** — https://www.silverfoxbjjbutler.com (1 schedule lines yesterday, 0 today; kept yesterday's copy)
 
 ---
-_2026-10-31 · 76 gyms checked · 75 reachable · 1 changed · 1 unreachable · 14 unreadable · 10 thin_
+_2026-11-01 · 76 gyms checked · 75 reachable · 1 changed · 1 unreachable · 14 unreadable · 9 thin_
