@@ -1,14 +1,16 @@
 ## 1 gym page(s) changed — verify by hand before touching the map
 
-### Rolling Bear BJJ
-https://rollingbearbjj.com/#Schedule
+### Silva Fusion MMA & BJJ
+https://silvafusion.com/class-schedule
 
-- **+** `7 pm – 8 pm wrestling (2nd and 4th fridays of month)`
-- **−** `7 pm 1st and 3rd fridays of the month · first class free`
+- **+** `6:00pm - brazilian jiu jitsu open mat gi / no gi`
+- **+** `9:00 am - women's only bjj open mat`
+- **−** `6:00pm - brazilian jiu jitsu open mat`
+- **−** `9:00am - yoga by kelly`
 
 ## Unreachable 3+ days running
 
-- **Move Jiu Jitsu Academy** — https://movejiujitsu.com (33 days)
+- **Move Jiu Jitsu Academy** — https://movejiujitsu.com (34 days)
 
 ## Came back thin — probably a blocked fetch, not a change
 
@@ -20,4 +22,4 @@ https://rollingbearbjj.com/#Schedule
 - **South Jersey BJJ** — https://sjbjj.com (10 schedule lines yesterday, 0 today; kept yesterday's copy)
 
 ---
-_2026-11-07 · 76 gyms checked · 75 reachable · 1 changed · 1 unreachable · 14 unreadable · 6 thin_
+_2026-11-08 · 76 gyms checked · 75 reachable · 1 changed · 1 unreachable · 13 unreadable · 6 thin_
