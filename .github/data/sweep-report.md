@@ -1,6 +1,19 @@
+## 2 gym page(s) changed — verify by hand before touching the map
+
+### Rolling Bear BJJ
+https://rollingbearbjj.com/#Schedule
+
+- **−** `10:30 am – 12 pm open mat`
+- **−** `9:30 am – 10:30 am saturday grappling club no-gi (adults)`
+
+### Fight Republic
+https://fight-rep.com/
+
+- **−** `saturday open mat`
+
 ## Unreachable 3+ days running
 
-- **Move Jiu Jitsu Academy** — https://movejiujitsu.com (37 days)
+- **Move Jiu Jitsu Academy** — https://movejiujitsu.com (38 days)
 
 ## Came back thin — probably a blocked fetch, not a change
 
@@ -12,4 +25,4 @@
 - **South Jersey BJJ** — https://sjbjj.com (10 schedule lines yesterday, 0 today; kept yesterday's copy)
 
 ---
-_2026-11-11 · 76 gyms checked · 75 reachable · 0 changed · 1 unreachable · 13 unreadable · 6 thin_
+_2026-11-12 · 76 gyms checked · 75 reachable · 2 changed · 1 unreachable · 13 unreadable · 6 thin_
