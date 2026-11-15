@@ -1,6 +1,6 @@
 ## Unreachable 3+ days running
 
-- **Move Jiu Jitsu Academy** — https://movejiujitsu.com (40 days)
+- **Move Jiu Jitsu Academy** — https://movejiujitsu.com (41 days)
 
 ## Came back thin — probably a blocked fetch, not a change
 
@@ -12,4 +12,4 @@
 - **South Jersey BJJ** — https://sjbjj.com (10 schedule lines yesterday, 0 today; kept yesterday's copy)
 
 ---
-_2026-11-14 · 76 gyms checked · 75 reachable · 0 changed · 1 unreachable · 13 unreadable · 6 thin_
+_2026-11-15 · 76 gyms checked · 75 reachable · 0 changed · 1 unreachable · 13 unreadable · 6 thin_
